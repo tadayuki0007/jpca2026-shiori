@@ -1,0 +1,1239 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第17回JPCA 参加者専用しおり</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{ --grad: linear-gradient(135deg,#2b6fff 0%,#8a4dff 50%,#ff4d8a 100%); }
+  html,body{ background:#f3f4f8; }
+  body{ font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif; }
+  .bg-grad{ background: var(--grad); }
+  .text-grad{ background: var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .accent-bar{ border-left:4px solid #8a4dff; padding-left:.5rem; }
+  main{ padding-bottom: 96px; }
+  .view{ display:none; }
+  .view.active{ display:block; }
+  button,a{ -webkit-tap-highlight-color: transparent; }
+  .fav-on svg{ fill:#fbbf24; stroke:#f59e0b; }
+  /* horizontal scroll bottom nav */
+  .botnav{ overflow-x:auto; scrollbar-width:none; }
+  .botnav::-webkit-scrollbar{ display:none; }
+  /* target audience badge colors */
+  .b-any   { background:#22c55e; color:#fff; }
+  .b-stu   { background:#f59e0b; color:#fff; }
+  .b-ini   { background:#ef4444; color:#fff; }
+  .b-spec36{ background:#06b6d4; color:#fff; }
+  .b-spec  { background:#8b5cf6; color:#fff; }
+  .b-sup   { background:#ec4899; color:#fff; }
+  .b-other { background:#92400e; color:#fff; }
+  .b-tag   { background:#22d3ee; color:#fff; }
+  .b-tag2  { background:#ec4899; color:#fff; }
+  /* schedule cells */
+  .schedcell{ background:#eef0fb; border-left:3px solid #8a4dff; }
+</style>
+</head>
+<body class="text-slate-800">
+
+<!-- =========== Header =========== -->
+<header class="bg-grad text-white sticky top-0 z-30 shadow">
+  <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="leading-tight cursor-pointer" data-go="view-home">
+      <div class="text-[11px] opacity-90">第17回日本プライマリ・ケア連合学会学術大会</div>
+      <div class="text-base font-bold">参加者専用しおり</div>
+    </div>
+    <button id="btnAI" class="text-xs bg-white/95 text-pink-600 font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
+      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>AIコンシェルジュ
+    </button>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 pt-4">
+
+  <!-- ================ HOME ================ -->
+  <section id="view-home" class="view active space-y-4">
+    <!-- 大会長メッセージ -->
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="accent-bar mb-3 flex items-center gap-2">
+        <i data-lucide="mic" class="w-4 h-4 text-pink-500"></i>
+        <h2 class="font-bold">大会長メッセージ</h2>
+      </div>
+      <div class="font-bold text-slate-900">鈴木 富雄 大会長</div>
+      <div class="text-xs text-slate-500 mb-3">大阪医科薬科大学医学部 総合診療医学教室 教授</div>
+      <details class="rounded-xl bg-slate-50 px-4 py-4">
+        <summary class="text-center cursor-pointer list-none">
+          <span class="text-grad font-bold">つながる、つなげる。つなげる、つながる。</span>
+          <div class="text-xs text-pink-600 mt-1">(タップで全文を読む▼)</div>
+        </summary>
+        <div class="text-sm mt-3 leading-relaxed text-slate-700 space-y-2">
+          <p>第17回日本プライマリ・ケア連合学会学術大会を、2026年5月29日(金)〜31日(日)の3日間、国立京都国際会館にて開催させていただきます。</p>
+          <p>テーマは「つながる、つなげる。つなげる、つながる。」。総合診療・家庭医療・プライマリ・ケアは、専門領域間の<b>横のつながり</b>と、世代を超えた知の<b>縦のつながり</b>の両方を担う領域です。"General is Special"の信念のもと、医師・看護師・薬剤師・リハ・介護・行政・市民、すべての方が「対話と共感と物語」でつながる3日間にできれば幸いです。京都でお会いしましょう。</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- PR動画 -->
+    <a href="https://youtu.be/rqUDGBBMCCQ" target="_blank" rel="noopener" class="block bg-grad text-white rounded-2xl py-3 text-center font-bold shadow-sm">
+      <i data-lucide="play-circle" class="inline w-5 h-5 -mt-0.5"></i> 学術大会PR動画を見る
+    </a>
+
+    <!-- 大2カード -->
+    <div class="grid grid-cols-2 gap-3">
+      <button data-go="view-schedule" class="bg-white rounded-2xl shadow-sm p-5 flex flex-col items-center gap-2">
+        <i data-lucide="calendar-days" class="w-7 h-7" style="color:#4f46e5"></i>
+        <span class="font-bold">日程表</span>
+      </button>
+      <button data-go="view-program" class="bg-white rounded-2xl shadow-sm p-5 flex flex-col items-center gap-2">
+        <i data-lucide="list" class="w-7 h-7" style="color:#4f46e5"></i>
+        <span class="font-bold">すべてのプログラム</span>
+      </button>
+    </div>
+
+    <!-- グリッド -->
+    <div class="grid grid-cols-3 gap-3 text-sm">
+      <button data-go="view-pickup" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="star" class="w-6 h-6 text-amber-400"></i>
+        <span class="font-semibold text-center leading-tight">学生・研修医<br>向け Pickup</span>
+      </button>
+      <button data-go="view-map" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="map" class="w-6 h-6 text-emerald-600"></i>
+        <span class="font-semibold">フロアマップ</span>
+      </button>
+      <button data-go="view-search" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="search" class="w-6 h-6 text-slate-500"></i>
+        <span class="font-semibold">検索</span>
+      </button>
+      <button data-go="view-myschedule" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="calendar-check" class="w-6 h-6 text-green-600"></i>
+        <span class="font-semibold">マイスケジュール</span>
+      </button>
+      <button data-go="view-mylist" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="bookmark" class="w-6 h-6 text-pink-500"></i>
+        <span class="font-semibold">マイリスト</span>
+      </button>
+      <button data-go="view-info" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="info" class="w-6 h-6 text-purple-500"></i>
+        <span class="font-semibold">各種ご案内</span>
+      </button>
+      <button data-go="view-prep" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="briefcase" class="w-6 h-6 text-indigo-600"></i>
+        <span class="font-semibold">準備</span>
+      </button>
+      <button data-go="view-diag" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="stethoscope" class="w-6 h-6 text-rose-500"></i>
+        <span class="font-semibold">診断</span>
+      </button>
+      <button data-go="view-strategy" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="book-open" class="w-6 h-6 text-blue-700"></i>
+        <span class="font-semibold">攻略法</span>
+      </button>
+      <button data-go="view-faq" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
+        <i data-lucide="help-circle" class="w-6 h-6 text-orange-500"></i>
+        <span class="font-semibold">FAQ</span>
+      </button>
+    </div>
+
+    <!-- 公式メディア -->
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="accent-bar mb-3 flex items-center gap-2">
+        <i data-lucide="link" class="w-4 h-4 text-purple-500"></i>
+        <h2 class="font-bold">公式メディア</h2>
+      </div>
+      <div class="text-xs text-slate-500 mb-2">第17回学術大会専用</div>
+      <div class="grid grid-cols-3 gap-2 mb-3">
+        <a href="https://jpca2026.jp/" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="globe" class="w-4 h-4"></i>公式</a>
+        <a href="https://www.facebook.com/profile.php?id=61588418750643" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+        <a href="https://www.instagram.com/jpca2026/" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+      </div>
+      <div class="text-xs text-slate-500 mb-2">学会公式 (日本プライマリ・ケア連合学会)</div>
+      <div class="grid grid-cols-3 gap-2 mb-2">
+        <a href="https://www.primarycare-japan.com/" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="globe" class="w-4 h-4"></i>公式</a>
+        <a href="https://www.facebook.com/groups/818698202037333/" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+        <a href="https://www.instagram.com/jpca_kouhou" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+      </div>
+      <a href="https://www.youtube.com/channel/UCL0gzTcRvcnvzHMUL6EV_3g" target="_blank" rel="noopener" class="block bg-red-600 text-white text-center py-2.5 rounded-xl text-sm font-bold"><i data-lucide="youtube" class="inline w-4 h-4 -mt-0.5"></i> YouTube (学会公式チャンネル)</a>
+    </div>
+
+    <!-- 春期セミナー -->
+    <div class="bg-sky-50 border border-sky-200 rounded-2xl shadow-sm p-4">
+      <div class="accent-bar mb-2 flex items-center gap-2" style="border-color:#0288d1">
+        <i data-lucide="sprout" class="w-4 h-4 text-sky-600"></i>
+        <h2 class="font-bold text-sky-800">学会の次は「春期セミナー」</h2>
+      </div>
+      <div class="font-bold text-sky-900 mb-2">研修医のための総合診療春期セミナー</div>
+      <ul class="text-sm text-slate-700 list-disc list-inside space-y-1">
+        <li><b>日時：</b>6月14日(日) 14:00-17:00<br><span class="text-xs">（その後希望者は懇親会30分あり）</span></li>
+        <li><b>形式：</b>Zoomオンライン（完全無料・事前登録制）</li>
+        <li><b>内容：</b>将来のキャリア／総合診療の魅力／症例検討会</li>
+        <li><b>申込〆切：</b>2026/06/13 (土)</li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5whaEfCI9meJdcy2_s4WfkFWfWhqUJ9M1lNcSUnNZDKb2Cg/viewform" target="_blank" rel="noopener" class="block mt-3 bg-sky-600 text-white text-center font-bold py-2.5 rounded-xl text-sm">
+        申し込みはこちら <i data-lucide="external-link" class="inline w-3.5 h-3.5"></i>
+      </a>
+    </div>
+
+    <!-- ログイン不要の説明 -->
+    <div class="bg-amber-50 border border-amber-300 rounded-2xl shadow-sm p-4">
+      <div class="accent-bar mb-2 flex items-center gap-2" style="border-color:#f59e0b">
+        <i data-lucide="info" class="w-4 h-4 text-amber-700"></i>
+        <h2 class="font-bold text-amber-900">このしおりについて</h2>
+      </div>
+      <div class="text-sm text-slate-700 space-y-2 leading-relaxed">
+        <p><b>👤 ログイン不要・あなた専用です。</b></p>
+        <p>日程表で付けた <b>★</b>、診断結果、準備チェックリストなどは、<b>あなたの端末（このブラウザ）の中にだけ</b>保存されます。他の人と混ざることはありません。会員登録もパスワードも要りません。</p>
+        <div class="rounded-xl bg-white border border-amber-200 p-3 text-xs space-y-1">
+          <div>✅ 同じ端末・同じブラウザでまた開けば、★やチェックは残っています</div>
+          <div>✅ 他の参加者のしおりには影響しません（完全に独立）</div>
+          <div>⚠ <b>別の端末では同期されません</b>（スマホで付けた★はPCに反映しません）</div>
+          <div>⚠ ブラウザのキャッシュ・履歴を削除するとデータが消えます</div>
+          <div>⚠ シークレットモード／プライベートブラウズで開くと毎回リセットされます</div>
+        </div>
+        <p class="text-xs text-slate-500">使い方：最初に開いた端末で気になるセッションに★ → 学会期間中はその端末で開けばOK。</p>
+      </div>
+    </div>
+
+    <p class="text-center text-[11px] text-slate-400 py-4">非公式 個人用しおり ・ ©2026 / Last updated 2026-05-11</p>
+  </section>
+
+  <!-- ================ 日程表 ================ -->
+  <section id="view-schedule" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="calendar-days" class="w-5 h-5 text-indigo-600"></i>
+      <h2 class="font-bold text-lg">日程表</h2>
+    </div>
+    <p class="text-xs text-slate-600">※横にスクロールして時間を、縦にスクロールして全会場を確認できます。ブロックをタップで詳細表示・登録が可能です。</p>
+    <select id="dayPicker" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold"></select>
+    <div class="bg-white rounded-2xl shadow-sm p-3 overflow-x-auto">
+      <div id="scheduleGrid" class="min-w-[640px]"></div>
+    </div>
+  </section>
+
+  <!-- ================ プログラム ================ -->
+  <section id="view-program" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="list" class="w-5 h-5 text-indigo-600"></i>
+      <h2 class="font-bold text-lg">全プログラム一覧</h2>
+    </div>
+    <p class="text-xs text-slate-600">セッション種別 (S, J, IG, IT, MS など) ごとに掲載しています。</p>
+    <div id="progGroups" class="space-y-4"></div>
+  </section>
+
+  <!-- ================ Pickup ================ -->
+  <section id="view-pickup" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="star" class="w-5 h-5 text-amber-400"></i>
+      <h2 class="font-bold text-lg">学生・研修医向け Pickup</h2>
+    </div>
+    <p class="text-xs text-slate-600">学生・初期研修・専攻医の方におすすめの企画ピックアップです。</p>
+    <div id="pickupList" class="space-y-2"></div>
+  </section>
+
+  <!-- ================ フロアマップ ================ -->
+  <section id="view-map" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="map" class="w-5 h-5 text-emerald-600"></i>
+      <h2 class="font-bold text-lg">Map / 会場図 / 天気</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="flex items-center justify-between mb-2">
+        <div class="font-bold text-blue-700">周辺マップ・天気</div>
+        <a href="https://weather.yahoo.co.jp/weather/jp/26/61.html" target="_blank" class="text-[11px] bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full font-bold">☁ 京都の天気 (Yahoo!)</a>
+      </div>
+      <a href="https://maps.google.com/?q=国立京都国際会館" target="_blank" class="block relative">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=国立京都国際会館&zoom=15&size=640x300&markers=color:red%7C国立京都国際会館" alt="map" class="w-full rounded-xl bg-slate-100" onerror="this.style.display='none'">
+        <div class="aspect-[16/8] rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-sm">
+          <i data-lucide="map-pin" class="w-5 h-5 mr-1"></i> Google Maps を開く
+        </div>
+      </a>
+      <div class="text-sm mt-3">
+        <div class="font-bold">国立京都国際会館</div>
+        <div>〒606-0001 京都府京都市左京区岩倉大鷺町422</div>
+        <div>地下鉄烏丸線「国際会館駅」4-2出口から直結</div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="font-bold text-blue-700 mb-2">会場階層のご案内</div>
+      <ul class="list-disc list-inside text-sm space-y-1 text-slate-700">
+        <li><b>第1会場</b>：メインホール (1F)</li>
+        <li><b>第2会場</b>：アネックスホール (1F)</li>
+        <li><b>第3会場〜第6会場</b>：Room A 〜 C-1 (1F)</li>
+        <li><b>第7会場</b>：Room C-2 (2F) <span class="text-pink-600">↑ ※2階</span></li>
+        <li><b>第8会場〜第13会場</b>：Room D 〜 K (1F)</li>
+        <li><b>第14・第15会場</b>：Room 509, 510 (5F) <span class="text-pink-600">↑ ※5階</span></li>
+        <li><b>企業展示・ポスター</b>：イベントホール (1F 別棟)</li>
+        <li><b>ミニステージ</b>：イベントホール内 (1F 別棟)</li>
+      </ul>
+      <a href="https://www.icckyoto.or.jp/" target="_blank" class="mt-3 block bg-slate-50 hover:bg-slate-100 border border-slate-200 text-center py-2.5 rounded-xl text-sm font-bold">
+        <i data-lucide="map" class="inline w-4 h-4 -mt-0.5"></i> 京都国際会館公式 フロアマップを見る <i data-lucide="external-link" class="inline w-3 h-3"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================ 検索 ================ -->
+  <section id="view-search" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="search" class="w-5 h-5 text-pink-500"></i>
+      <h2 class="font-bold text-lg">プログラム検索</h2>
+    </div>
+    <div class="flex gap-2">
+      <input id="searchInput" type="search" placeholder="キーワード (例: ケア, 連携, 登壇者名)" class="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm">
+      <button id="searchBtn" class="bg-indigo-600 text-white px-3 rounded-xl"><i data-lucide="search" class="w-4 h-4"></i></button>
+    </div>
+    <div id="searchResult" class="space-y-2">
+      <div class="text-center py-12 text-slate-400 text-sm">
+        <i data-lucide="keyboard" class="w-8 h-8 mx-auto mb-2"></i>
+        検索キーワードを入力してください。
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ マイスケジュール ================ -->
+  <section id="view-myschedule" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="calendar-check" class="w-5 h-5 text-green-600"></i>
+      <h2 class="font-bold text-lg">マイスケジュール</h2>
+    </div>
+    <div class="bg-amber-50 border border-amber-300 rounded-xl p-3 text-xs text-slate-700">
+      <i data-lucide="alert-triangle" class="inline w-3.5 h-3.5 text-amber-600"></i> <b>【データ保存について】</b><br>
+      登録内容は現在のブラウザ(端末)にのみ保存されます。別端末への同期はされません。キャッシュや履歴を削除するとデータが消えますのでご注意ください。
+    </div>
+    <p class="text-xs text-slate-600">★をつけたセッションが時系列で表示されます。</p>
+    <div id="mySchedList" class="space-y-3"></div>
+    <div id="aiAnalyzeBox" class="hidden">
+      <button id="aiAnalyzeBtn" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2.5 rounded-xl mt-2">
+        <i data-lucide="sparkles" class="inline w-4 h-4"></i> AIでマイスケジュールを分析する
+      </button>
+      <div id="aiAnalyzeResult" class="hidden mt-3 bg-purple-50 border border-purple-300 rounded-2xl p-4">
+        <div class="font-bold text-purple-700 flex items-center gap-1 mb-2"><i data-lucide="bot" class="w-4 h-4"></i>AIコンシェルジュの分析結果</div>
+        <div id="aiAnalyzeText" class="text-sm text-purple-900 whitespace-pre-wrap leading-relaxed">読み込み中…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ マイリスト ================ -->
+  <section id="view-mylist" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="bookmark" class="w-5 h-5 text-pink-500"></i>
+      <h2 class="font-bold text-lg">マイリスト</h2>
+    </div>
+    <div class="bg-amber-50 border border-amber-300 rounded-xl p-3 text-xs text-slate-700">
+      <i data-lucide="alert-triangle" class="inline w-3.5 h-3.5 text-amber-600"></i> <b>【データ保存について】</b><br>
+      登録内容は現在のブラウザ(端末)にのみ保存されます。別端末への同期はされません。
+    </div>
+    <p class="text-xs text-slate-600">★をつけた全項目 (登録順)。</p>
+    <div id="myList" class="space-y-2"></div>
+  </section>
+
+  <!-- ================ 各種ご案内 ================ -->
+  <section id="view-info" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="info" class="w-5 h-5 text-purple-500"></i>
+      <h2 class="font-bold text-lg">各種ご案内</h2>
+    </div>
+    <p class="text-xs text-slate-600">公式サイトに掲載されている重要情報です。詳細は各リンク先をご確認ください。</p>
+    <div class="bg-white rounded-2xl shadow-sm p-2 space-y-1">
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="leaf" class="w-4 h-4 text-emerald-500"></i>環境への取り組み</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-1">
+          <p>本学会はプラネタリーヘルスを意識し、紙コップ廃止 (Myボトル持参必須)、デジタル抄録、ヴィーガン対応キッチンカーなど環境配慮型で運営します。</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/planetary-health/" target="_blank">公式ページ ↗</a>
+        </div>
+      </details>
+
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="utensils" class="w-4 h-4 text-pink-500"></i>飲食について</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-2">
+          <p><b>⚠ ランチョンセミナーはありません</b>。お食事の事前計画を推奨。</p>
+          <p><b>お弁当 (事前販売のみ)</b>：当日販売なし。引換11:00-14:00 / B1F スワン (ネームパスのチケットと交換)</p>
+          <p><b>キッチンカー</b>：ヴィーガン対応・京都スイーツ等<br>・5/30 (土) 10:00-18:00<br>・5/31 (日) 10:00-15:00</p>
+          <p><b>飲食可能エリア (3箇所)</b>：B1F スワン / 1F Annexホール周辺休憩 / 1F イベントホール周辺休憩</p>
+          <p>※セッション会場内での飲食は禁止 (5/30 開会式・大会長講演・理事長講演 12:10-13:20 を除く)</p>
+          <p>※会場周辺には飲食店・コンビニが少ないです。</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/food/" target="_blank">公式ページ ↗</a>
+        </div>
+      </details>
+
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="party-popper" class="w-4 h-4 text-pink-500"></i>PCナイト (懇親会)</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-1">
+          <p><b>5/30 (土) 18:00-20:00</b> (受付17:30〜) ・ <b>スワン・メインホール前ホワイエ・庭園</b> ・ 立食ビュッフェ</p>
+          <p>一般5,000円 (先着400名) ／ 初期研修医・学生3,000円 (先着100名) ／ ソフトドリンク飲み放題含。アルコール別 (現金のみ)</p>
+          <p>4ゾーン構成: セッション / キャリア相談 / ファミリー (乳幼児〜小学生同伴可) / 休憩</p>
+          <p class="text-rose-600">⚠ 既に定員に達しており受付終了</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/reception/" target="_blank">公式ページ ↗</a>
+        </div>
+      </details>
+
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="bed" class="w-4 h-4 text-indigo-500"></i>宿泊のご案内</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-1">
+          <p>学会では宿泊の手配・紹介は行っていません。各自で予約サイトより手配を。</p>
+          <p>5月の京都は観光シーズンで混雑、開催日が近づくにつれ予約困難になります。早期予約推奨。</p>
+          <p>主要予約サイト: るるぶトラベル / じゃらん / 楽天 / Trivago / agoda / Expedia / 一休.com</p>
+          <p>地下鉄烏丸線沿線 (京都駅・四条・烏丸御池) が会場アクセス◎</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/accommodation/" target="_blank">公式ページ ↗</a>
+        </div>
+      </details>
+
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-amber-500"></i>単位一覧</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-1">
+          <p><b>JPCA 専門医・認定医</b>: 参加登録で10単位 (申請手続不要、7月末以降マイページにアップ)</p>
+          <p><b>プライマリ・ケア認定薬剤師</b>: 6単位</p>
+          <p><b>専攻医</b>: Off-the-job training</p>
+          <p><b>日本医師会認定産業医</b>: 指定セッション受講のみ・<u>現地参加のみ</u> (オンライン視聴は対象外、受講確認票提出が必要)</p>
+          <p><b>日本医師会生涯教育単位</b>: 参加証明書ダウンロード可。申告は毎年3〜4月末</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/credit/" target="_blank">公式ページ ↗</a>
+        </div>
+      </details>
+
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-500"></i>指導医養成講習会</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-1">
+          <p><b>5/31 (日) 10:15-11:45</b> ・ 定員50名 ・ 指導医のみ対象</p>
+          <p>テーマ「職場基盤評価 (WPBA) を臨床現場に実装する」 ・ 受講で指導医更新単位1.5付与</p>
+          <p class="text-rose-600">⚠ 申込締切済 (3/6〜4/10) ・ 遅刻/途中退席は単位付与不可</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/workshop/" target="_blank">公式ページ ↗</a>
+        </div>
+      </details>
+
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="presentation" class="w-4 h-4 text-violet-500"></i>ご登壇者の皆様へ</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-1">
+          <p>口演はPowerPoint等で現地発表、ポスターはe-poster (モニター投影) 形式。学生セッション・Research in Progressは紙ポスター形式。</p>
+          <p>すべての演題で利益相反 (COI) 状態の開示が必須。</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/speaker/" target="_blank">公式ページ ↗</a>
+        </div>
+      </details>
+
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="baby" class="w-4 h-4 text-pink-400"></i>お子さま連れの方へ</summary>
+        <div class="text-sm mt-2 text-slate-700 space-y-1">
+          <p>託児所 ・ キッズツアー ・ 小中高生企画 ・ サイトビジット (金曜日) を用意。すべて事前申込制。</p>
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/nursery/" target="_blank">託児所 ↗</a> ・
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/kids-tour/" target="_blank">キッズツアー ↗</a> ・
+          <a class="text-blue-600 underline" href="https://jpca2026.jp/with-kids/" target="_blank">お子さま連れ ↗</a>
+        </div>
+      </details>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-4 text-sm">
+      <div class="font-bold mb-1">運営事務局</div>
+      <div>株式会社シー・エヌ・エス内</div>
+      <div>📧 <a class="text-blue-600 underline" href="mailto:jpca2026@cnsinc.jp">jpca2026@cnsinc.jp</a></div>
+      <div>📞 03-5768-3619</div>
+    </div>
+  </section>
+
+  <!-- ================ 準備 ================ -->
+  <section id="view-prep" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="briefcase" class="w-5 h-5 text-indigo-600"></i>
+      <h2 class="font-bold text-lg">準備・持ち物</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="font-bold text-blue-700 mb-2">持ち物チェックリスト</div>
+      <div id="prepList" class="space-y-3 text-sm"></div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="font-bold text-blue-700 mb-2 flex items-center gap-1"><i data-lucide="shirt" class="w-4 h-4"></i>服装について</div>
+      <div class="rounded-xl bg-blue-50 p-3 text-sm space-y-2">
+        <div><span class="font-bold text-blue-700">基本はオフィスカジュアル</span><br><span class="text-slate-700">学生や初期研修医の方はスーツでなくても大丈夫です。襟付きのシャツなど、清潔感のある服装なら浮きません。</span></div>
+        <div><span class="font-bold">👟 靴は歩きやすいもので！</span><br><span class="text-slate-700">会場はとにかく広いです。展示会場から講演会場までかなり歩くため、履き慣れた靴を強く推奨します。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ 診断 ================ -->
+  <section id="view-diag" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="stethoscope" class="w-5 h-5 text-rose-500"></i>
+      <h2 class="font-bold text-lg">おすすめ企画診断</h2>
+    </div>
+    <div id="diagBox" class="bg-white rounded-2xl shadow-sm p-4"></div>
+  </section>
+
+  <!-- ================ 攻略法 ================ -->
+  <section id="view-strategy" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="book-open" class="w-5 h-5 text-blue-700"></i>
+      <h2 class="font-bold text-lg">攻略法・対象マーク凡例</h2>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="font-bold text-blue-700 mb-2">対象者マークの凡例</div>
+      <p class="text-xs text-slate-600 mb-3">プログラムには推奨される対象者のマークがついています。参加の参考にしてください。(対象外の方の参加も大歓迎です！)</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="b-any   text-xs px-2 py-1 rounded-full font-semibold">どなたでも</span>
+        <span class="b-stu   text-xs px-2 py-1 rounded-full font-semibold">学生等(卒前)</span>
+        <span class="b-ini   text-xs px-2 py-1 rounded-full font-semibold">初期など(卒後1-2年)</span>
+        <span class="b-spec36 text-xs px-2 py-1 rounded-full font-semibold">専門医など(卒後3-6年)</span>
+        <span class="b-spec  text-xs px-2 py-1 rounded-full font-semibold">専門医</span>
+        <span class="b-sup   text-xs px-2 py-1 rounded-full font-semibold">指導医(リカレント)</span>
+        <span class="b-other text-xs px-2 py-1 rounded-full font-semibold">その他</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="font-bold text-blue-700 mb-2">学会の雰囲気を知ろう</div>
+      <ul class="text-sm text-slate-700 space-y-2">
+        <li><b>交流メインな雰囲気</b><br>総合診療医・家庭医のみならず学生,研修医,多職種も多数参加しています。</li>
+        <li><b>ドレスコードもカジュアル</b><br>この学会はスーツの人のほうが少数派! キレイめな恰好ならOKです。</li>
+        <li><b>どんどんメモを取ろう</b><br>印象に残ったこと・疑問点、話のタネをストックしましょう。</li>
+      </ul>
+      <div class="font-bold text-blue-700 mt-4 mb-2">ネットワーク作りに挑戦してみよう！</div>
+      <ul class="text-sm text-slate-700 space-y-1.5">
+        <li><b>チャンス</b>：一流の専門家に会えるチャンス! 質問してみよう!</li>
+        <li><b>事前計画を</b>：どのセッションに参加するか事前に計画しよう!</li>
+        <li><b>企画中は…</b>：発表者・質問者・司会者に注目してスキルを盗みましょう!</li>
+        <li><b>同世代で</b>：頑張る同世代が沢山います! 刺激を受けましょう!</li>
+        <li><b>名刺</b>：社会人アイテム! 交換方法で臆さないよう練習を!</li>
+      </ul>
+      <div class="font-bold text-blue-700 mt-4 mb-2">名刺交換の基本作法</div>
+      <div class="rounded-xl bg-amber-50 p-3 text-sm text-rose-700 space-y-1.5">
+        <div class="font-bold">基本のステップ</div>
+        <div>1. 名刺入れの上に乗せて</div>
+        <div>2. 両手で持って自分から差し出す</div>
+        <div>3. 同時なら 右手で差し出し左手で受け取る</div>
+        <div>4. 受け取り すぐにしまわず相手に合わせて</div>
+        <div class="pt-1"><b>NG行為</b>：名刺で手遊び・ポケットや財布から直出し</div>
+      </div>
+    </div>
+
+    <div class="bg-green-50 border border-green-300 rounded-2xl shadow-sm p-4">
+      <div class="font-bold text-green-800 mb-3 flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4"></i>若手向けお役立ち情報・コミュニティ</div>
+      <div class="space-y-2">
+        <a href="https://line.me/ti/g2/8SrVIN2EP2o3ni82qO-XJXJ1UeSDiUmopg8HOA?utm_source=invitation&utm_medium=QR_code&utm_campaign=default" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
+          <i data-lucide="beer" class="w-4 h-4 text-orange-500"></i>Generalist Bar (PW: wakate) <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+        <a href="https://www.primarycare-japan.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
+          <i data-lucide="user-round" class="w-4 h-4 text-blue-600"></i>JPCA 若手医師支援部門
+        </a>
+        <a href="https://line.me/ti/g2/Gi7b9f0eMUTJYXXbkM9d_AXOYfr3gq1exl4AAA?utm_source=invitation&utm_medium=QR_code&utm_campaign=default" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
+          <i data-lucide="egg" class="w-4 h-4 text-amber-500"></i>じぇねたま（初期研修医対象サロン）<i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+        <a href="https://line.me/ti/g2/iqgof_4CgtZBdqDcPJwTM4ZcgNX9YvLqIVrBCw?utm_source=invitation&utm_medium=QR_code&utm_campaign=default" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
+          <i data-lucide="link" class="w-4 h-4 text-purple-600"></i>Genelink（イベント情報）<i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+      <div class="font-bold text-blue-700 mb-3">対象者別の学会攻略法</div>
+      <div class="space-y-2">
+        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>学生等(卒前) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
+          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
+            <p><b>初めての学会でも大丈夫！</b></p>
+            <p>まずは同世代が集まる「学生・研修医セッション」や「PickUp企画」に参加してみましょう。懇親会やポスター会場では、勇気を出して「学生です！」と名乗れば、先輩医師たちが優しく丁寧に教えてくれます。</p>
+            <p>また、多くのブースを回って、色々な地域の医療や働き方を知るのがおすすめです。</p>
+          </div>
+        </details>
+        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="user" class="w-4 h-4 text-red-500"></i>初期など(卒後1-2年) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
+          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
+            <p><b>臨床のリアルな悩みを解決するチャンス！</b></p>
+            <p>「ハンズオンセミナー」で明日から使える手技を学んだり、「キャリアカフェ」で少し上の先輩医師に進路相談をしてみましょう。</p>
+            <p>また、他施設の同期と交流し、モチベーションを高め合うのも学会の醍醐味です。</p>
+          </div>
+        </details>
+        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="stethoscope" class="w-4 h-4 text-cyan-600"></i>専門医など(卒後3-6年) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
+          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
+            <p><b>現場のリーダーとしてのステップアップ！</b></p>
+            <p>「インタラクティブセッション」で他施設の工夫を学んだり、自身のキャリアパスを広げるための人脈作りを意識してみましょう。</p>
+            <p>興味のある分野の「インタレストグループ（IG）」に参加して、深く議論を交わし、実践のヒントを持ち帰るのがおすすめです。</p>
+          </div>
+        </details>
+        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="user-check" class="w-4 h-4 text-violet-600"></i>専門医 の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
+          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
+            <p><b>最新知見の獲得とネットワーク構築</b></p>
+            <p>各領域のシンポジウムや教育講演を通じて、専門性をさらに高めることができます。</p>
+            <p>また、同じ専門分野の医師と交流することで、新たな共同研究やプロジェクトの立ち上げのきっかけになることもあります。</p>
+          </div>
+        </details>
+        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-pink-600"></i>指導医(リカレント) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
+          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
+            <p><b>知識のアップデートと後進の育成！</b></p>
+            <p>最新のガイドラインや知見のアップデートはもちろんのこと、指導医向けのリカレント教育プログラム（WPBAなど）を活用し、教育スキルを深めてください。</p>
+            <p>また、若い世代の発表に耳を傾け、温かいフィードバックをお願いいたします。</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ FAQ ================ -->
+  <section id="view-faq" class="view space-y-3">
+    <div class="accent-bar flex items-center gap-2">
+      <i data-lucide="help-circle" class="w-5 h-5 text-orange-500"></i>
+      <h2 class="font-bold text-lg">よくある質問</h2>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-2 space-y-2">
+      <details class="rounded-xl bg-slate-50 p-3" open><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i>企画で得た学びはどう整理するといい?</summary>
+        <div class="text-sm mt-2 rounded-xl bg-emerald-50 p-3 text-slate-700"><b>A.</b> ポイントをあえて3つに整理してみたり、自分が今後どう活かすか?という言葉や目標に置き換えてみましょう。</div>
+      </details>
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i>交換した名刺はどうする?</summary>
+        <div class="text-sm mt-2 rounded-xl bg-emerald-50 p-3 text-slate-700"><b>A.</b> 「今後もつながりたい」と思った方には 早めに挨拶メールをしてみましょう!</div>
+      </details>
+      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i>他にも何かできることはありますか?</summary>
+        <div class="text-sm mt-2 rounded-xl bg-emerald-50 p-3 text-slate-700"><b>A.</b> 出会いを楽しめば結構です! 完璧を求めず、年に1回のお祭り的にその場を楽しみましょう!<br>年に1回の学会をお楽しみ下さい!</div>
+      </details>
+    </div>
+    <p class="text-[11px] text-slate-500 leading-relaxed mt-2">
+      ※本しおりの一部コンテンツはJPCA学生・若手医療者支援委員会 BRIDGE-R 作成「はじめてのJPCA学会参加ガイド」より引用しています。<br>
+      監修：日本プライマリ・ケア連合学会 学生・若手医療者支援委員会<br>
+      作成：杉原伸明（JPCA学生・若手医療者支援委員会 BRIDGE-R 北海道家庭医療学センター 帯広協会病院 総合診療科）
+    </p>
+  </section>
+
+  <!-- ================ プログラム詳細 (Modal) ================ -->
+  <div id="detailModal" class="fixed inset-0 bg-black/50 z-50 hidden items-end sm:items-center justify-center sm:p-4">
+    <div class="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl max-w-md w-full p-5 relative max-h-[85vh] overflow-y-auto">
+      <button id="detailClose" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center"><i data-lucide="x" class="w-4 h-4"></i></button>
+      <div id="detailBody"></div>
+    </div>
+  </div>
+
+  <!-- ================ AIコンシェルジュ (Modal) ================ -->
+  <div id="aiModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 relative flex flex-col" style="max-height:85vh">
+      <button id="aiClose" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center"><i data-lucide="x" class="w-4 h-4"></i></button>
+      <div class="flex items-center gap-2 mb-2 text-pink-600 font-bold"><i data-lucide="bot" class="w-5 h-5"></i>AIコンシェルジュ</div>
+      <p class="text-xs text-slate-600 mb-3">学会に関する疑問や、京都のおすすめなど何でも質問してください！<br>(Powered by Gemini)</p>
+      <div id="aiChatLog" class="flex-1 overflow-y-auto bg-slate-50 rounded-xl p-3 text-sm space-y-2 mb-3">
+        <div class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700">こんにちは！第17回日本プライマリ・ケア連合学会学術大会のAIコンシェルジュです。会場の場所、プログラムの探し方など、何かお手伝いできることはありますか？ ✨</div>
+      </div>
+      <div class="flex gap-2">
+        <input id="aiInput" type="text" placeholder="メッセージを入力..." class="flex-1 border border-slate-200 rounded-full px-3 py-2 text-sm">
+        <button id="aiSend" class="w-9 h-9 rounded-full bg-pink-500 text-white flex items-center justify-center"><i data-lucide="send" class="w-4 h-4"></i></button>
+      </div>
+      <button id="aiSetKey" class="mt-2 text-[10px] text-slate-400 underline">Gemini APIキーを設定</button>
+    </div>
+  </div>
+
+</main>
+
+<!-- =========== ボトムナビ (横スクロール) =========== -->
+<nav class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 z-40">
+  <div class="botnav max-w-3xl mx-auto flex">
+    <button data-go="view-home"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="home"           class="w-5 h-5"></i><span>トップ</span></button>
+    <button data-go="view-prep"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="briefcase"      class="w-5 h-5"></i><span>準備</span></button>
+    <button data-go="view-schedule"   class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="calendar-days"  class="w-5 h-5"></i><span>日程表</span></button>
+    <button data-go="view-diag"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="stethoscope"    class="w-5 h-5"></i><span>診断</span></button>
+    <button data-go="view-myschedule" class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="calendar-check" class="w-5 h-5"></i><span>マイ予定</span></button>
+    <button data-go="view-strategy"   class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="book-open"      class="w-5 h-5"></i><span>攻略法</span></button>
+    <button data-go="view-map"        class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="map"            class="w-5 h-5"></i><span>Map/天気</span></button>
+    <button data-go="view-info"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="info"           class="w-5 h-5"></i><span>各種ご案内</span></button>
+    <button data-go="view-faq"        class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="help-circle"    class="w-5 h-5"></i><span>FAQ</span></button>
+  </div>
+</nav>
+
+<script>
+/* ===================== PROGRAM DATA =====================
+   Captured from Gemini shiori schedule (Day1) + jpca2026.jp /program/
+   Badges (audience): any | stu | ini | spec36 | spec | sup | other
+*/
+const PROGRAMS = [
+  /* ============================================================
+     Day 1 (5/29 金) — 13:30〜16:45
+     出典: jpca2026.jp/assets/pdf/program05.pdf (2026/5/7版)
+     ============================================================ */
+  {id:"IG1",  type:"IG", day:"5/29", time:"13:30-15:00", room:"第11会場 (Room I)",    title:"IG1 (172) 遺伝にかかわる対話とケアの統合〜科学と物語、倫理を架橋する〜", speakers:"", aud:"spec",   tags:["倫理・ACP","コミュニケーション"]},
+  {id:"IS4",  type:"IS", day:"5/29", time:"15:15-16:45", room:"第11会場 (Room I)",    title:"IS4 (201) 『つながり』を紡ぐ関係のデザイン―コミュニティナースがひらく地域ケアの可能性", speakers:"", aud:"sup",   tags:["社会的処方","コミュニケーション"]},
+  {id:"IS1",  type:"IS", day:"5/29", time:"13:30-15:00", room:"第12会場 (Room J)",    title:"IS1 (149) プライマリ・ケア版チームSTEPPS −チーム員同士のつながり方を学ぶ−", speakers:"", aud:"sup",   tags:["質・安全","多職種連携"]},
+  {id:"IS5",  type:"IS", day:"5/29", time:"15:15-16:45", room:"第12会場 (Room J)",    title:"IS5 (62) 薬でつながる多職種連携", speakers:"", aud:"sup",   tags:["多職種連携"]},
+  {id:"IS2",  type:"IS", day:"5/29", time:"13:30-15:00", room:"第13会場 (Room K)",    title:"IS2 (135) プライマリケア医とリウマチ医をつなげる膠原病フォローアップの実際", speakers:"", aud:"sup",   tags:["リウマチ"]},
+  {id:"IG3",  type:"IG", day:"5/29", time:"15:15-16:45", room:"第13会場 (Room K)",    title:"IG3 (181) 病院から在宅へ、患者・家族と共に誤嚥性肺炎のケアをつなぐ：多職種のジレンマと協働を考える", speakers:"", aud:"sup",   tags:["在宅","多職種連携"]},
+  {id:"IS3",  type:"IS", day:"5/29", time:"13:30-15:00", room:"第14会場 (Room 509)",  title:"IS3 (217) みんなで作る心理社会的問診フレーズ集", speakers:"", aud:"spec36", tags:["コミュニケーション","家族志向型"]},
+  {id:"IG4",  type:"IG", day:"5/29", time:"15:15-16:45", room:"第14会場 (Room 509)",  title:"IG4 (212) 総合診療医のキャリアと大学", speakers:"", aud:"spec36", tags:["キャリア","教育"]},
+  {id:"IG2",  type:"IG", day:"5/29", time:"13:30-15:00", room:"第15会場 (Room 510)",  title:"IG2 (12) 国際委員会presents: ハーバード流プライマリ・ケア教育－医学部から専攻医研修まで", speakers:"", aud:"other",  tags:["国際保健","教育"]},
+  {id:"IS6",  type:"IS", day:"5/29", time:"15:15-16:45", room:"第15会場 (Room 510)",  title:"IS6 (114) 肩こりから広がる『つながり』の診療─解剖・身体診察・エコーを結ぶ多職種アプローチ", speakers:"", aud:"spec36", tags:["臨床推論"]},
+
+  /* ============================================================
+     Day 2 (5/30 土) — 08:30〜20:00
+     ============================================================ */
+  // 第1会場 (Main Hall)
+  {id:"EL1",  type:"EL", day:"5/30", time:"08:30-10:00", room:"第1会場 (Main Hall)",  title:"教育講演1 (121) Annual Evidence Update in Primary Care 2026", speakers:"", aud:"sup",    tags:["教育講演","EBM"]},
+  {id:"I-3GAKKAI", type:"I", day:"5/30", time:"10:15-11:45", room:"第1会場 (Main Hall)",  title:"三学会理事長鼎談", speakers:"座長: 前野哲博 ・ 演者: 田妻進 / 小野剛 / 草場鉄周", aud:"any",    tags:["特別企画","マネジメント"]},
+  {id:"OPEN", type:"I",  day:"5/30", time:"12:10-13:20", room:"第1会場 (Main Hall)",  title:"開会式 / 大会長講演 / 理事長講演", speakers:"※この時間帯のみ会場内飲食可", aud:"any",    tags:["開会式"]},
+  {id:"MAIN", type:"S",  day:"5/30", time:"13:30-15:00", room:"第1会場 (Main Hall)",  title:"メインシンポジウム (47) つながる、つなげる。家庭医療／総合診療が描く未来のケアネットワーク – Connecting Care, Connecting People: Lessons from Canada and Japan –", speakers:"座長: 鈴木富雄 / 朝倉健太郎 ・ 演者: Shirley Lee (トロント大) / 吉田伸 / 次橋幸男", aud:"other",  tags:["メイン","必見","国際"]},
+  {id:"S14",  type:"S",  day:"5/30", time:"15:15-16:45", room:"第1会場 (Main Hall)",  title:"シンポジウム14 (140) 市中病院 × 大学でつくる『学び』と『研究』—寄附・連携講座をどう始めるか、どう続けるか", speakers:"", aud:"sup",    tags:["教育","研究"]},
+  // 第2会場 (Room A)
+  {id:"S1",   type:"S",  day:"5/30", time:"08:30-10:00", room:"第2会場 (Room A)",     title:"シンポジウム1 (154) 専攻医・専門医が問う『そもそも家庭医療専門医は必要なのか』", speakers:"", aud:"spec36", tags:["教育","キャリア"]},
+  {id:"S7",   type:"S",  day:"5/30", time:"10:15-11:45", room:"第2会場 (Room A)",     title:"シンポジウム7 (14) Medical Generalismを考える", speakers:"座長: 加藤光樹 ・ 演者: 大西弘高 / 藤沼康樹 / 宮地純一郎", aud:"spec36", tags:["総合診療"]},
+  {id:"J4",   type:"J",  day:"5/30", time:"13:30-15:00", room:"第2会場 (Room A)",     title:"学会ジョイントプログラム4 (J-1) 日本感染症学会 Meet the expert 感染症専門医はプライマリ・ケア医からの疑問に応えられるのか？", speakers:"", aud:"any",    tags:["ジョイント","感染症"]},
+  {id:"J6",   type:"J",  day:"5/30", time:"15:15-16:45", room:"第2会場 (Room A)",     title:"学会ジョイントプログラム6 (179) 総合診療分野の各学会って、何が違うの？〜徹底討論！3つの専門性と『ボーダレスな学び』に向けて〜", speakers:"登壇: 菅家智史 / 田中いつみ / 原田侑典 / 大塚勇輝 / 江角悠太 / 山田悟史", aud:"stu",    tags:["ジョイント"]},
+  // 第3会場 (Room B-1)
+  {id:"J1",   type:"J",  day:"5/30", time:"08:30-10:00", room:"第3会場 (Room B-1)",   title:"学会ジョイントプログラム1 (J-5) 日本病院総合診療医学会 つながれ、病院！―病病連携のミスコミュニケーションを解消しよう―", speakers:"", aud:"any",    tags:["ジョイント","病院総診"]},
+  {id:"EL2",  type:"EL", day:"5/30", time:"10:15-11:45", room:"第3会場 (Room B-1)",   title:"教育講演2 (219) ジェネラリストのための心因性愁訴診療―見逃さない鑑別と不安・抑うつへの実践的対応―", speakers:"", aud:"spec36", tags:["教育講演","メンタル"]},
+  {id:"J5",   type:"J",  day:"5/30", time:"13:30-15:00", room:"第3会場 (Room B-1)",   title:"学会ジョイントプログラム5 (J-8) 日本地域医療学会 『深さ』と『広さ』がつながる― 専門性と総合性が響き合う地域医療の未来 ―", speakers:"", aud:"any",    tags:["ジョイント","地域医療"]},
+  {id:"J7",   type:"J",  day:"5/30", time:"15:15-16:45", room:"第3会場 (Room B-1)",   title:"学会ジョイントプログラム7 (51) 日本東洋医学会 こんな時には漢方・鍼灸", speakers:"", aud:"spec36", tags:["ジョイント","漢方"]},
+  // 第4会場 (Room B-2)
+  {id:"S2",   type:"S",  day:"5/30", time:"08:30-10:00", room:"第4会場 (Room B-2)",   title:"シンポジウム2 (218) 精神科病院で働くジェネラリストの役割とは？", speakers:"", aud:"spec",   tags:["メンタル"]},
+  {id:"J2",   type:"J",  day:"5/30", time:"10:15-11:45", room:"第4会場 (Room B-2)",   title:"学会ジョイントプログラム2 (J-2) 日本老年医学会 脆弱性骨折のコマネジメントとMulticomplexity ―急性期から在宅までの包括的アプローチ", speakers:"座長: 石丸直人 / 新村健 ・ 演者: 大黒正志 / 濱田治 / 津田晃佑 / 渥美綾子 / 萩行正博", aud:"spec",   tags:["ジョイント","高齢者"]},
+  {id:"S11",  type:"S",  day:"5/30", time:"13:30-15:00", room:"第4会場 (Room B-2)",   title:"シンポジウム11 (1) ME/CFS, Long COVID: MUSとしない総合診療専門医の責任", speakers:"", aud:"spec",   tags:["臨床推論"]},
+  {id:"EL5",  type:"EL", day:"5/30", time:"15:15-16:45", room:"第4会場 (Room B-2)",   title:"教育講演5 (191) 小児在宅医療の実践 〜在宅でつながる小児から移行期へ〜", speakers:"", aud:"spec36", tags:["教育講演","小児","在宅"]},
+  // 第5会場 (Room D)
+  {id:"S3",   type:"S",  day:"5/30", time:"08:30-10:00", room:"第5会場 (Room D)",     title:"シンポジウム3 (6) 京都発！気候科学とプラネタリーヘルスの知見を活かし、市民とつなぐサステナブルな医療", speakers:"座長: 横田啓 / 岩上真理子 ・ 演者: 木原浩貴 / 橋爪真弘 / 江守正多", aud:"other",  tags:["プラネタリーヘルス"]},
+  {id:"S8",   type:"S",  day:"5/30", time:"10:15-11:45", room:"第5会場 (Room D)",     title:"シンポジウム8 (195) 小中高校生の部活や地域スポーツに対するプライマリ・ケアの役割", speakers:"", aud:"spec",   tags:["スポーツ","小児"]},
+  {id:"EL3",  type:"EL", day:"5/30", time:"13:30-15:00", room:"第5会場 (Room D)",     title:"教育講演3 (57) 地域を救う、最初の一手 – 診る・判断する・つなぐ救急対応のアート –", speakers:"", aud:"sup",    tags:["教育講演","救急"]},
+  {id:"S15",  type:"S",  day:"5/30", time:"15:15-16:45", room:"第5会場 (Room D)",     title:"シンポジウム15 (80) プライマリ・ヘルスケアにおける看護のリーダーシップ：豪州APNAとの共同プログラム", speakers:"", aud:"other",  tags:["看護","国際"]},
+  // 第6会場 (Room E)
+  {id:"S4",   type:"S",  day:"5/30", time:"08:30-10:00", room:"第6会場 (Room E)",     title:"シンポジウム4 (159) つながるアクション 〜プライマリ・ケアの各課題に対する包括的なアプローチの試み〜", speakers:"", aud:"sup",    tags:["総合診療"]},
+  {id:"J3",   type:"J",  day:"5/30", time:"10:15-11:45", room:"第6会場 (Room E)",     title:"学会ジョイントプログラム3 (66) 日本緩和医療学会 遠隔連携診療がひらく新しい緩和ケア連携", speakers:"座長: 矢吹拓 / 山本亮 ・ 演者: 濵野淳 / 間中勝則 / 藤原葉子", aud:"sup",    tags:["ジョイント","緩和"]},
+  {id:"S12",  type:"S",  day:"5/30", time:"13:30-15:00", room:"第6会場 (Room E)",     title:"シンポジウム12 (82) 総合医リカレント教育の現在地と展望", speakers:"", aud:"sup",    tags:["教育"]},
+  {id:"S16",  type:"S",  day:"5/30", time:"15:15-16:45", room:"第6会場 (Room E)",     title:"シンポジウム16 (214) 地域の力を引き出す！プライマリ・ケア実践における演劇的手法のススメ", speakers:"", aud:"sup",    tags:["地域医療"]},
+  // 第7会場 (Room C-1)
+  {id:"IG5",  type:"IG", day:"5/30", time:"08:30-10:00", room:"第7会場 (Room C-1)",   title:"インタレストグループ5 (129) 学会認定プライマリ・ケア看護師のキャリア開発〜キャリア形成・組織活用・地域貢献に必要な支援を考える〜", speakers:"", aud:"other",  tags:["看護","キャリア"]},
+  {id:"IG7",  type:"IG", day:"5/30", time:"10:15-11:45", room:"第7会場 (Room C-1)",   title:"インタレストグループ7 (173) コミュニティホスピタルのDX〜プライマリ・ケア現場の定型業務をAIで自動化する実践ワークショップ〜", speakers:"", aud:"spec",   tags:["DX","ICT"]},
+  {id:"IA10", type:"IA", day:"5/30", time:"13:30-15:00", room:"第7会場 (Room C-1)",   title:"インタラクティブセッション10 (183) コミドク流まちのみかた〜『みる・はいる・つくる』の3ステップで地域ケアを実践しよう〜", speakers:"", aud:"spec36", tags:["地域医療"]},
+  {id:"IG11", type:"IG", day:"5/30", time:"15:15-16:45", room:"第7会場 (Room C-1)",   title:"インタレストグループ11 (15) 日英のプライマリ・ケアについて考える〜学会が支援する日英プライマリ・ケア交換留学プログラム〜", speakers:"", aud:"spec36", tags:["国際"]},
+  // 第8会場 (Room C-2)
+  {id:"IA7",  type:"IA", day:"5/30", time:"08:30-10:00", room:"第8会場 (Room C-2)",   title:"インタラクティブセッション7 (128) 『診断学×家庭医療学』〜学問をつなぎ、視野を広げよう〜", speakers:"", aud:"spec36", tags:["臨床推論"]},
+  {id:"IA9",  type:"IA", day:"5/30", time:"10:15-11:45", room:"第8会場 (Room C-2)",   title:"インタラクティブセッション9 (157) 根拠に基づく予防医療の実践 個々の患者に対するアプローチ", speakers:"座長: 宮﨑景 ・ 演者: 北村和也 / 森英毅 / 向原圭 ・ ファシリ: 日下伸明", aud:"other",  tags:["予防"]},
+  {id:"IA11", type:"IA", day:"5/30", time:"13:30-15:00", room:"第8会場 (Room C-2)",   title:"インタラクティブセッション11 (87) 『一人にしない』をここから〜LGBTQ+の困難に共感し、対話でエンパワーし合う現場の仲間づくり〜", speakers:"", aud:"other",  tags:["DE&I"]},
+  {id:"IG12", type:"IG", day:"5/30", time:"15:15-16:45", room:"第8会場 (Room C-2)",   title:"インタレストグループ12 (99) 多職種で実践するACP〜現場からの声とネットワーク形成〜", speakers:"", aud:"sup",    tags:["ACP","多職種連携"]},
+  // 第9会場 (Annex Hall 1)
+  {id:"S5",   type:"S",  day:"5/30", time:"08:30-10:00", room:"第9会場 (Annex Hall 1)", title:"シンポジウム5 (208) 高度先進地域医療の実践", speakers:"", aud:"spec",   tags:["地域医療"]},
+  {id:"S9",   type:"S",  day:"5/30", time:"10:15-11:45", room:"第9会場 (Annex Hall 1)", title:"シンポジウム9 (168) つなげる総合診療の学び：専門医制度の協調で実現する持続可能な生涯学習", speakers:"", aud:"spec",   tags:["教育"]},
+  {id:"S13",  type:"S",  day:"5/30", time:"13:30-15:00", room:"第9会場 (Annex Hall 1)", title:"シンポジウム13 (165) 誰も聞けない災害時のお金の話：事業継続の必須知識", speakers:"", aud:"sup",    tags:["経営","BCP"]},
+  {id:"S17",  type:"S",  day:"5/30", time:"15:15-16:45", room:"第9会場 (Annex Hall 1)", title:"シンポジウム17 (188) 結局どうする？高尿酸血症治療 pros/consで徹底討論！", speakers:"", aud:"spec36", tags:["臨床"]},
+  // 第10会場 (Annex Hall 2)
+  {id:"S6",   type:"S",  day:"5/30", time:"08:30-10:00", room:"第10会場 (Annex Hall 2)",title:"シンポジウム6 (53) つながりから生まれるじぶんらしさ：地域と職種を越えて広がるプライマリ・ケアの実践", speakers:"", aud:"sup",    tags:["多職種連携"]},
+  {id:"S10",  type:"S",  day:"5/30", time:"10:15-11:45", room:"第10会場 (Annex Hall 2)",title:"シンポジウム10 (79) ICT診療委員会による診療科偏在対策のための適切な遠隔医療等推進事業について", speakers:"座長・演者: 近藤敬太 ・ 演者: 原田昌範 / 孫瑜 / 山田徹", aud:"spec",   tags:["ICT"]},
+  {id:"EL4",  type:"EL", day:"5/30", time:"13:30-15:00", room:"第10会場 (Annex Hall 2)",title:"教育講演4 (202) 知らぬ間に『COI』〜あなたの講演にも潜む利益相反〜", speakers:"", aud:"spec",   tags:["教育講演","COI"]},
+  {id:"J8",   type:"J",  day:"5/30", time:"15:15-16:45", room:"第10会場 (Annex Hall 2)",title:"学会ジョイントプログラム8 (J-3) 腹膜透析医学会、在宅医療連合学会 腹膜透析の普及には地域連携が鍵〜専門医と非専門医のマッチング〜", speakers:"", aud:"any",    tags:["ジョイント","在宅"]},
+  // 第11-15会場 (一般演題・学生・IG/IA)
+  {id:"O1-7", type:"O",  day:"5/30", time:"08:30-16:45", room:"第11会場 (Room I)",    title:"一般演題 口演1〜口演7 (O1: 高齢者 / O3: 組織運営マネジメント / O5: 患者中心の医療① / O7: 患者中心の医療②)", speakers:"", aud:"any",    tags:["口演"]},
+  {id:"O2-8", type:"O",  day:"5/30", time:"08:30-16:45", room:"第12会場 (Room J)",    title:"一般演題 口演2/4/6/8 (O2: 疾病各論① / O4: 疾病各論② / O6: つながる、つなげる① / O8: つながる、つなげる②)", speakers:"", aud:"any",    tags:["口演"]},
+  {id:"ISO",  type:"O",  day:"5/30", time:"08:30-11:45", room:"第13会場 (Room K)",    title:"International Session 口演 (午前)", speakers:"", aud:"any",    tags:["国際","口演"]},
+  {id:"SSO1-2",type:"O", day:"5/30", time:"13:30-16:45", room:"第13会場 (Room K)",    title:"学生セッション 口演1・2 (SSO1, SSO2)", speakers:"", aud:"stu",    tags:["学生"]},
+  {id:"IG6",  type:"IG", day:"5/30", time:"08:30-10:00", room:"第14会場 (Room 509)",  title:"インタレストグループ6 (199) 東京と地方をつなぐ家庭医療二拠点インタレストグループ", speakers:"", aud:"spec36", tags:["地域医療"]},
+  {id:"IG8",  type:"IG", day:"5/30", time:"10:15-11:45", room:"第14会場 (Room 509)",  title:"インタレストグループ8 (27) Deep End Case Conferenceを体感しよう！", speakers:"", aud:"spec",   tags:["事例検討"]},
+  {id:"IG10", type:"IG", day:"5/30", time:"13:30-15:00", room:"第14会場 (Room 509)",  title:"インタレストグループ10 (78) 多職種がつなげる診断プロセス、多職種がつながる診断エクセレンス", speakers:"", aud:"sup",    tags:["臨床推論","多職種連携"]},
+  {id:"O9",   type:"O",  day:"5/30", time:"15:15-16:45", room:"第14会場 (Room 509)",  title:"一般演題 口演9 (O9: 僻地・遠隔医療)", speakers:"", aud:"any",    tags:["口演","僻地"]},
+  {id:"IA8",  type:"IA", day:"5/30", time:"08:30-10:00", room:"第15会場 (Room 510)",  title:"インタラクティブセッション8 (36) あなたの診療が変わる――評価で学ぶSDM実践", speakers:"", aud:"ini",    tags:["SDM"]},
+  {id:"IG9",  type:"IG", day:"5/30", time:"10:15-11:45", room:"第15会場 (Room 510)",  title:"インタレストグループ9 (72) 診療所で医学生・研修医に『地域を教える』―地域・保健医療教育リデザインワークショップ―", speakers:"", aud:"sup",    tags:["教育"]},
+  {id:"IA12", type:"IA", day:"5/30", time:"13:30-15:00", room:"第15会場 (Room 510)",  title:"インタラクティブセッション12 (138) 心と技と体をつなげて 息辛い世の 息がつながる！急性呼吸困難レクチャー＆ハンズオンセッション", speakers:"ファシリ: 林寛之 / 山村真佐子 / 大野幸太 / 友田越人 / 比嘉航 ・ 演者: 伊藤有紀子 / 武藤理 / 石本貴美", aud:"ini",    tags:["ハンズオン","救急"]},
+  {id:"IA13", type:"IA", day:"5/30", time:"15:15-16:45", room:"第15会場 (Room 510)",  title:"インタラクティブセッション13 (60) はっちぼっちステーション出張版2026", speakers:"", aud:"spec36", tags:["IA"]},
+  // ミニステージ
+  {id:"MS1",  type:"MS", day:"5/30", time:"08:15-10:00", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム1 (46) Youは何しに学会へ？ 学術大会の参加者の皆様を大歓迎！", speakers:"", aud:"any",    tags:["学生研修医"]},
+  {id:"MS2",  type:"MS", day:"5/30", time:"10:15-11:45", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム2 (174) 聴覚障害者の医療体験を疑似体験しよう〜こんなにも情報が入ってこないのは不安でしかない！〜", speakers:"ファシリ: 夏目文絵 / 小松智美 / 菊永淳 / 菊永ふみ / 山本ひとみ / 吉田将明", aud:"sup",    tags:["体験"]},
+  {id:"MS3",  type:"MS", day:"5/30", time:"13:30-15:00", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム3 (29) キャリアを拓く『つながり』の力：学術大会を『越境』のキャリア資源に変える", speakers:"", aud:"stu",    tags:["学生","キャリア"]},
+  {id:"MS4",  type:"MS", day:"5/30", time:"15:15-16:45", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム4 (211) Real off the record@JPCA2026 〜不採択企画に光を！〜", speakers:"", aud:"spec",   tags:["特別"]},
+  // 懇親会・お弁当・キッチンカー
+  {id:"LUNCH-30", type:"E", day:"5/30", time:"11:00-14:00", room:"庭園・スワン・ロビー", title:"お弁当提供 (事前申込のみ・引換 B1F スワン)", speakers:"※当日販売なし、ネームパスのチケットと交換", aud:"any",    tags:["飲食"]},
+  {id:"VEGA", type:"E",  day:"5/30", time:"13:30-15:00", room:"庭園・スワン",            title:"プライマリ・ケア × KYOTO VEGA 〜食から始めるプラネタリーヘルス〜", speakers:"", aud:"any",    tags:["飲食","プラネタリーヘルス"]},
+  {id:"PCNIGHT", type:"E", day:"5/30", time:"18:00-20:00", room:"庭園・スワン・ロビー", title:"懇親会 (PCナイト) ※受付17:30開始", speakers:"立食ビュッフェ ・ 一般5,000円 (先着400名) / 学生・初期研修3,000円 (先着100名) ※受付終了済", aud:"any",    tags:["懇親会"]},
+
+  /* ============================================================
+     Day 3 (5/31 日) — 08:30〜15:45
+     ============================================================ */
+  // 第1会場
+  {id:"S18",  type:"S",  day:"5/31", time:"08:30-10:00", room:"第1会場 (Main Hall)",  title:"シンポジウム18 (103) U40HFコラボ『選択がつなぐ心不全診療─総合医と循環器医のつながりが紡ぐ臨床思考─』", speakers:"", aud:"spec",   tags:["循環器"]},
+  {id:"I-TALK", type:"I", day:"5/31", time:"10:15-11:45", room:"第1会場 (Main Hall)", title:"特別企画 (216) 特別対談 日曜劇場『19番目のカルテ』が問いかけるもの", speakers:"コーディネーター: 草場鉄周 / 鈴木富雄 ・ パネリスト: 生坂政臣 / 坪田文 / 岩崎愛奈", aud:"spec36", tags:["特別企画","必見"]},
+  {id:"S27",  type:"S",  day:"5/31", time:"12:30-14:00", room:"第1会場 (Main Hall)",  title:"シンポジウム27 (187) 社会的処方：世界に広がる現状と日本のプライマリ・ケアへの期待", speakers:"座長: 吉田伸 ・ 演者: 近藤尚己 / Bogdan Chiva Giurca / Kheng Hock Lee / April Siwon Lee / 伊藤文人 / Clifford Stevenson", aud:"spec",   tags:["社会的処方","国際"]},
+  {id:"S32",  type:"S",  day:"5/31", time:"14:15-15:45", room:"第1会場 (Main Hall)",  title:"シンポジウム32 (110) 家庭医療専門研修プログラム Good Practice Collection", speakers:"", aud:"spec",   tags:["教育"]},
+  // 第2会場
+  {id:"S19",  type:"S",  day:"5/31", time:"08:30-10:00", room:"第2会場 (Room A)",     title:"シンポジウム19 (123) ネガキャン・コレクション2026〜次世代のリアルな思い〜", speakers:"", aud:"spec",   tags:["キャリア"]},
+  {id:"S23",  type:"S",  day:"5/31", time:"10:15-11:45", room:"第2会場 (Room A)",     title:"シンポジウム23 (120) 病みの軌跡を意識した患者に寄り添う心不全診療― 循環器医と総合診療医、それぞれの視点から", speakers:"", aud:"spec",   tags:["循環器"]},
+  {id:"PRESS", type:"E", day:"5/31", time:"11:50-12:20", room:"第2会場 (Room A)",     title:"プレス発表会", speakers:"", aud:"other",  tags:["記者発表"]},
+  {id:"S28",  type:"S",  day:"5/31", time:"12:30-14:00", room:"第2会場 (Room A)",     title:"シンポジウム28 (141) グローバルスタンダードに基づく家庭医療専門研修制度の構築と今後の展望", speakers:"座長: 武田裕子 / 前野哲博 ・ 演者: 大西弘高 / 横谷省治 / Victor Ng", aud:"spec",   tags:["教育","国際"]},
+  {id:"S33",  type:"S",  day:"5/31", time:"14:15-15:45", room:"第2会場 (Room A)",     title:"シンポジウム33 (184) ワクチンアップデート2026〜つながることでみんなをVPDから守る〜", speakers:"", aud:"sup",    tags:["感染症","ワクチン"]},
+  // 第3会場
+  {id:"J9",   type:"J",  day:"5/31", time:"08:30-10:00", room:"第3会場 (Room B-1)",   title:"学会ジョイントプログラム9 (J-14) 日本在宅医療連合学会 専攻医に在宅医療を教える〜多職種の視点で在宅医療研修を考える〜", speakers:"", aud:"any",    tags:["ジョイント","在宅"]},
+  {id:"HINO", type:"I",  day:"5/31", time:"10:15-12:05", room:"第3会場 (Room B-1)",   title:"日野原賞候補演題", speakers:"", aud:"any",    tags:["特別"]},
+  {id:"J12",  type:"J",  day:"5/31", time:"12:30-14:00", room:"第3会場 (Room B-1)",   title:"学会ジョイントプログラム12 (J-6) 医療の質・安全学会 ケースから学ぶ プライマリ・ケアにおける医療の質と安全", speakers:"", aud:"any",    tags:["ジョイント","質・安全"]},
+  {id:"J13",  type:"J",  day:"5/31", time:"14:15-15:45", room:"第3会場 (Room B-1)",   title:"学会ジョイントプログラム13 (J-7) 日本小児科学会 きづけてる？見逃されている性虐待〜プライマリ・ケアの臨床で知っておくべき性虐待の対応と子どもの権利", speakers:"", aud:"any",    tags:["ジョイント","小児"]},
+  // 第4会場
+  {id:"S20",  type:"S",  day:"5/31", time:"08:30-10:00", room:"第4会場 (Room B-2)",   title:"シンポジウム20 (90) 区別をつなぐ・問い直す・超える -家庭医療(学)における『こころ』と『からだ』を再考する-", speakers:"座長: 宮地純一郎 ・ 演者: 加藤光樹 / 横田雄也 / 孫大輔", aud:"spec",   tags:["メンタル"]},
+  {id:"S24",  type:"S",  day:"5/31", time:"10:15-11:45", room:"第4会場 (Room B-2)",   title:"シンポジウム24 (108) 専門性の高い病院『外来』から在宅医療へのケア移行〜多職種で検討するケア移行の課題と取り組み", speakers:"", aud:"sup",    tags:["在宅"]},
+  {id:"S29",  type:"S",  day:"5/31", time:"12:30-14:00", room:"第4会場 (Room B-2)",   title:"シンポジウム29 (215) 地域とともに進化する病院と薬局― コミュニティホスピタルの新しいかたち", speakers:"", aud:"spec",   tags:["病院"]},
+  {id:"S34",  type:"S",  day:"5/31", time:"14:15-15:45", room:"第4会場 (Room B-2)",   title:"シンポジウム34 (65) 明日からできる！ウィメンズヘルスの実践と研修プログラムをつくろう", speakers:"", aud:"spec",   tags:["女性"]},
+  // 第5会場
+  {id:"POLICY", type:"I", day:"5/31", time:"08:30-10:00", room:"第5会場 (Room D)",    title:"医療政策関連企画 プライマリ・ケアを活かす医療政策の共創", speakers:"コーディネーター: 草場鉄周 ・ 演者: 岡田唯男 / 吉田伸 / 九十九悠太 / 谷口智也", aud:"spec36", tags:["医療政策","必見"]},
+  {id:"J11",  type:"J",  day:"5/31", time:"10:15-11:45", room:"第5会場 (Room D)",     title:"学会ジョイントプログラム11 (J-9) 日本母性内科学会 母性内科医と考える家庭医による思春期世代のケア", speakers:"", aud:"sup",    tags:["ジョイント","小児"]},
+  {id:"S30",  type:"S",  day:"5/31", time:"12:30-14:00", room:"第5会場 (Room D)",     title:"シンポジウム30 (55) チーム医療をイノベーションするチームコーチング〜成果を創り、ウェルビーイングを向上する〜", speakers:"", aud:"other",  tags:["マネジメント"]},
+  {id:"S35",  type:"S",  day:"5/31", time:"14:15-15:45", room:"第5会場 (Room D)",     title:"シンポジウム35 (122) specialist×generalist 〜在宅医療連携の課題から見えた実践の可能性〜", speakers:"", aud:"sup",    tags:["在宅"]},
+  // 第6会場
+  {id:"JS10", type:"J",  day:"5/31", time:"08:30-10:00", room:"第6会場 (Room E)",     title:"学会ジョイントシンポジウム10 (J-13) 日本国際保健医療学会 プライマリ・ケア現場で出会う外国人患者対応に役立つ実践知", speakers:"", aud:"spec36", tags:["ジョイント","国際"]},
+  {id:"S25",  type:"S",  day:"5/31", time:"10:15-11:45", room:"第6会場 (Room E)",     title:"シンポジウム25 (59) つながる・つなげる 臨床と診療データベース〜PBRNにおける課題と解決策〜", speakers:"座長: 大野毎子 ・ パネリスト: 黒田萌 / 渡邉隆将 / 山梨啓友", aud:"spec36", tags:["データ"]},
+  {id:"S31",  type:"S",  day:"5/31", time:"12:30-14:00", room:"第6会場 (Room E)",     title:"シンポジウム31 (32) わたしたちのネガティブ・ケイパビリティ vol.2 〜臨床を歩む杖〜", speakers:"", aud:"sup",    tags:["メンタル"]},
+  {id:"S36",  type:"S",  day:"5/31", time:"14:15-15:45", room:"第6会場 (Room E)",     title:"シンポジウム36 (145) 心療内科と総合診療の協働で学ぶBPSモデル―現場で『使える』実践へ―", speakers:"", aud:"spec36", tags:["メンタル"]},
+  // 第7会場
+  {id:"IA14", type:"IA", day:"5/31", time:"08:30-10:00", room:"第7会場 (Room C-1)",   title:"インタラクティブセッション14 (186) じぶんらしく動く、小さな一歩から：メディカルフィットネスでつながる新しいプライマリ・ケア", speakers:"", aud:"sup",    tags:["予防"]},
+  {id:"IG14", type:"IG", day:"5/31", time:"10:15-11:45", room:"第7会場 (Room C-1)",   title:"インタレストグループ14 (77) プライマリ・ケア看護と診療報酬〜日々の看護を診療報酬の視点で学び、考える〜", speakers:"", aud:"other",  tags:["看護"]},
+  {id:"IG16", type:"IG", day:"5/31", time:"12:30-14:00", room:"第7会場 (Room C-1)",   title:"インタレストグループ16 (71) プライマリ・ケアにおけるアルコール問題支援インタレストグループ", speakers:"", aud:"sup",    tags:["依存症"]},
+  {id:"IG18", type:"IG", day:"5/31", time:"14:15-15:45", room:"第7会場 (Room C-1)",   title:"インタレストグループ18 (7) 学習者がつながる家庭医療の多職種カンファレンスのつくりかた", speakers:"座長・演者: 綿貫聡 ・ 演者: 藤沼康樹 / 金子惇 / 八百壮大 / 佐藤只空 / 渡部なつき", aud:"sup",    tags:["教育"]},
+  // 第8会場
+  {id:"IA15", type:"IA", day:"5/31", time:"08:30-10:00", room:"第8会場 (Room C-2)",   title:"インタラクティブセッション15 (117) ワールドカフェでプライマリ・ケア研究キャリアについて考えよう！ そしてリサーチの人脈をつくろう！", speakers:"", aud:"spec",   tags:["研究","キャリア"]},
+  {id:"IA17", type:"IA", day:"5/31", time:"10:15-11:45", room:"第8会場 (Room C-2)",   title:"インタラクティブセッション17 (95) 指導医講習会：職場基盤評価（WPBA）を臨床現場に実装する", speakers:"対象: 指導医のみ ・ 定員50名・申込締切済 ・ 単位1.5", aud:"spec",   tags:["指導医","WPBA"]},
+  {id:"IA19", type:"IA", day:"5/31", time:"12:30-14:00", room:"第8会場 (Room C-2)",   title:"インタラクティブセッション19 (143) 『患者と家族のために！ 〜つながる、つなげる。つなげる、つながるための臨床倫理を体得しよう！〜』", speakers:"", aud:"sup",    tags:["倫理"]},
+  {id:"IA21", type:"IA", day:"5/31", time:"14:15-15:45", room:"第8会場 (Room C-2)",   title:"インタラクティブセッション21 (126) つながる、つなげる、プライマリ・ケア薬剤師のプロフェッショナル・アイデンティティ", speakers:"", aud:"sup",    tags:["薬剤師"]},
+  // 第9会場
+  {id:"S21",  type:"S",  day:"5/31", time:"08:30-10:00", room:"第9会場 (Annex Hall 1)",title:"シンポジウム21 (34) 切れ目ない地域医療を提供するために…〜病院と薬局の薬剤師がつながる・つなげる", speakers:"", aud:"other",  tags:["薬剤師"]},
+  {id:"S26",  type:"S",  day:"5/31", time:"10:15-11:45", room:"第9会場 (Annex Hall 1)",title:"シンポジウム26 (21) ユマニチュードの実践", speakers:"演者: 林智史 ・ ファシリ: 本田美和子 / 片山充哉 / 関口健二", aud:"spec36", tags:["ケア"]},
+  {id:"EL7",  type:"EL", day:"5/31", time:"12:30-14:00", room:"第9会場 (Annex Hall 1)",title:"教育講演7 (169) 施設入居者の『最適な治療』を考える：つなげる、つながる判断の実際", speakers:"", aud:"spec36", tags:["教育講演","高齢者"]},
+  {id:"S37",  type:"S",  day:"5/31", time:"14:15-15:45", room:"第9会場 (Annex Hall 1)",title:"シンポジウム37 (88) 総合診療×病院経営〜総合診療医が経営を通して地域をつなぐ可能性を探る〜", speakers:"座長: 中山俊 ・ パネリスト: 坂上祐樹 / 日下伸明 / 坂口公太 / 林亮佑", aud:"spec",   tags:["経営"]},
+  // 第10会場
+  {id:"S22",  type:"S",  day:"5/31", time:"08:30-10:00", room:"第10会場 (Annex Hall 2)",title:"シンポジウム22 (13) ビジョンを『動力』に変えるチカラ〜チームづくりとビジョナリーな実践〜", speakers:"", aud:"spec",   tags:["マネジメント"]},
+  {id:"EL6",  type:"EL", day:"5/31", time:"10:15-11:45", room:"第10会場 (Annex Hall 2)",title:"教育講演6 (161) 深みを持たせる総合診療 〜やっちゃえ！Genespelist Refeeding症候群 編〜", speakers:"", aud:"sup",    tags:["教育講演","臨床"]},
+  {id:"EL8",  type:"EL", day:"5/31", time:"12:30-14:00", room:"第10会場 (Annex Hall 2)",title:"教育講演8 (94) 貴方の電子カルテ端末にAIを 仮想ブラウザの導入と応用", speakers:"", aud:"spec",   tags:["教育講演","ICT"]},
+  {id:"S38",  type:"S",  day:"5/31", time:"14:15-15:45", room:"第10会場 (Annex Hall 2)",title:"シンポジウム38 (160) 外国人協働社会における実践型感染症対策と健康支援― 外国籍住民・海外渡航者のために", speakers:"座長: 来住知美 / 中山久仁子 ・ 演者: 矢野亮佑 / 沢田貴志 / 高山義浩 / 守屋章成", aud:"sup",    tags:["感染症","国際"]},
+  // 第11-15会場 (一般演題・学生・IG/IA)
+  {id:"O10-18", type:"O",day:"5/31", time:"08:30-15:45", room:"第11会場 (Room I)",    title:"一般演題 口演10/12/15/18 (O10: ヘルスプロモーション / O12: 医学教育 / O15: 地域志向アプローチ / O18: 医療の質)", speakers:"", aud:"any",    tags:["口演"]},
+  {id:"O11-19", type:"O",day:"5/31", time:"08:30-15:45", room:"第12会場 (Room J)",    title:"一般演題 口演11/13/16/19 (O11: 関係性・リハ / O13: 健康の社会的決定要因 / O16: 在宅医療 / O19: 多様な診療の場)", speakers:"", aud:"any",    tags:["口演"]},
+  {id:"SSO3",  type:"O", day:"5/31", time:"08:30-10:00", room:"第13会場 (Room K)",    title:"学生セッション 口演3 (SSO3)", speakers:"", aud:"stu",    tags:["学生"]},
+  {id:"O14-20",type:"O", day:"5/31", time:"10:15-15:45", room:"第13会場 (Room K)",    title:"一般演題 口演14/17/20 (O14: メンタル他 / O17: 家庭医・総合診療医 / O20: つながる・つなげる③)", speakers:"", aud:"any",    tags:["口演"]},
+  {id:"IG13", type:"IG", day:"5/31", time:"08:30-10:00", room:"第14会場 (Room 509)",  title:"インタレストグループ13 (23) 栄養のチカラ", speakers:"", aud:"sup",    tags:["栄養"]},
+  {id:"IA18", type:"IA", day:"5/31", time:"10:15-11:45", room:"第14会場 (Room 509)",  title:"インタラクティブセッション18 (45) 発達特性を持つ医療者が安心安全に働くために〜多職種で語る〜", speakers:"", aud:"spec",   tags:["DE&I"]},
+  {id:"IG17", type:"IG", day:"5/31", time:"12:30-14:00", room:"第14会場 (Room 509)",  title:"インタレストグループ17 (52) 医師のキャリアチェンジ支援について考える ースペシャリストからジェネラリストへー", speakers:"", aud:"spec",   tags:["キャリア"]},
+  {id:"IA22", type:"IA", day:"5/31", time:"14:15-15:45", room:"第14会場 (Room 509)",  title:"インタラクティブセッション22 (39) Pharm G！ ー AI模擬患者との問診トレーニング", speakers:"", aud:"sup",    tags:["AI","教育"]},
+  {id:"IA16", type:"IA", day:"5/31", time:"08:30-10:00", room:"第15会場 (Room 510)",  title:"インタラクティブセッション16 (28) 学会とプログラム責任者がつながる対話の場：WONCA認証を踏まえたプログラム運営のこれから", speakers:"", aud:"spec",   tags:["教育","国際"]},
+  {id:"IG15", type:"IG", day:"5/31", time:"10:15-11:45", room:"第15会場 (Room 510)",  title:"インタレストグループ15 (111) プライマリ・ケアの現場でChoosing Wisely を考える―低価値医療を減らすために", speakers:"", aud:"ini",    tags:["EBM"]},
+  {id:"IA20", type:"IA", day:"5/31", time:"12:30-14:00", room:"第15会場 (Room 510)",  title:"インタラクティブセッション20 (61) 医療的ケア児に自分らしくつながるために〜子どもの成長という時間軸から考える役割〜", speakers:"", aud:"other",  tags:["小児","在宅"]},
+  {id:"IA23", type:"IA", day:"5/31", time:"14:15-15:45", room:"第15会場 (Room 510)",  title:"インタラクティブセッション23 (151) 学生発信！『まるごと診る』を学ぶ、身体診察体験ワークショップ", speakers:"", aud:"stu",    tags:["学生","ハンズオン"]},
+  // ミニステージ Day3
+  {id:"MS5",  type:"MS", day:"5/31", time:"08:15-10:00", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム5 (46) Youは何しに学会へ？ 学術大会の参加者の皆様を大歓迎！", speakers:"", aud:"any",    tags:["学生研修医"]},
+  {id:"MS6",  type:"MS", day:"5/31", time:"10:15-11:45", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム6 (85) 診断アタック25！！ K2×大阪4大学総合診療科―つながる力・つなげる未来―", speakers:"", aud:"ini",    tags:["臨床推論"]},
+  {id:"MS7",  type:"MS", day:"5/31", time:"12:30-14:00", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム7 (221) 学生カフェ企画〜医療系学生から全国へ！〜メディカフェラリーJPCA店", speakers:"登壇: 大坪琉奈 / 中田優紀 / 宮澤正咲 / 一原愛心 / 王谷真比呂 / 島津里彩 / 中村かりん / 昼馬悠名 / 松本明莉 / 岩田悠利", aud:"stu",    tags:["学生"]},
+  {id:"MS8",  type:"MS", day:"5/31", time:"14:15-15:45", room:"ミニステージ (Event Hall)", title:"ミニステージプログラム8 (211) Real off the record@JPCA2026 〜抄録に書けないリアルを、ゆるトーーク！〜", speakers:"", aud:"spec",   tags:["特別"]},
+  // 昼食・閉会式
+  {id:"LUNCH-31", type:"E", day:"5/31", time:"11:00-14:00", room:"スワン",              title:"お弁当提供『つながるおもてなしー京都議定書から京都国際会館へ』", speakers:"※当日販売なし、ネームパスのチケットと交換", aud:"any",    tags:["飲食"]},
+  {id:"CLOSE", type:"I", day:"5/31", time:"14:15-15:45", room:"第1会場 (Main Hall)",    title:"閉会式", speakers:"", aud:"any",    tags:["閉会式"]},
+];
+
+const AUDIENCE_LABEL = {
+  any:"どなたでも", stu:"学生等(卒前)", ini:"初期など(卒後1-2年)",
+  spec36:"専門医など(卒後3-6年)", spec:"専門医", sup:"指導医(リカレント)", other:"その他"
+};
+const TYPE_LABEL = {
+  I:"特別企画", S:"シンポジウム", EL:"教育講演", J:"学会ジョイント",
+  IG:"インタレストグループ", IS:"インタラクティブセッション", IA:"インタラクティブセッション",
+  MS:"ミニステージ", O:"一般演題 / 学生口演", E:"懇親会・飲食・その他"
+};
+const TYPE_ORDER = ["I","S","EL","J","IG","IS","IA","MS","O","E"];
+
+/* ===================== State (localStorage) ===================== */
+const FAV_KEY = "jpca2026_favs_v2";
+const getFavs = () => new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]"));
+const saveFavs = (s) => localStorage.setItem(FAV_KEY, JSON.stringify([...s]));
+const toggleFav = (id) => { const s=getFavs(); s.has(id)?s.delete(id):s.add(id); saveFavs(s); refresh(); };
+
+const PREP_KEY = "jpca2026_prep_v2";
+const getPrep = () => JSON.parse(localStorage.getItem(PREP_KEY) || "{}");
+const savePrep = (o) => localStorage.setItem(PREP_KEY, JSON.stringify(o));
+
+/* ===================== Render helpers ===================== */
+function badge(aud){ return `<span class="b-${aud} text-[10px] px-1.5 py-0.5 rounded-full font-semibold">${AUDIENCE_LABEL[aud]||aud}</span>`; }
+function tagBadges(tags){ return (tags||[]).map((t,i)=>`<span class="${i%2?'b-tag2':'b-tag'} text-[10px] px-1.5 py-0.5 rounded-full font-semibold">${t}</span>`).join(""); }
+
+function progCard(p){
+  const favs = getFavs();
+  const on = favs.has(p.id);
+  return `<div class="bg-white rounded-2xl shadow-sm p-3 cursor-pointer hover:shadow-md transition" data-detail="${p.id}">
+    <div class="flex justify-between items-start gap-2">
+      <div class="flex-1 min-w-0">
+        <div class="flex flex-wrap gap-1 mb-1">${badge(p.aud)}${tagBadges(p.tags)}</div>
+        <div class="font-semibold text-sm leading-snug">${p.title}</div>
+        ${p.speakers ? `<div class="text-[11px] text-slate-600 mt-1 leading-tight"><i data-lucide="users" class="inline w-3 h-3 -mt-0.5 mr-0.5"></i>${p.speakers}</div>` : ""}
+        <div class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3"></i>Day ${p.day==="5/29"?1:p.day==="5/30"?2:3} (${p.day}) ${p.time}</div>
+        <div class="text-[11px] text-slate-500 flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3"></i>${p.room}</div>
+      </div>
+      <button data-fav="${p.id}" class="shrink-0 p-1.5 rounded-full ${on?'fav-on':''}" aria-label="お気に入り">
+        <i data-lucide="star" class="w-5 h-5 text-slate-300"></i>
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderProgramGroups(){
+  const el = document.getElementById("progGroups");
+  const groups = {};
+  PROGRAMS.forEach(p => { (groups[p.type] = groups[p.type] || []).push(p); });
+  const keys = TYPE_ORDER.filter(k=>groups[k]).concat(Object.keys(groups).filter(k=>!TYPE_ORDER.includes(k)));
+  el.innerHTML = keys.map(t => `
+    <div>
+      <div class="bg-indigo-100 text-indigo-900 font-bold rounded-xl px-3 py-2 mb-2 text-sm">${t} ・ ${TYPE_LABEL[t]||""} <span class="text-xs text-indigo-500 ml-1">${groups[t].length}件</span></div>
+      <div class="space-y-2">${groups[t].sort((a,b)=>(a.day+a.time).localeCompare(b.day+b.time)).map(p=>progCard(p)).join("")}</div>
+    </div>
+  `).join("");
+}
+
+// BRIDGE-R 手選定の学生・研修医向けPickup 6企画
+const PICKUP_IDS = ["MS1","MS5","MS3","J6","S19","MS6"];
+function renderPickup(){
+  const items = PICKUP_IDS.map(id=>PROGRAMS.find(p=>p.id===id)).filter(Boolean);
+  document.getElementById("pickupList").innerHTML = items.map(p=>progCard(p)).join("");
+}
+
+/* === Schedule grid === */
+const DAYS = [
+  {key:"5/29", label:"Day 1 (5/29 金) 13:30〜16:45",            slots:["13:30","15:15"]},
+  {key:"5/30", label:"Day 2 (5/30 土) 08:30〜20:00 (含懇親会)", slots:["08:30","10:15","12:10","13:30","15:15","18:00"]},
+  {key:"5/31", label:"Day 3 (5/31 日) 08:30〜15:45",            slots:["08:30","10:15","12:30","14:15"]},
+];
+function renderDayPicker(){
+  document.getElementById("dayPicker").innerHTML = DAYS.map(d=>`<option value="${d.key}">${d.label}</option>`).join("");
+}
+function renderScheduleGrid(){
+  const dayKey = document.getElementById("dayPicker").value || DAYS[0].key;
+  const day = DAYS.find(d=>d.key===dayKey);
+  const items = PROGRAMS.filter(p=>p.day===dayKey);
+  const rooms = [...new Set(items.map(p=>p.room))];
+  const grid = document.getElementById("scheduleGrid");
+  const colHead = `<div class="grid" style="grid-template-columns: 90px repeat(${day.slots.length}, minmax(150px, 1fr));">
+    <div class="bg-slate-50 font-bold text-xs p-2 text-center">会場\\時間</div>
+    ${day.slots.map(s=>`<div class="bg-slate-50 font-bold text-xs p-2 text-center">${s}</div>`).join("")}
+  </div>`;
+  const favs = getFavs();
+  const tMin = t => { const [h,m]=t.split(":").map(Number); return h*60+m; };
+  const body = rooms.map(room => {
+    const cells = day.slots.map((slot, idx) => {
+      const slotStart = tMin(slot);
+      const slotEnd = idx+1 < day.slots.length ? tMin(day.slots[idx+1]) : 24*60;
+      const inSlot = items.filter(p => {
+        if(p.room!==room) return false;
+        const startMin = tMin(p.time.split("-")[0]);
+        if(idx===0 && startMin < slotStart) return true; // earlier-than-first-slot items go in first slot
+        return startMin >= slotStart && startMin < slotEnd;
+      });
+      return `<div class="border-b border-r border-slate-100 p-1 min-h-[80px]">
+        ${inSlot.map(p=>{
+          const on = favs.has(p.id);
+          return `<div class="schedcell rounded-md p-1.5 mb-1 relative cursor-pointer" data-detail="${p.id}">
+            <button data-fav="${p.id}" class="absolute top-0.5 right-0.5 p-0.5 rounded-full ${on?'fav-on':''}" aria-label="マイ予定に追加">
+              <i data-lucide="star" class="w-3.5 h-3.5 text-slate-300"></i>
+            </button>
+            <div class="flex flex-wrap gap-0.5 mb-0.5 pr-5">${badge(p.aud)}${tagBadges(p.tags).slice(0,300)}</div>
+            <div class="text-[10px] leading-tight pr-1">${p.title}</div>
+            <div class="text-[9px] text-slate-500 mt-0.5">${p.time}</div>
+          </div>`;
+        }).join("")}
+      </div>`;
+    }).join("");
+    return `<div class="grid border-t border-slate-100" style="grid-template-columns: 90px repeat(${day.slots.length}, minmax(150px, 1fr));">
+      <div class="text-xs font-bold p-2 flex items-center justify-center bg-slate-50">${room}</div>
+      ${cells}
+    </div>`;
+  }).join("");
+  grid.innerHTML = colHead + body;
+}
+
+/* === My schedule / list === */
+function renderMyList(){
+  const favs = getFavs();
+  const items = PROGRAMS.filter(p=>favs.has(p.id));
+  document.getElementById("myList").innerHTML = items.length===0
+    ? `<p class="text-sm text-slate-500 text-center py-8">まだ何もありません。プログラムから★を付けてください。</p>`
+    : items.map(p=>progCard(p)).join("");
+}
+function renderMySchedule(){
+  const favs = getFavs();
+  const items = PROGRAMS.filter(p=>favs.has(p.id));
+  const el = document.getElementById("mySchedList");
+  const aiBox = document.getElementById("aiAnalyzeBox");
+  if(items.length===0){
+    el.innerHTML = `<p class="text-sm text-slate-500 text-center py-8">★を付けたセッションはまだありません。</p>`;
+    if(aiBox) aiBox.classList.add("hidden");
+    return;
+  }
+  if(aiBox) aiBox.classList.remove("hidden");
+  el.innerHTML = DAYS.map(d => {
+    const dayItems = items.filter(p=>p.day===d.key).sort((a,b)=>a.time.localeCompare(b.time));
+    if(dayItems.length===0) return "";
+    return `<div class="bg-white rounded-2xl shadow-sm p-3">
+      <div class="font-bold text-grad mb-2">${d.label}</div>
+      ${dayItems.map(p=>`<div class="border-l-2 border-pink-400 pl-2 mb-2 cursor-pointer" data-detail="${p.id}">
+        <div class="text-[11px] text-slate-500">${p.time} ・ ${p.room}</div>
+        <div class="text-sm font-semibold">${p.title}</div>
+      </div>`).join("")}
+    </div>`;
+  }).join("");
+}
+
+/* === Search === */
+function renderSearch(){
+  const q = (document.getElementById("searchInput").value||"").toLowerCase().trim();
+  const el = document.getElementById("searchResult");
+  if(!q){ el.innerHTML = `<div class="text-center py-12 text-slate-400 text-sm"><i data-lucide="keyboard" class="w-8 h-8 mx-auto mb-2"></i>検索キーワードを入力してください。</div>`; lucide.createIcons(); return; }
+  const hit = PROGRAMS.filter(p => (p.title+(p.tags||[]).join(" ")+p.room+p.id).toLowerCase().includes(q));
+  el.innerHTML = hit.length===0 ? `<p class="text-slate-500 text-center py-4">該当なし</p>` : hit.map(p=>progCard(p)).join("");
+}
+
+/* === Prep checklist === */
+const PREP_ITEMS = [
+  {key:"badge",   title:"参加登録証",          desc:"スマホ保存 または 印刷"},
+  {key:"id",      title:"身分証明書 / 学生証",  desc:"受付で必要な場合があります。"},
+  {key:"card",    title:"名刺",                 desc:"交流用です。多めにご持参ください！"},
+  {key:"bottle",  title:"Myボトル / マイカップ", desc:"※環境配慮のため、飲料ゴミ削減を目指しウォーターサーバーを設置します。紙コップの用意はございませんので、必ずご持参ください。", red:true},
+  {key:"battery", title:"モバイルバッテリー",   desc:""},
+  {key:"pc",      title:"PC / タブレット / 筆記用具", desc:""},
+  {key:"folder",  title:"クリアファイル",       desc:""},
+  {key:"heat",    title:"熱中症対策",           desc:""},
+];
+function renderPrep(){
+  const state = getPrep();
+  document.getElementById("prepList").innerHTML = PREP_ITEMS.map(it=>`
+    <label class="flex gap-2 items-start cursor-pointer">
+      <input type="checkbox" class="prep-cb mt-1" data-key="${it.key}" ${state[it.key]?"checked":""}>
+      <div class="flex-1">
+        <div class="font-bold">${it.title}</div>
+        <div class="text-xs ${it.red?'text-rose-600':'text-slate-600'}">${it.desc}</div>
+      </div>
+    </label>
+  `).join("");
+  document.querySelectorAll(".prep-cb").forEach(cb=>cb.onchange=()=>{ const s=getPrep(); s[cb.dataset.key]=cb.checked; savePrep(s); });
+}
+
+/* ===================== Diagnostic (10 questions) ===================== */
+const DIAG_Q = [
+  {q:"あなたの現在のポジションは？", sub:"最適な対象者向けプログラムを提案します。", multi:false, opts:[
+    {l:"学生（卒前）",v:"stu"},{l:"初期研修（卒後1-2年）",v:"ini"},{l:"専攻医（卒後3-6年）",v:"spec36"},
+    {l:"専門医",v:"spec"},{l:"指導医（リカレント）",v:"sup"},{l:"どれでもない",v:"other"},
+  ]},
+  {q:"学会に参加する日時は？", sub:"参加できる日時をすべて選んでください。（複数選択可）", multi:true, opts:[
+    {l:"Day1 (5/29午後)",v:"d1pm"},{l:"Day2 (5/30午前)",v:"d2am"},{l:"Day2 (5/30午後)",v:"d2pm"},
+    {l:"Day3 (5/31午前)",v:"d3am"},{l:"Day3 (5/31午後)",v:"d3pm"},
+  ]},
+  {q:"学会への参加スタンスは？", sub:"", multi:false, opts:[
+    {l:"朝から晩までガッツリ学びたい！",v:"hard"},{l:"興味あるものだけ。観光も楽しみたい！",v:"light"},
+  ]},
+  {q:"観光に行きたい日時は？", sub:"Q3で『観光も』を選んだ方は、予定を空けるブロックを1つ選んでください。", multi:false, opts:[
+    {l:"Day1午後",v:"d1pm"},{l:"Day2午前",v:"d2am"},{l:"Day2午後",v:"d2pm"},
+    {l:"Day3午前",v:"d3am"},{l:"Day3午後",v:"d3pm"},{l:"特に指定しない",v:"none"},
+  ]},
+  {q:"今回の参加の目的は？", sub:"（複数選択可）", multi:true, opts:[
+    {l:"最新知識のアップデート",v:"update"},{l:"臨床手技の獲得",v:"skill"},{l:"キャリア・進路相談",v:"career"},
+    {l:"仲間づくり・交流",v:"social"},{l:"雰囲気を楽しみたい",v:"vibe"},{l:"専門医単位の取得",v:"credit"},
+  ]},
+  {q:"好きな学習スタイルは？", sub:"（複数選択可）", multi:true, opts:[
+    {l:"座学でじっくり聴講",v:"lecture"},{l:"少人数で深く話す",v:"small"},
+    {l:"手を動かすハンズオン・体験",v:"hands"},{l:"いろいろ見て回りたい",v:"browse"},
+  ]},
+  {q:"特に興味のある分野は？（前半）", sub:"（複数選択可）", multi:true, opts:[
+    {l:"地域医療",v:"region"},{l:"教育・キャリア",v:"edu"},{l:"臨床推論・診断学",v:"reasoning"},
+    {l:"家族志向型",v:"family"},{l:"多職種連携",v:"multi"},{l:"IT・DX・AI",v:"it"},
+  ]},
+  {q:"特に興味のある分野は？（後半）", sub:"（複数選択可）", multi:true, opts:[
+    {l:"在宅・高齢者・施設",v:"home"},{l:"感染症・ワクチン",v:"inf"},{l:"メンタル・心療内科",v:"mental"},
+    {l:"経営・マネジメント",v:"mgmt"},{l:"小児・女性・思春期",v:"ped"},{l:"救急・総合内科",v:"er"},
+    {l:"倫理・ACP",v:"ethics"},{l:"社会的処方・ナラティブ",v:"social-rx"},{l:"漢方・東洋医学",v:"kampo"},
+    {l:"外国人・国際保健",v:"intl"},{l:"医療の質・安全",v:"safety"},
+  ]},
+  {q:"知らない人との交流は？", sub:"", multi:false, opts:[
+    {l:"積極的に話したい！",v:"social"},{l:"軽くならOK",v:"light"},{l:"講義を静かに聞きたい",v:"quiet"},
+  ]},
+  {q:"今、一番関心がある（悩んでいる）ことは？", sub:"（複数選択可）", multi:true, opts:[
+    {l:"今後の進路",v:"path"},{l:"現場でのコミュニケーション",v:"comm"},{l:"ワークライフバランス",v:"wlb"},
+    {l:"モチベーションの維持",v:"motiv"},{l:"臨床能力の向上",v:"clin"},
+  ]},
+];
+let diagState = { idx:0, ans: Array(DIAG_Q.length).fill(null).map(()=>[]) , started:false };
+function renderDiag(){
+  const box = document.getElementById("diagBox");
+  if(!diagState.started){
+    box.innerHTML = `<p class="text-sm text-slate-700 mb-3">あなたのポジションや興味、参加スタイルに合わせて、最適なプログラムの組み合わせを提案します。<br>観光に当てたい時間や、スケジュールの詰まり具合も調整可能です。</p>
+      <button id="diagStart" class="w-full bg-grad text-white font-bold py-2.5 rounded-xl">約10問で診断！ スタート</button>`;
+    document.getElementById("diagStart").onclick = () => { diagState.started=true; diagState.idx=0; renderDiag(); };
+    return;
+  }
+  if(diagState.idx >= DIAG_Q.length){
+    // Result
+    const aud = diagState.ans[0][0];
+    const days = diagState.ans[1];
+    const interests = [...(diagState.ans[6]||[]), ...(diagState.ans[7]||[])];
+    const tagMap = {
+      region:"地域", edu:"教育", reasoning:"臨床推論", family:"家族志向型", multi:"多職種", it:"ICT",
+      home:"在宅", inf:"感染症", mental:"メンタル", mgmt:"経営", ped:"小児", er:"救急",
+      ethics:"倫理・ACP", "social-rx":"社会的処方", kampo:"漢方", intl:"国際保健", safety:"質・安全"
+    };
+    const interestKw = interests.map(v=>tagMap[v]).filter(Boolean);
+    const dayKeys = {d1pm:"5/29", d2am:"5/30", d2pm:"5/30", d3am:"5/31", d3pm:"5/31"};
+    const dayFilter = new Set(days.map(v=>dayKeys[v]));
+    const recs = PROGRAMS.filter(p => {
+      const inDay = dayFilter.size===0 || dayFilter.has(p.day);
+      const audOK = !aud || aud===p.aud || p.aud==="any";
+      const tagsBlob = (p.tags||[]).join(",") + p.title;
+      const hitKw = interestKw.length===0 || interestKw.some(kw=>tagsBlob.includes(kw));
+      return inDay && audOK && hitKw;
+    });
+    const tourBlock = (diagState.ans[3]||[])[0];
+    const tourLabel = {d1pm:"Day1 午後",d2am:"Day2 午前",d2pm:"Day2 午後",d3am:"Day3 午前",d3pm:"Day3 午後"}[tourBlock];
+    box.innerHTML = `<div class="rounded-xl bg-indigo-50 p-4 mb-3 text-center">
+        <div class="font-bold text-grad">あなたへのおすすめスケジュール</div>
+        <div class="text-xs text-slate-600 mt-1">あなたの興味に合わせておすすめセッションを複数ピックアップしました。</div>
+      </div>
+      ${tourLabel ? `<div class="rounded-xl bg-sky-50 border border-sky-300 p-3 mb-3">
+        <div class="text-sky-700 font-bold text-sm flex items-center gap-1"><i data-lucide="camera" class="w-4 h-4"></i>${tourLabel} 枠</div>
+        <div class="font-bold mt-1">おすすめ観光タイム</div>
+        <div class="text-xs text-slate-600">学会を離れて、京都の街並みやグルメを楽しんでリフレッシュしましょう！</div>
+      </div>`:""}
+      ${recs.length===0
+        ? `<p class="text-sm text-slate-500 text-center py-6">条件に合うプログラムが見つかりませんでした。</p>`
+        : `<div class="space-y-2 mb-3">${recs.map(p=>progCard(p)).join("")}</div>`}
+      ${recs.length>0 ? `<button id="diagAddAll" class="w-full bg-green-500 text-white font-bold py-2.5 rounded-xl mb-2">全てマイスケジュールに登録する</button>` : ""}
+      <button id="diagReset" class="w-full bg-slate-100 text-slate-700 font-bold py-2.5 rounded-xl">もう一度やり直す</button>`;
+    if(recs.length>0) document.getElementById("diagAddAll").onclick = () => {
+      const s = getFavs(); recs.forEach(p=>s.add(p.id)); saveFavs(s); alert(`${recs.length}件登録しました`); show("view-myschedule");
+    };
+    document.getElementById("diagReset").onclick = () => { diagState = { idx:0, ans: Array(DIAG_Q.length).fill(null).map(()=>[]), started:false }; renderDiag(); };
+    lucide.createIcons();
+    return;
+  }
+  const q = DIAG_Q[diagState.idx];
+  const cur = diagState.ans[diagState.idx];
+  box.innerHTML = `<div class="text-center font-bold text-grad mb-1">Q${diagState.idx+1}. ${q.q}</div>
+    ${q.sub?`<div class="text-xs text-center text-slate-500 mb-3">${q.sub}</div>`:""}
+    <div class="space-y-2">${q.opts.map(o=>`
+      <button data-opt="${o.v}" class="opt-btn w-full text-left bg-white border ${cur.includes(o.v)?'border-indigo-500 bg-indigo-50':'border-slate-200'} rounded-xl px-3 py-2.5 text-sm font-semibold">${o.l}</button>
+    `).join("")}</div>
+    <div class="flex justify-between items-center mt-4">
+      <button id="dPrev" class="bg-slate-100 text-slate-700 text-sm px-4 py-2 rounded-xl ${diagState.idx===0?'opacity-40':''}" ${diagState.idx===0?"disabled":""}>戻る</button>
+      <div class="text-xs text-slate-400">${diagState.idx+1} / ${DIAG_Q.length}</div>
+      <button id="dNext" class="bg-grad text-white font-bold text-sm px-4 py-2 rounded-xl">${diagState.idx===DIAG_Q.length-1?'結果を見る':'次へ'}</button>
+    </div>`;
+  document.querySelectorAll(".opt-btn").forEach(b => b.onclick = () => {
+    const v = b.dataset.opt;
+    if(q.multi){ if(cur.includes(v)) diagState.ans[diagState.idx] = cur.filter(x=>x!==v); else diagState.ans[diagState.idx] = [...cur, v]; }
+    else { diagState.ans[diagState.idx] = [v]; }
+    renderDiag();
+  });
+  document.getElementById("dPrev").onclick = () => { if(diagState.idx>0){ diagState.idx--; renderDiag(); } };
+  document.getElementById("dNext").onclick = () => { diagState.idx++; renderDiag(); };
+}
+
+/* ===================== Routing ===================== */
+function show(viewId){
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active", v.id===viewId));
+  document.querySelectorAll(".nav-btn").forEach(b=>{
+    const active = b.dataset.go===viewId;
+    b.classList.toggle("text-indigo-600", active);
+    b.classList.toggle("text-slate-500", !active);
+  });
+  window.scrollTo({top:0,behavior:"instant"});
+  if(viewId==="view-schedule")   { renderDayPicker(); renderScheduleGrid(); }
+  if(viewId==="view-program")    renderProgramGroups();
+  if(viewId==="view-pickup")     renderPickup();
+  if(viewId==="view-mylist")     renderMyList();
+  if(viewId==="view-myschedule") renderMySchedule();
+  if(viewId==="view-prep")       renderPrep();
+  if(viewId==="view-diag")       renderDiag();
+  if(viewId==="view-search")     renderSearch();
+  setTimeout(()=>lucide.createIcons(),0);
+}
+function refresh(){ const v=document.querySelector(".view.active"); if(v) show(v.id); }
+
+function openDetail(id){
+  const p = PROGRAMS.find(x=>x.id===id);
+  if(!p) return;
+  const favs = getFavs();
+  const on = favs.has(id);
+  const body = document.getElementById("detailBody");
+  body.innerHTML = `
+    <div class="text-xs text-slate-500 mb-1">${p.type} ・ Day ${p.day==="5/29"?1:p.day==="5/30"?2:3} (${p.day})</div>
+    <h3 class="font-bold text-base leading-snug mb-2">${p.title}</h3>
+    <div class="flex flex-wrap gap-1 mb-3">${badge(p.aud)}${tagBadges(p.tags)}</div>
+    <div class="space-y-1 text-sm text-slate-700 mb-4">
+      <div class="flex gap-2 items-start"><i data-lucide="clock" class="w-4 h-4 mt-0.5 text-slate-400"></i><div>${p.time}</div></div>
+      <div class="flex gap-2 items-start"><i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-slate-400"></i><div>${p.room}</div></div>
+      ${p.speakers ? `<div class="flex gap-2 items-start"><i data-lucide="users" class="w-4 h-4 mt-0.5 text-slate-400"></i><div>${p.speakers}</div></div>` : ""}
+    </div>
+    <button id="detailFav" class="w-full ${on?'bg-amber-500':'bg-grad'} text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5">
+      <i data-lucide="${on?'star-off':'star'}" class="w-4 h-4"></i>
+      ${on?'マイ予定から外す':'マイ予定に追加する'}
+    </button>
+  `;
+  document.getElementById("detailModal").classList.remove("hidden");
+  document.getElementById("detailModal").classList.add("flex");
+  lucide.createIcons();
+  document.getElementById("detailFav").onclick = () => { toggleFav(id); openDetail(id); };
+}
+function closeDetail(){
+  const m = document.getElementById("detailModal");
+  m.classList.add("hidden"); m.classList.remove("flex");
+}
+
+document.addEventListener("click", (e)=>{
+  const go = e.target.closest("[data-go]");
+  if(go){ show(go.dataset.go); return; }
+  const fav = e.target.closest("[data-fav]");
+  if(fav){ toggleFav(fav.dataset.fav); return; }
+  const det = e.target.closest("[data-detail]");
+  if(det){ openDetail(det.dataset.detail); return; }
+  if(e.target.id==="detailModal") closeDetail();
+  if(e.target.id==="aiModal"){
+    const m = document.getElementById("aiModal");
+    m.classList.add("hidden"); m.classList.remove("flex");
+  }
+});
+document.getElementById("detailClose").onclick = closeDetail;
+document.getElementById("btnAI").onclick = () => {
+  const m = document.getElementById("aiModal");
+  m.classList.remove("hidden"); m.classList.add("flex");
+};
+document.getElementById("aiClose").onclick = () => {
+  const m = document.getElementById("aiModal");
+  m.classList.add("hidden"); m.classList.remove("flex");
+};
+
+/* ===== Gemini API integration ===== */
+const KEY_STORE = "jpca2026_gemini_key";
+// 管理者デフォルトキー (Google AI Studio 無料枠)。各端末で個別キーを設定すれば上書きされる。
+const DEFAULT_API_KEY = "AIzaSyDS2UY25QFtBWDr96QKYb9x3yLCb6xP-5Y";
+const getApiKey = () => localStorage.getItem(KEY_STORE) || DEFAULT_API_KEY;
+function setApiKeyPrompt(){
+  const cur = localStorage.getItem(KEY_STORE) || "";
+  const k = prompt("Gemini APIキーを入力 (空白で既定キーに戻す)。\nGoogle AI Studio https://aistudio.google.com/app/apikey で取得できます。", cur);
+  if(k===null) return false;
+  if(k.trim()==="") { localStorage.removeItem(KEY_STORE); alert("既定のAPIキーに戻しました。"); return true; }
+  localStorage.setItem(KEY_STORE, k.trim()); alert("APIキーを更新しました。"); return true;
+}
+async function callGemini(userText, systemText){
+  const key = getApiKey();
+  if(!key) return "[APIキー未設定] 右下『Gemini APIキーを設定』から登録してください。";
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
+  const body = { contents:[{parts:[{text:userText}]}] };
+  if(systemText) body.systemInstruction = {parts:[{text:systemText}]};
+  try{
+    const res = await fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
+    if(!res.ok){ const err = await res.text(); return `通信エラー (${res.status}): ${err.slice(0,200)}`; }
+    const j = await res.json();
+    return j.candidates?.[0]?.content?.parts?.[0]?.text || "応答が空でした。";
+  }catch(e){ return "通信エラー: " + e.message; }
+}
+
+document.getElementById("aiSetKey").onclick = setApiKeyPrompt;
+async function sendChat(){
+  const input = document.getElementById("aiInput");
+  const txt = input.value.trim();
+  if(!txt) return;
+  const log = document.getElementById("aiChatLog");
+  log.insertAdjacentHTML("beforeend", `<div class="bg-indigo-100 text-indigo-900 rounded-xl p-2.5 ml-auto max-w-[85%] w-fit">${txt}</div>`);
+  input.value = "";
+  const id = "load-"+Date.now();
+  log.insertAdjacentHTML("beforeend", `<div id="${id}" class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-500 text-xs">考え中…</div>`);
+  log.scrollTop = log.scrollHeight;
+  const sys = `あなたは第17回日本プライマリ・ケア連合学会学術大会(2026/5/29-31, 国立京都国際会館, テーマ「つながる、つなげる。」)の公式AIコンシェルジュです。フレンドリーかつ簡潔な日本語で。わからない場合は公式HPや受付確認を案内してください。`;
+  const r = await callGemini(txt, sys);
+  document.getElementById(id).outerHTML = `<div class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700 max-w-[85%]">${r.replace(/\n/g,"<br>")}</div>`;
+  log.scrollTop = log.scrollHeight;
+}
+document.getElementById("aiSend").onclick = sendChat;
+document.getElementById("aiInput").addEventListener("keypress", e=>{ if(e.key==="Enter") sendChat(); });
+
+async function analyzeSchedule(){
+  const favs = [...getFavs()].map(id=>PROGRAMS.find(p=>p.id===id)).filter(Boolean);
+  if(favs.length===0){ alert("まず日程表でセッションを★登録してください。"); return; }
+  const box = document.getElementById("aiAnalyzeResult");
+  const txt = document.getElementById("aiAnalyzeText");
+  box.classList.remove("hidden"); txt.innerText = "AIがあなたのスケジュールを分析しています…";
+  const list = favs.map(p=>`- Day${p.day==="5/29"?1:p.day==="5/30"?2:3} ${p.time} [${p.title}] (タグ: ${(p.tags||[]).join(", ")})`).join("\n");
+  const prompt = `私はJPCA2026参加者です。以下が登録したスケジュールです。\n\n${list}\n\n以下3点を150〜200字程度のフレンドリーな日本語で:\n1. 私の学びの傾向や関心\n2. 当日のネットワーキングのワンポイント\n3. 励ましのメッセージ`;
+  const sys = "あなたは学会参加者を応援し有益なインサイトを提供するAIメンターです。";
+  const r = await callGemini(prompt, sys);
+  txt.innerHTML = r.replace(/\n/g,"<br>");
+}
+document.getElementById("aiAnalyzeBtn").onclick = analyzeSchedule;
+document.getElementById("searchInput").oninput = renderSearch;
+document.getElementById("searchBtn").onclick = renderSearch;
+document.addEventListener("change", e=>{ if(e.target.id==="dayPicker") renderScheduleGrid(); });
+
+/* init */
+lucide.createIcons();
+show("view-home");
+</script>
+</body>
+</html>

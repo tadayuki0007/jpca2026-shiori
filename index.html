@@ -599,7 +599,6 @@
         <input id="aiInput" type="text" placeholder="メッセージを入力..." class="flex-1 border border-slate-200 rounded-full px-3 py-2 text-sm">
         <button id="aiSend" class="w-9 h-9 rounded-full bg-pink-500 text-white flex items-center justify-center"><i data-lucide="send" class="w-4 h-4"></i></button>
       </div>
-      <button id="aiSetKey" class="mt-2 text-[10px] text-slate-400 underline">Gemini APIキーを設定</button>
     </div>
   </div>
 
@@ -1169,47 +1168,23 @@ document.getElementById("aiClose").onclick = () => {
   m.classList.add("hidden"); m.classList.remove("flex");
 };
 
-/* ===== Gemini API integration =====
-   セキュリティのため共有キーは置きません。各ユーザーが自分のGemini APIキー(無料)を
-   一度だけ設定する仕組み。localStorage に保存され次回以降は自動使用。
-   取得: https://aistudio.google.com/app/apikey
+/* ===== AI 呼び出し =====
+   Cloudflare Worker プロキシ経由で Gemini API を呼び出します。
+   APIキーはサーバ側に隠されており、ユーザー設定は不要です。
 */
-const KEY_STORE = "jpca2026_gemini_key";
-const getApiKey = () => localStorage.getItem(KEY_STORE) || "";
-function setApiKeyPrompt(){
-  const cur = getApiKey();
-  const k = prompt(
-    "Gemini APIキーを入力してください。\n\n" +
-    "① https://aistudio.google.com/app/apikey にアクセス\n" +
-    "② Googleでログイン → 「Create API key」をクリック\n" +
-    "③ 表示されたキー(AIza…で始まる文字列)をここに貼り付け\n\n" +
-    "※ 完全無料 / 1日1500回まで利用可\n" +
-    "※ あなたの端末にのみ保存されます",
-    cur
-  );
-  if(k===null) return false;
-  if(k.trim()===""){ localStorage.removeItem(KEY_STORE); alert("APIキーを削除しました。"); return false; }
-  localStorage.setItem(KEY_STORE, k.trim()); alert("APIキーを保存しました。AIコンシェルジュが使えます。"); return true;
-}
+const AI_ENDPOINT = "https://jpca2026-ai.tadayuki0007.workers.dev/";
 async function callGemini(userText, systemText){
-  let key = getApiKey();
-  if(!key){
-    if(!setApiKeyPrompt()) return "APIキーが設定されていません。AI機能をスキップして他の機能をお使いください。";
-    key = getApiKey();
-    if(!key) return "APIキーが設定されていません。";
-  }
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
-  const body = { contents:[{parts:[{text:userText}]}] };
-  if(systemText) body.systemInstruction = {parts:[{text:systemText}]};
   try{
-    const res = await fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
-    if(!res.ok){ const err = await res.text(); return `通信エラー (${res.status}): ${err.slice(0,200)}`; }
+    const res = await fetch(AI_ENDPOINT, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ userText, systemText })
+    });
     const j = await res.json();
-    return j.candidates?.[0]?.content?.parts?.[0]?.text || "応答が空でした。";
+    if(!res.ok) return `通信エラー (${res.status}): ${j.error || ""}`;
+    return j.text || "応答が空でした。";
   }catch(e){ return "通信エラー: " + e.message; }
 }
-
-document.getElementById("aiSetKey").onclick = setApiKeyPrompt;
 async function sendChat(){
   const input = document.getElementById("aiInput");
   const txt = input.value.trim();

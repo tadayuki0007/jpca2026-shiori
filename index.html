@@ -1169,21 +1169,35 @@ document.getElementById("aiClose").onclick = () => {
   m.classList.add("hidden"); m.classList.remove("flex");
 };
 
-/* ===== Gemini API integration ===== */
+/* ===== Gemini API integration =====
+   セキュリティのため共有キーは置きません。各ユーザーが自分のGemini APIキー(無料)を
+   一度だけ設定する仕組み。localStorage に保存され次回以降は自動使用。
+   取得: https://aistudio.google.com/app/apikey
+*/
 const KEY_STORE = "jpca2026_gemini_key";
-// 管理者デフォルトキー (Google AI Studio 無料枠)。各端末で個別キーを設定すれば上書きされる。
-const DEFAULT_API_KEY = "AIzaSyDS2UY25QFtBWDr96QKYb9x3yLCb6xP-5Y";
-const getApiKey = () => localStorage.getItem(KEY_STORE) || DEFAULT_API_KEY;
+const getApiKey = () => localStorage.getItem(KEY_STORE) || "";
 function setApiKeyPrompt(){
-  const cur = localStorage.getItem(KEY_STORE) || "";
-  const k = prompt("Gemini APIキーを入力 (空白で既定キーに戻す)。\nGoogle AI Studio https://aistudio.google.com/app/apikey で取得できます。", cur);
+  const cur = getApiKey();
+  const k = prompt(
+    "Gemini APIキーを入力してください。\n\n" +
+    "① https://aistudio.google.com/app/apikey にアクセス\n" +
+    "② Googleでログイン → 「Create API key」をクリック\n" +
+    "③ 表示されたキー(AIza…で始まる文字列)をここに貼り付け\n\n" +
+    "※ 完全無料 / 1日1500回まで利用可\n" +
+    "※ あなたの端末にのみ保存されます",
+    cur
+  );
   if(k===null) return false;
-  if(k.trim()==="") { localStorage.removeItem(KEY_STORE); alert("既定のAPIキーに戻しました。"); return true; }
-  localStorage.setItem(KEY_STORE, k.trim()); alert("APIキーを更新しました。"); return true;
+  if(k.trim()===""){ localStorage.removeItem(KEY_STORE); alert("APIキーを削除しました。"); return false; }
+  localStorage.setItem(KEY_STORE, k.trim()); alert("APIキーを保存しました。AIコンシェルジュが使えます。"); return true;
 }
 async function callGemini(userText, systemText){
-  const key = getApiKey();
-  if(!key) return "[APIキー未設定] 右下『Gemini APIキーを設定』から登録してください。";
+  let key = getApiKey();
+  if(!key){
+    if(!setApiKeyPrompt()) return "APIキーが設定されていません。AI機能をスキップして他の機能をお使いください。";
+    key = getApiKey();
+    if(!key) return "APIキーが設定されていません。";
+  }
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
   const body = { contents:[{parts:[{text:userText}]}] };
   if(systemText) body.systemInstruction = {parts:[{text:systemText}]};

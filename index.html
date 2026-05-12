@@ -945,11 +945,24 @@ function renderMySchedule(){
 
 /* === Search === */
 function renderSearch(){
-  const q = (document.getElementById("searchInput").value||"").toLowerCase().trim();
+  const q = (document.getElementById("searchInput").value||"").trim().toLowerCase();
   const el = document.getElementById("searchResult");
-  if(!q){ el.innerHTML = `<div class="text-center py-12 text-slate-400 text-sm"><i data-lucide="keyboard" class="w-8 h-8 mx-auto mb-2"></i>検索キーワードを入力してください。</div>`; lucide.createIcons(); return; }
-  const hit = PROGRAMS.filter(p => (p.title+(p.tags||[]).join(" ")+p.room+p.id).toLowerCase().includes(q));
-  el.innerHTML = hit.length===0 ? `<p class="text-slate-500 text-center py-4">該当なし</p>` : hit.map(p=>progCard(p)).join("");
+  if(!q){ el.innerHTML = `<div class="text-center py-12 text-slate-400 text-sm"><i data-lucide="keyboard" class="w-8 h-8 mx-auto mb-2"></i>検索キーワードを入力してください。<br><span class="text-[10px]">例: 鈴木富雄 / 在宅 / IG1 / 第5会場 / 5/30 / 学生</span></div>`; lucide.createIcons(); return; }
+  const dayLabel = d => d==="5/29"?"5/29 day1 金 きん":d==="5/30"?"5/30 day2 土 ど":"5/31 day3 日 にち";
+  const hit = PROGRAMS.filter(p => {
+    const blob = [
+      p.title, p.id, p.room, p.time, dayLabel(p.day),
+      (p.tags||[]).join(" "),
+      p.speakers||"",
+      AUDIENCE_LABEL[p.aud]||"",
+      TYPE_LABEL[p.type]||"",
+    ].join(" ").toLowerCase();
+    return blob.includes(q);
+  });
+  el.innerHTML = hit.length===0
+    ? `<p class="text-slate-500 text-center py-8 text-sm">「${q}」に該当するセッションは見つかりませんでした。</p>`
+    : `<p class="text-xs text-slate-500 mb-2">${hit.length}件ヒット</p>` + hit.map(p=>progCard(p)).join("");
+  setTimeout(()=>lucide.createIcons(),0);
 }
 
 /* === Prep checklist === */

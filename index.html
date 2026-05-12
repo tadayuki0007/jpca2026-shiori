@@ -1185,6 +1185,15 @@ async function callGemini(userText, systemText){
     return j.text || "応答が空でした。";
   }catch(e){ return "通信エラー: " + e.message; }
 }
+function buildProgramContext(){
+  const dayName = d => d==="5/29"?"Day1(5/29金)":d==="5/30"?"Day2(5/30土)":"Day3(5/31日)";
+  return PROGRAMS.map(p => {
+    const sp = p.speakers ? ` 登壇:${p.speakers}` : "";
+    const tg = (p.tags||[]).length ? ` [${(p.tags||[]).join(",")}]` : "";
+    return `[${p.id}] ${dayName(p.day)} ${p.time} @${p.room} ${p.title}${sp}${tg}`;
+  }).join("\n");
+}
+
 async function sendChat(){
   const input = document.getElementById("aiInput");
   const txt = input.value.trim();
@@ -1195,7 +1204,25 @@ async function sendChat(){
   const id = "load-"+Date.now();
   log.insertAdjacentHTML("beforeend", `<div id="${id}" class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-500 text-xs">考え中…</div>`);
   log.scrollTop = log.scrollHeight;
-  const sys = `あなたは第17回日本プライマリ・ケア連合学会学術大会(2026/5/29-31, 国立京都国際会館, テーマ「つながる、つなげる。」)の公式AIコンシェルジュです。フレンドリーかつ簡潔な日本語で。わからない場合は公式HPや受付確認を案内してください。`;
+  const sys = `あなたは第17回日本プライマリ・ケア連合学会学術大会(2026/5/29金-31日, 国立京都国際会館, テーマ「つながる、つなげる。」)の公式AIコンシェルジュです。
+
+【重要】プログラムは既に公式に発表されています。以下の一覧から具体的なセッション名・時間・会場・登壇者を引用して回答してください。「まだ発表されていません」とは絶対に言わないでください。
+
+【全プログラム一覧】
+${buildProgramContext()}
+
+【会場の階層】
+第1会場 メインホール(1F) / 第2会場 アネックスホール(1F) / 第3-6会場 Room A-C-1(1F) / 第7会場 Room C-2(2F) / 第8-13会場 Room D-K(1F) / 第14-15会場 Room 509,510(5F) / ミニステージ・企業展示 イベントホール(別棟1F)
+
+【日程の概要】
+Day1 5/29(金) 13:30-16:45 主にリカレント教育セッション
+Day2 5/30(土) 8:30-16:45 教育講演・シンポ・ジョイント / 12:10-13:20 開会式・大会長講演 / 13:30-15:00 メインシンポ / 18:00-20:00 PCナイト(受付終了)
+Day3 5/31(日) 8:30-15:45 シンポ・教育講演ほか / 10:15-11:45 特別対談「19番目のカルテ」 / 14:15-15:45 閉会式
+
+【スタイル】
+- フレンドリーかつ簡潔な日本語
+- セッションIDは括弧書きで参考表示
+- 不明な場合は「公式HP https://jpca2026.jp/ または受付でご確認ください」と案内`;
   const r = await callGemini(txt, sys);
   document.getElementById(id).outerHTML = `<div class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700 max-w-[85%]">${r.replace(/\n/g,"<br>")}</div>`;
   log.scrollTop = log.scrollHeight;

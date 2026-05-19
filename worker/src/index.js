@@ -73,34 +73,65 @@ export default {
       return json({ text: t, cached: true }, 200, origin);
     }
 
-    // ---- 3) Gemini 呼び出し ----
+    // ---- 3) Gemini 呼び出し (429/5xx は指数バックオフでリトライ) ----
+    if (typeof systemText === "string" && systemText.length > 60000) {
+      systemText = systemText.slice(0, 60000);
+    }
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${apiKey}`;
     const payload = { contents: [{ parts: [{ text: userText }] }] };
     if (systemText) payload.systemInstruction = { parts: [{ text: systemText }] };
+    const bodyStr = JSON.stringify(payload);
 
-    try {
-      const r = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await r.json();
-      if (!r.ok) {
-        const msg = data?.error?.message || `upstream ${r.status}`;
-        // 429/レート系は分かりやすい日本語に
-        if (r.status === 429) {
-          return json({ error: "ただいまアクセスが集中しています。少し待って再度お試しください。" }, 429, origin);
-        }
-        return json({ error: msg }, r.status, origin);
+    const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+    const delays = [0, 800, 2000]; // 最大3回試行 (合計遅延を抑える)
+    let lastErr = "";
+
+    for (let attempt = 0; attempt < delays.length; attempt++) {
+      if (delays[attempt]) await sleep(delays[attempt]);
+      let r;
+      try {
+        r = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: bodyStr,
+        });
+      } catch (e) {
+        lastErr = "network: " + e.message;
+        continue; // ネットワーク系はリトライ
       }
-      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "応答が空でした。";
-      ctx.waitUntil(cache.put(cacheKey, new Response(text, {
-        headers: { "Cache-Control": `max-age=${CACHE_TTL_SEC}` },
-      })));
-      return json({ text }, 200, origin);
-    } catch (e) {
-      return json({ error: "通信に失敗しました: " + e.message }, 502, origin);
+
+      // レスポンスを安全にパース (たまにHTMLが返る)
+      let data = null;
+      const raw = await r.text();
+      try { data = JSON.parse(raw); } catch { data = null; }
+
+      if (r.ok) {
+        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (text && text.trim()) {
+          ctx.waitUntil(cache.put(cacheKey, new Response(text, {
+            headers: { "Cache-Control": `max-age=${CACHE_TTL_SEC}` },
+          })));
+          return json({ text }, 200, origin);
+        }
+        // 空応答 (安全フィルタ等) → 1回だけリトライ価値あり
+        lastErr = "empty";
+        continue;
+      }
+
+      // 429 / 500 / 503 はリトライ対象、それ以外は即返す
+      if (r.status === 429 || r.status === 500 || r.status === 503) {
+        lastErr = `upstream ${r.status}`;
+        continue;
+      }
+      const msg = data?.error?.message || `upstream ${r.status}`;
+      return json({ error: msg }, r.status, origin);
     }
+
+    // 全リトライ失敗
+    return json({
+      error: "ただいまアクセスが集中しています。数秒おいて、もう一度お試しください。",
+      detail: lastErr,
+    }, 429, origin);
   },
 };
 

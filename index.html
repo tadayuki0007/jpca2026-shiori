@@ -515,11 +515,13 @@ function renderDiag(){
       ${recs.length>0 ? `<button id="diagAskAI" class="w-full bg-grad text-white font-bold py-3 rounded-xl mb-2 flex items-center justify-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i>この結果をもとにAIに相談する</button>` : ""}
       <button id="diagReset" class="w-full bg-slate-100 text-slate-700 font-bold py-2.5 rounded-xl">もう一度やり直す</button>`;
     if(recs.length>0) document.getElementById("diagAskAI").onclick = () => {
-      const titles = recs.slice(0,8).map(p=>p.title).join(" / ");
+      const titles = recs.slice(0,6).map(p=>p.title).join(" / ");
       show("view-ai");
       const i=document.getElementById("aiInput");
-      i.value = `診断で次のセッションがおすすめされました: ${titles}。この中から特に外せないものと、効率的な回り方を教えて。`;
-      sendChat();
+      if(!i) return;
+      i.value = `診断でおすすめされたセッション: ${titles}。この中で特に外せないものと、効率的な回り方を教えて。`;
+      // ビュー切替が落ち着いてから送信（描画レース回避）
+      setTimeout(()=>{ try{ sendChat(); }catch(e){ console.error(e); } }, 120);
     };
     document.getElementById("diagReset").onclick = () => { diagState = { idx:0, ans: Array(DIAG_Q.length).fill(null).map(()=>[]), started:false }; renderDiag(); };
     lucide.createIcons();
@@ -599,25 +601,35 @@ document.getElementById("detailClose").onclick = closeDetail;
    APIキーはサーバ側に隠されており、ユーザー設定は不要です。
 */
 const AI_ENDPOINT = "https://jpca2026-ai.tadayuki0007.workers.dev/";
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
 async function callGemini(userText, systemText){
-  try{
-    const res = await fetch(AI_ENDPOINT, {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({ userText, systemText })
-    });
-    const j = await res.json();
-    if(!res.ok) return `通信エラー (${res.status}): ${j.error || ""}`;
-    return j.text || "応答が空でした。";
-  }catch(e){ return "通信エラー: " + e.message; }
+  const backoff = [0, 1200, 2800]; // 最大3回試行（クライアント側）
+  let last = "";
+  for(let i=0;i<backoff.length;i++){
+    if(backoff[i]) await sleep(backoff[i]);
+    try{
+      const res = await fetch(AI_ENDPOINT, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({ userText, systemText })
+      });
+      let j = {};
+      try{ j = await res.json(); }catch{ j = {}; }
+      if(res.ok && j.text) return j.text;
+      // 429 / 5xx / 空 → リトライ
+      if(res.status===429 || res.status>=500 || !j.text){
+        last = j.error || `HTTP ${res.status}`;
+        continue;
+      }
+      return `エラー: ${j.error || ("HTTP "+res.status)}`;
+    }catch(e){ last = e.message; /* ネットワーク → リトライ */ }
+  }
+  return `🙏 ただいま混み合っています。10〜20秒ほどおいて、もう一度送信してください。\n(詳細: ${last})`;
 }
 function buildProgramContext(){
-  const dayName = d => d==="5/29"?"Day1(5/29金)":d==="5/30"?"Day2(5/30土)":"Day3(5/31日)";
-  return PROGRAMS.map(p => {
-    const sp = p.speakers ? ` 登壇:${p.speakers}` : "";
-    const tg = (p.tags||[]).length ? ` [${(p.tags||[]).join(",")}]` : "";
-    return `[${p.id}] ${dayName(p.day)} ${p.time} @${p.room} ${p.title}${sp}${tg}`;
-  }).join("\n");
+  const dayName = d => d==="5/29"?"D1金":d==="5/30"?"D2土":"D3日";
+  // トークン節約のため id/日/時間/会場/タイトル のみ（登壇者・タグは省略）
+  return PROGRAMS.map(p => `[${p.id}] ${dayName(p.day)} ${p.time} ${p.room} ${p.title}`).join("\n");
 }
 
 const KNOWLEDGE_BASE = `

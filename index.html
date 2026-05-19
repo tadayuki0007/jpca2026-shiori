@@ -45,9 +45,6 @@
       <div class="text-[11px] opacity-90">第17回日本プライマリ・ケア連合学会学術大会</div>
       <div class="text-base font-bold">参加者専用しおり</div>
     </div>
-    <button id="btnAI" class="text-xs bg-white/95 text-pink-600 font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
-      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>AIコンシェルジュ
-    </button>
   </div>
 </header>
 
@@ -740,7 +737,6 @@ document.addEventListener("click", (e)=>{
   if(chip){ const i=document.getElementById("aiInput"); i.value=chip.textContent; sendChat(); return; }
 });
 document.getElementById("detailClose").onclick = closeDetail;
-document.getElementById("btnAI").onclick = () => show("view-ai");
 
 /* ===== AI 呼び出し =====
    Cloudflare Worker プロキシ経由で Gemini API を呼び出します。

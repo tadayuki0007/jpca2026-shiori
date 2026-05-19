@@ -53,9 +53,10 @@
 <main class="max-w-3xl mx-auto px-4 pt-4">
 
   <!-- ================ HOME ================ -->
-  <section id="view-home" class="view active space-y-4">
+  <section id="view-home" class="view active space-y-5">
+
     <!-- 大会長メッセージ -->
-    <div class="bg-white rounded-2xl shadow-sm p-4">
+    <div class="bg-white rounded-2xl shadow-sm p-5">
       <div class="accent-bar mb-3 flex items-center gap-2">
         <i data-lucide="mic" class="w-4 h-4 text-pink-500"></i>
         <h2 class="font-bold">大会長メッセージ</h2>
@@ -64,76 +65,44 @@
       <div class="text-xs text-slate-500 mb-3">大阪医科薬科大学医学部 総合診療医学教室 教授</div>
       <details class="rounded-xl bg-slate-50 px-4 py-4">
         <summary class="text-center cursor-pointer list-none">
-          <span class="text-grad font-bold">つながる、つなげる。つなげる、つながる。</span>
-          <div class="text-xs text-pink-600 mt-1">(タップで全文を読む▼)</div>
+          <span class="text-grad font-bold text-lg">つながる、つなげる。つなげる、つながる。</span>
+          <div class="text-xs text-pink-600 mt-1">(タップで全文を読む &#9660;)</div>
         </summary>
         <div class="text-sm mt-3 leading-relaxed text-slate-700 space-y-2">
-          <p>第17回日本プライマリ・ケア連合学会学術大会を、2026年5月29日(金)〜31日(日)の3日間、国立京都国際会館にて開催させていただきます。</p>
-          <p>テーマは「つながる、つなげる。つなげる、つながる。」。総合診療・家庭医療・プライマリ・ケアは、専門領域間の<b>横のつながり</b>と、世代を超えた知の<b>縦のつながり</b>の両方を担う領域です。"General is Special"の信念のもと、医師・看護師・薬剤師・リハ・介護・行政・市民、すべての方が「対話と共感と物語」でつながる3日間にできれば幸いです。京都でお会いしましょう。</p>
+          <p>このたび、第17回日本プライマリ・ケア連合学会学術大会を、2026年5月29日(金)〜31日(日)の3日間、国立京都国際会館にて開催いたします。</p>
+          <p>超高齢社会という複雑な課題のなか、総合診療は医療と地域社会をつなぐ中核へと役割を広げています。本大会のテーマ「つながる、つなげる。」には、専門分野や職種を越えた<b>横のつながり</b>と、先人の志を次代へ手渡す<b>縦のつながり</b>の再構築という願いを込めました。</p>
+          <p>つながりには必ず "対話" と "共感" と "物語" があります。6年前にWONCA APRが開かれたこの京都国際会館で、皆さまと新たな光を生み出す3日間にしたいと思います。</p>
+          <p class="font-bold">"General is Special." 総合診療の理念に共鳴するすべての皆さまに、深い敬意と感謝をこめて。</p>
         </div>
       </details>
     </div>
 
-    <!-- PR動画 -->
-    <a href="https://youtu.be/rqUDGBBMCCQ" target="_blank" rel="noopener" class="block bg-grad text-white rounded-2xl py-3 text-center font-bold shadow-sm">
-      <i data-lucide="play-circle" class="inline w-5 h-5 -mt-0.5"></i> 学術大会PR動画を見る
-    </a>
+    <!-- メイン2機能 (大きく) -->
+    <button data-go="view-ai" class="w-full text-left bg-grad text-white rounded-3xl shadow-lg p-6 active:scale-[0.98] transition">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
+          <i data-lucide="sparkles" class="w-9 h-9"></i>
+        </div>
+        <div class="flex-1">
+          <div class="text-xl font-bold">AIコンシェルジュ</div>
+          <div class="text-sm opacity-90 mt-0.5">プログラム・会場・京都のことなど<br>何でも質問できます</div>
+        </div>
+        <i data-lucide="chevron-right" class="w-6 h-6 opacity-80"></i>
+      </div>
+    </button>
 
-    <!-- 大2カード -->
-    <div class="grid grid-cols-2 gap-3">
-      <button data-go="view-schedule" class="bg-white rounded-2xl shadow-sm p-5 flex flex-col items-center gap-2">
-        <i data-lucide="calendar-days" class="w-7 h-7" style="color:#4f46e5"></i>
-        <span class="font-bold">日程表</span>
-      </button>
-      <button data-go="view-program" class="bg-white rounded-2xl shadow-sm p-5 flex flex-col items-center gap-2">
-        <i data-lucide="list" class="w-7 h-7" style="color:#4f46e5"></i>
-        <span class="font-bold">すべてのプログラム</span>
-      </button>
-    </div>
-
-    <!-- グリッド -->
-    <div class="grid grid-cols-3 gap-3 text-sm">
-      <button data-go="view-pickup" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="star" class="w-6 h-6 text-amber-400"></i>
-        <span class="font-semibold text-center leading-tight">学生・研修医<br>向け Pickup</span>
-      </button>
-      <button data-go="view-map" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="map" class="w-6 h-6 text-emerald-600"></i>
-        <span class="font-semibold">フロアマップ</span>
-      </button>
-      <button data-go="view-search" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="search" class="w-6 h-6 text-slate-500"></i>
-        <span class="font-semibold">検索</span>
-      </button>
-      <button data-go="view-myschedule" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="calendar-check" class="w-6 h-6 text-green-600"></i>
-        <span class="font-semibold">マイスケジュール</span>
-      </button>
-      <button data-go="view-mylist" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="bookmark" class="w-6 h-6 text-pink-500"></i>
-        <span class="font-semibold">マイリスト</span>
-      </button>
-      <button data-go="view-info" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="info" class="w-6 h-6 text-purple-500"></i>
-        <span class="font-semibold">各種ご案内</span>
-      </button>
-      <button data-go="view-prep" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="briefcase" class="w-6 h-6 text-indigo-600"></i>
-        <span class="font-semibold">準備</span>
-      </button>
-      <button data-go="view-diag" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="stethoscope" class="w-6 h-6 text-rose-500"></i>
-        <span class="font-semibold">診断</span>
-      </button>
-      <button data-go="view-strategy" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="book-open" class="w-6 h-6 text-blue-700"></i>
-        <span class="font-semibold">攻略法</span>
-      </button>
-      <button data-go="view-faq" class="bg-white rounded-2xl shadow-sm py-4 flex flex-col items-center gap-1.5">
-        <i data-lucide="help-circle" class="w-6 h-6 text-orange-500"></i>
-        <span class="font-semibold">FAQ</span>
-      </button>
-    </div>
+    <button data-go="view-diag" class="w-full text-left rounded-3xl shadow-lg p-6 active:scale-[0.98] transition text-white" style="background:linear-gradient(135deg,#ec4899 0%,#8b5cf6 60%,#3b82f6 100%)">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
+          <i data-lucide="stethoscope" class="w-9 h-9"></i>
+        </div>
+        <div class="flex-1">
+          <div class="text-xl font-bold">おすすめ企画診断</div>
+          <div class="text-sm opacity-90 mt-0.5">10の質問であなたにぴったりの<br>セッションを提案します</div>
+        </div>
+        <i data-lucide="chevron-right" class="w-6 h-6 opacity-80"></i>
+      </div>
+    </button>
 
     <!-- 公式メディア -->
     <div class="bg-white rounded-2xl shadow-sm p-4">
@@ -144,297 +113,40 @@
       <div class="text-xs text-slate-500 mb-2">第17回学術大会専用</div>
       <div class="grid grid-cols-3 gap-2 mb-3">
         <a href="https://jpca2026.jp/" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="globe" class="w-4 h-4"></i>公式</a>
-        <a href="https://www.facebook.com/profile.php?id=61588418750643" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
-        <a href="https://www.instagram.com/jpca2026/" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61588418750643" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="facebook" class="w-4 h-4"></i>FB</a>
+        <a href="https://www.instagram.com/jpca2026/" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="instagram" class="w-4 h-4"></i>IG</a>
       </div>
       <div class="text-xs text-slate-500 mb-2">学会公式 (日本プライマリ・ケア連合学会)</div>
       <div class="grid grid-cols-3 gap-2 mb-2">
         <a href="https://www.primarycare-japan.com/" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="globe" class="w-4 h-4"></i>公式</a>
-        <a href="https://www.facebook.com/groups/818698202037333/" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
-        <a href="https://www.instagram.com/jpca_kouhou" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+        <a href="https://www.facebook.com/groups/818698202037333/" target="_blank" rel="noopener" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="facebook" class="w-4 h-4"></i>FB</a>
+        <a href="https://www.instagram.com/jpca_kouhou" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 text-white text-center py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-1.5"><i data-lucide="instagram" class="w-4 h-4"></i>IG</a>
       </div>
       <a href="https://www.youtube.com/channel/UCL0gzTcRvcnvzHMUL6EV_3g" target="_blank" rel="noopener" class="block bg-red-600 text-white text-center py-2.5 rounded-xl text-sm font-bold"><i data-lucide="youtube" class="inline w-4 h-4 -mt-0.5"></i> YouTube (学会公式チャンネル)</a>
     </div>
 
-    <!-- 春期セミナー -->
-    <div class="bg-sky-50 border border-sky-200 rounded-2xl shadow-sm p-4">
-      <div class="accent-bar mb-2 flex items-center gap-2" style="border-color:#0288d1">
-        <i data-lucide="sprout" class="w-4 h-4 text-sky-600"></i>
-        <h2 class="font-bold text-sky-800">学会の次は「春期セミナー」</h2>
-      </div>
-      <div class="font-bold text-sky-900 mb-2">研修医のための総合診療春期セミナー</div>
-      <ul class="text-sm text-slate-700 list-disc list-inside space-y-1">
-        <li><b>日時：</b>6月14日(日) 14:00-17:00<br><span class="text-xs">（その後希望者は懇親会30分あり）</span></li>
-        <li><b>形式：</b>Zoomオンライン（完全無料・事前登録制）</li>
-        <li><b>内容：</b>将来のキャリア／総合診療の魅力／症例検討会</li>
-        <li><b>申込〆切：</b>2026/06/13 (土)</li>
-      </ul>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5whaEfCI9meJdcy2_s4WfkFWfWhqUJ9M1lNcSUnNZDKb2Cg/viewform" target="_blank" rel="noopener" class="block mt-3 bg-sky-600 text-white text-center font-bold py-2.5 rounded-xl text-sm">
-        申し込みはこちら <i data-lucide="external-link" class="inline w-3.5 h-3.5"></i>
-      </a>
-    </div>
-
-    <!-- ログイン不要の説明 -->
-    <div class="bg-amber-50 border border-amber-300 rounded-2xl shadow-sm p-4">
-      <div class="accent-bar mb-2 flex items-center gap-2" style="border-color:#f59e0b">
-        <i data-lucide="info" class="w-4 h-4 text-amber-700"></i>
-        <h2 class="font-bold text-amber-900">このしおりについて</h2>
-      </div>
-      <div class="text-sm text-slate-700 space-y-2 leading-relaxed">
-        <p><b>👤 ログイン不要・あなた専用です。</b></p>
-        <p>日程表で付けた <b>★</b>、診断結果、準備チェックリストなどは、<b>あなたの端末（このブラウザ）の中にだけ</b>保存されます。他の人と混ざることはありません。会員登録もパスワードも要りません。</p>
-        <div class="rounded-xl bg-white border border-amber-200 p-3 text-xs space-y-1">
-          <div>✅ 同じ端末・同じブラウザでまた開けば、★やチェックは残っています</div>
-          <div>✅ 他の参加者のしおりには影響しません（完全に独立）</div>
-          <div>⚠ <b>別の端末では同期されません</b>（スマホで付けた★はPCに反映しません）</div>
-          <div>⚠ ブラウザのキャッシュ・履歴を削除するとデータが消えます</div>
-          <div>⚠ シークレットモード／プライベートブラウズで開くと毎回リセットされます</div>
-        </div>
-        <p class="text-xs text-slate-500">使い方：最初に開いた端末で気になるセッションに★ → 学会期間中はその端末で開けばOK。</p>
-      </div>
-    </div>
-
-    <p class="text-center text-[11px] text-slate-400 py-4">非公式 個人用しおり ・ ©2026 / Last updated 2026-05-11</p>
+    <p class="text-center text-[11px] text-slate-400 pb-2">ログイン不要・各自の端末に保存されます ・ 非公式個人用しおり &copy;2026</p>
   </section>
 
-  <!-- ================ 日程表 ================ -->
-  <section id="view-schedule" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="calendar-days" class="w-5 h-5 text-indigo-600"></i>
-      <h2 class="font-bold text-lg">日程表</h2>
+  <!-- ================ AIコンシェルジュ (フル画面) ================ -->
+  <section id="view-ai" class="view">
+    <div class="accent-bar mb-3 flex items-center gap-2">
+      <i data-lucide="sparkles" class="w-5 h-5 text-pink-500"></i>
+      <h2 class="font-bold text-lg">AIコンシェルジュ</h2>
     </div>
-    <p class="text-xs text-slate-600">※横にスクロールして時間を、縦にスクロールして全会場を確認できます。ブロックをタップで詳細表示・登録が可能です。</p>
-    <select id="dayPicker" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm font-semibold"></select>
-    <div class="bg-white rounded-2xl shadow-sm p-3 overflow-x-auto">
-      <div id="scheduleGrid" class="min-w-[640px]"></div>
+    <p class="text-xs text-slate-600 mb-3">学会のプログラム・会場・飲食・京都のおすすめなど、何でも質問してください！(Powered by Gemini)</p>
+    <div id="aiChatLog" class="bg-slate-50 rounded-2xl p-3 text-sm space-y-3 overflow-y-auto" style="min-height:48vh;max-height:60vh">
+      <div class="bg-white border border-slate-200 rounded-2xl p-3 text-slate-700 leading-relaxed">こんにちは！第17回JPCA学術大会のAIコンシェルジュです。<br>例えば「土曜午前のおすすめは？」「お弁当は当日買える？」「学生向けの企画は？」など、お気軽にどうぞ &#10024;</div>
     </div>
-  </section>
-
-  <!-- ================ プログラム ================ -->
-  <section id="view-program" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="list" class="w-5 h-5 text-indigo-600"></i>
-      <h2 class="font-bold text-lg">全プログラム一覧</h2>
-    </div>
-    <p class="text-xs text-slate-600">セッション種別 (S, J, IG, IT, MS など) ごとに掲載しています。</p>
-    <div id="progGroups" class="space-y-4"></div>
-  </section>
-
-  <!-- ================ Pickup ================ -->
-  <section id="view-pickup" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="star" class="w-5 h-5 text-amber-400"></i>
-      <h2 class="font-bold text-lg">学生・研修医向け Pickup</h2>
-    </div>
-    <p class="text-xs text-slate-600">学生・初期研修・専攻医の方におすすめの企画ピックアップです。</p>
-    <div id="pickupList" class="space-y-2"></div>
-  </section>
-
-  <!-- ================ フロアマップ ================ -->
-  <section id="view-map" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="map" class="w-5 h-5 text-emerald-600"></i>
-      <h2 class="font-bold text-lg">Map / 会場図 / 天気</h2>
-    </div>
-    <div class="bg-white rounded-2xl shadow-sm p-4">
-      <div class="flex items-center justify-between mb-2">
-        <div class="font-bold text-blue-700">周辺マップ・天気</div>
-        <a href="https://weather.yahoo.co.jp/weather/jp/26/61.html" target="_blank" class="text-[11px] bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full font-bold">☁ 京都の天気 (Yahoo!)</a>
-      </div>
-      <a href="https://maps.google.com/?q=国立京都国際会館" target="_blank" class="block relative">
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=国立京都国際会館&zoom=15&size=640x300&markers=color:red%7C国立京都国際会館" alt="map" class="w-full rounded-xl bg-slate-100" onerror="this.style.display='none'">
-        <div class="aspect-[16/8] rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 text-sm">
-          <i data-lucide="map-pin" class="w-5 h-5 mr-1"></i> Google Maps を開く
-        </div>
-      </a>
-      <div class="text-sm mt-3">
-        <div class="font-bold">国立京都国際会館</div>
-        <div>〒606-0001 京都府京都市左京区岩倉大鷺町422</div>
-        <div>地下鉄烏丸線「国際会館駅」4-2出口から直結</div>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-sm p-4">
-      <div class="font-bold text-blue-700 mb-2">会場階層のご案内</div>
-      <ul class="list-disc list-inside text-sm space-y-1 text-slate-700">
-        <li><b>第1会場</b>：メインホール (1F)</li>
-        <li><b>第2会場</b>：アネックスホール (1F)</li>
-        <li><b>第3会場〜第6会場</b>：Room A 〜 C-1 (1F)</li>
-        <li><b>第7会場</b>：Room C-2 (2F) <span class="text-pink-600">↑ ※2階</span></li>
-        <li><b>第8会場〜第13会場</b>：Room D 〜 K (1F)</li>
-        <li><b>第14・第15会場</b>：Room 509, 510 (5F) <span class="text-pink-600">↑ ※5階</span></li>
-        <li><b>企業展示・ポスター</b>：イベントホール (1F 別棟)</li>
-        <li><b>ミニステージ</b>：イベントホール内 (1F 別棟)</li>
-      </ul>
-      <a href="https://www.icckyoto.or.jp/" target="_blank" class="mt-3 block bg-slate-50 hover:bg-slate-100 border border-slate-200 text-center py-2.5 rounded-xl text-sm font-bold">
-        <i data-lucide="map" class="inline w-4 h-4 -mt-0.5"></i> 京都国際会館公式 フロアマップを見る <i data-lucide="external-link" class="inline w-3 h-3"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- ================ 検索 ================ -->
-  <section id="view-search" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="search" class="w-5 h-5 text-pink-500"></i>
-      <h2 class="font-bold text-lg">プログラム検索</h2>
+    <div class="flex flex-wrap gap-2 my-3" id="aiSuggest">
+      <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">土曜午前のおすすめは？</button>
+      <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">学生向けの企画を教えて</button>
+      <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">お弁当は当日買える？</button>
+      <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">会場へのアクセスは？</button>
     </div>
     <div class="flex gap-2">
-      <input id="searchInput" type="search" placeholder="キーワード (例: ケア, 連携, 登壇者名)" class="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm">
-      <button id="searchBtn" class="bg-indigo-600 text-white px-3 rounded-xl"><i data-lucide="search" class="w-4 h-4"></i></button>
-    </div>
-    <div id="searchResult" class="space-y-2">
-      <div class="text-center py-12 text-slate-400 text-sm">
-        <i data-lucide="keyboard" class="w-8 h-8 mx-auto mb-2"></i>
-        検索キーワードを入力してください。
-      </div>
-    </div>
-  </section>
-
-  <!-- ================ マイスケジュール ================ -->
-  <section id="view-myschedule" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="calendar-check" class="w-5 h-5 text-green-600"></i>
-      <h2 class="font-bold text-lg">マイスケジュール</h2>
-    </div>
-    <div class="bg-amber-50 border border-amber-300 rounded-xl p-3 text-xs text-slate-700">
-      <i data-lucide="alert-triangle" class="inline w-3.5 h-3.5 text-amber-600"></i> <b>【データ保存について】</b><br>
-      登録内容は現在のブラウザ(端末)にのみ保存されます。別端末への同期はされません。キャッシュや履歴を削除するとデータが消えますのでご注意ください。
-    </div>
-    <p class="text-xs text-slate-600">★をつけたセッションが時系列で表示されます。</p>
-    <div id="mySchedList" class="space-y-3"></div>
-    <div id="aiAnalyzeBox" class="hidden">
-      <button id="aiAnalyzeBtn" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-2.5 rounded-xl mt-2">
-        <i data-lucide="sparkles" class="inline w-4 h-4"></i> AIでマイスケジュールを分析する
-      </button>
-      <div id="aiAnalyzeResult" class="hidden mt-3 bg-purple-50 border border-purple-300 rounded-2xl p-4">
-        <div class="font-bold text-purple-700 flex items-center gap-1 mb-2"><i data-lucide="bot" class="w-4 h-4"></i>AIコンシェルジュの分析結果</div>
-        <div id="aiAnalyzeText" class="text-sm text-purple-900 whitespace-pre-wrap leading-relaxed">読み込み中…</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================ マイリスト ================ -->
-  <section id="view-mylist" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="bookmark" class="w-5 h-5 text-pink-500"></i>
-      <h2 class="font-bold text-lg">マイリスト</h2>
-    </div>
-    <div class="bg-amber-50 border border-amber-300 rounded-xl p-3 text-xs text-slate-700">
-      <i data-lucide="alert-triangle" class="inline w-3.5 h-3.5 text-amber-600"></i> <b>【データ保存について】</b><br>
-      登録内容は現在のブラウザ(端末)にのみ保存されます。別端末への同期はされません。
-    </div>
-    <p class="text-xs text-slate-600">★をつけた全項目 (登録順)。</p>
-    <div id="myList" class="space-y-2"></div>
-  </section>
-
-  <!-- ================ 各種ご案内 ================ -->
-  <section id="view-info" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="info" class="w-5 h-5 text-purple-500"></i>
-      <h2 class="font-bold text-lg">各種ご案内</h2>
-    </div>
-    <p class="text-xs text-slate-600">公式サイトに掲載されている重要情報です。詳細は各リンク先をご確認ください。</p>
-    <div class="bg-white rounded-2xl shadow-sm p-2 space-y-1">
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="leaf" class="w-4 h-4 text-emerald-500"></i>環境への取り組み</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-1">
-          <p>本学会はプラネタリーヘルスを意識し、紙コップ廃止 (Myボトル持参必須)、デジタル抄録、ヴィーガン対応キッチンカーなど環境配慮型で運営します。</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/planetary-health/" target="_blank">公式ページ ↗</a>
-        </div>
-      </details>
-
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="utensils" class="w-4 h-4 text-pink-500"></i>飲食について</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-2">
-          <p><b>⚠ ランチョンセミナーはありません</b>。お食事の事前計画を推奨。</p>
-          <p><b>お弁当 (事前販売のみ)</b>：当日販売なし。引換11:00-14:00 / B1F スワン (ネームパスのチケットと交換)</p>
-          <p><b>キッチンカー</b>：ヴィーガン対応・京都スイーツ等<br>・5/30 (土) 10:00-18:00<br>・5/31 (日) 10:00-15:00</p>
-          <p><b>飲食可能エリア (3箇所)</b>：B1F スワン / 1F Annexホール周辺休憩 / 1F イベントホール周辺休憩</p>
-          <p>※セッション会場内での飲食は禁止 (5/30 開会式・大会長講演・理事長講演 12:10-13:20 を除く)</p>
-          <p>※会場周辺には飲食店・コンビニが少ないです。</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/food/" target="_blank">公式ページ ↗</a>
-        </div>
-      </details>
-
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="party-popper" class="w-4 h-4 text-pink-500"></i>PCナイト (懇親会)</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-1">
-          <p><b>5/30 (土) 18:00-20:00</b> (受付17:30〜) ・ <b>スワン・メインホール前ホワイエ・庭園</b> ・ 立食ビュッフェ</p>
-          <p>一般5,000円 (先着400名) ／ 初期研修医・学生3,000円 (先着100名) ／ ソフトドリンク飲み放題含。アルコール別 (現金のみ)</p>
-          <p>4ゾーン構成: セッション / キャリア相談 / ファミリー (乳幼児〜小学生同伴可) / 休憩</p>
-          <p class="text-rose-600">⚠ 既に定員に達しており受付終了</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/reception/" target="_blank">公式ページ ↗</a>
-        </div>
-      </details>
-
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="bed" class="w-4 h-4 text-indigo-500"></i>宿泊のご案内</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-1">
-          <p>学会では宿泊の手配・紹介は行っていません。各自で予約サイトより手配を。</p>
-          <p>5月の京都は観光シーズンで混雑、開催日が近づくにつれ予約困難になります。早期予約推奨。</p>
-          <p>主要予約サイト: るるぶトラベル / じゃらん / 楽天 / Trivago / agoda / Expedia / 一休.com</p>
-          <p>地下鉄烏丸線沿線 (京都駅・四条・烏丸御池) が会場アクセス◎</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/accommodation/" target="_blank">公式ページ ↗</a>
-        </div>
-      </details>
-
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-amber-500"></i>単位一覧</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-1">
-          <p><b>JPCA 専門医・認定医</b>: 参加登録で10単位 (申請手続不要、7月末以降マイページにアップ)</p>
-          <p><b>プライマリ・ケア認定薬剤師</b>: 6単位</p>
-          <p><b>専攻医</b>: Off-the-job training</p>
-          <p><b>日本医師会認定産業医</b>: 指定セッション受講のみ・<u>現地参加のみ</u> (オンライン視聴は対象外、受講確認票提出が必要)</p>
-          <p><b>日本医師会生涯教育単位</b>: 参加証明書ダウンロード可。申告は毎年3〜4月末</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/credit/" target="_blank">公式ページ ↗</a>
-        </div>
-      </details>
-
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-500"></i>指導医養成講習会</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-1">
-          <p><b>5/31 (日) 10:15-11:45</b> ・ 定員50名 ・ 指導医のみ対象</p>
-          <p>テーマ「職場基盤評価 (WPBA) を臨床現場に実装する」 ・ 受講で指導医更新単位1.5付与</p>
-          <p class="text-rose-600">⚠ 申込締切済 (3/6〜4/10) ・ 遅刻/途中退席は単位付与不可</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/workshop/" target="_blank">公式ページ ↗</a>
-        </div>
-      </details>
-
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="presentation" class="w-4 h-4 text-violet-500"></i>ご登壇者の皆様へ</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-1">
-          <p>口演はPowerPoint等で現地発表、ポスターはe-poster (モニター投影) 形式。学生セッション・Research in Progressは紙ポスター形式。</p>
-          <p>すべての演題で利益相反 (COI) 状態の開示が必須。</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/speaker/" target="_blank">公式ページ ↗</a>
-        </div>
-      </details>
-
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="baby" class="w-4 h-4 text-pink-400"></i>お子さま連れの方へ</summary>
-        <div class="text-sm mt-2 text-slate-700 space-y-1">
-          <p>託児所 ・ キッズツアー ・ 小中高生企画 ・ サイトビジット (金曜日) を用意。すべて事前申込制。</p>
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/nursery/" target="_blank">託児所 ↗</a> ・
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/kids-tour/" target="_blank">キッズツアー ↗</a> ・
-          <a class="text-blue-600 underline" href="https://jpca2026.jp/with-kids/" target="_blank">お子さま連れ ↗</a>
-        </div>
-      </details>
-    </div>
-    <div class="bg-white rounded-2xl shadow-sm p-4 text-sm">
-      <div class="font-bold mb-1">運営事務局</div>
-      <div>株式会社シー・エヌ・エス内</div>
-      <div>📧 <a class="text-blue-600 underline" href="mailto:jpca2026@cnsinc.jp">jpca2026@cnsinc.jp</a></div>
-      <div>📞 03-5768-3619</div>
-    </div>
-  </section>
-
-  <!-- ================ 準備 ================ -->
-  <section id="view-prep" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="briefcase" class="w-5 h-5 text-indigo-600"></i>
-      <h2 class="font-bold text-lg">準備・持ち物</h2>
-    </div>
-    <div class="bg-white rounded-2xl shadow-sm p-4">
-      <div class="font-bold text-blue-700 mb-2">持ち物チェックリスト</div>
-      <div id="prepList" class="space-y-3 text-sm"></div>
-    </div>
-    <div class="bg-white rounded-2xl shadow-sm p-4">
-      <div class="font-bold text-blue-700 mb-2 flex items-center gap-1"><i data-lucide="shirt" class="w-4 h-4"></i>服装について</div>
-      <div class="rounded-xl bg-blue-50 p-3 text-sm space-y-2">
-        <div><span class="font-bold text-blue-700">基本はオフィスカジュアル</span><br><span class="text-slate-700">学生や初期研修医の方はスーツでなくても大丈夫です。襟付きのシャツなど、清潔感のある服装なら浮きません。</span></div>
-        <div><span class="font-bold">👟 靴は歩きやすいもので！</span><br><span class="text-slate-700">会場はとにかく広いです。展示会場から講演会場までかなり歩くため、履き慣れた靴を強く推奨します。</span></div>
-      </div>
+      <input id="aiInput" type="text" placeholder="メッセージを入力..." class="flex-1 border border-slate-300 rounded-full px-4 py-3 text-sm">
+      <button id="aiSend" class="w-12 h-12 rounded-full bg-grad text-white flex items-center justify-center shrink-0"><i data-lucide="send" class="w-5 h-5"></i></button>
     </div>
   </section>
 
@@ -444,138 +156,7 @@
       <i data-lucide="stethoscope" class="w-5 h-5 text-rose-500"></i>
       <h2 class="font-bold text-lg">おすすめ企画診断</h2>
     </div>
-    <div id="diagBox" class="bg-white rounded-2xl shadow-sm p-4"></div>
-  </section>
-
-  <!-- ================ 攻略法 ================ -->
-  <section id="view-strategy" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="book-open" class="w-5 h-5 text-blue-700"></i>
-      <h2 class="font-bold text-lg">攻略法・対象マーク凡例</h2>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-sm p-4">
-      <div class="font-bold text-blue-700 mb-2">対象者マークの凡例</div>
-      <p class="text-xs text-slate-600 mb-3">プログラムには推奨される対象者のマークがついています。参加の参考にしてください。(対象外の方の参加も大歓迎です！)</p>
-      <div class="flex flex-wrap gap-1.5">
-        <span class="b-any   text-xs px-2 py-1 rounded-full font-semibold">どなたでも</span>
-        <span class="b-stu   text-xs px-2 py-1 rounded-full font-semibold">学生等(卒前)</span>
-        <span class="b-ini   text-xs px-2 py-1 rounded-full font-semibold">初期など(卒後1-2年)</span>
-        <span class="b-spec36 text-xs px-2 py-1 rounded-full font-semibold">専門医など(卒後3-6年)</span>
-        <span class="b-spec  text-xs px-2 py-1 rounded-full font-semibold">専門医</span>
-        <span class="b-sup   text-xs px-2 py-1 rounded-full font-semibold">指導医(リカレント)</span>
-        <span class="b-other text-xs px-2 py-1 rounded-full font-semibold">その他</span>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-sm p-4">
-      <div class="font-bold text-blue-700 mb-2">学会の雰囲気を知ろう</div>
-      <ul class="text-sm text-slate-700 space-y-2">
-        <li><b>交流メインな雰囲気</b><br>総合診療医・家庭医のみならず学生,研修医,多職種も多数参加しています。</li>
-        <li><b>ドレスコードもカジュアル</b><br>この学会はスーツの人のほうが少数派! キレイめな恰好ならOKです。</li>
-        <li><b>どんどんメモを取ろう</b><br>印象に残ったこと・疑問点、話のタネをストックしましょう。</li>
-      </ul>
-      <div class="font-bold text-blue-700 mt-4 mb-2">ネットワーク作りに挑戦してみよう！</div>
-      <ul class="text-sm text-slate-700 space-y-1.5">
-        <li><b>チャンス</b>：一流の専門家に会えるチャンス! 質問してみよう!</li>
-        <li><b>事前計画を</b>：どのセッションに参加するか事前に計画しよう!</li>
-        <li><b>企画中は…</b>：発表者・質問者・司会者に注目してスキルを盗みましょう!</li>
-        <li><b>同世代で</b>：頑張る同世代が沢山います! 刺激を受けましょう!</li>
-        <li><b>名刺</b>：社会人アイテム! 交換方法で臆さないよう練習を!</li>
-      </ul>
-      <div class="font-bold text-blue-700 mt-4 mb-2">名刺交換の基本作法</div>
-      <div class="rounded-xl bg-amber-50 p-3 text-sm text-rose-700 space-y-1.5">
-        <div class="font-bold">基本のステップ</div>
-        <div>1. 名刺入れの上に乗せて</div>
-        <div>2. 両手で持って自分から差し出す</div>
-        <div>3. 同時なら 右手で差し出し左手で受け取る</div>
-        <div>4. 受け取り すぐにしまわず相手に合わせて</div>
-        <div class="pt-1"><b>NG行為</b>：名刺で手遊び・ポケットや財布から直出し</div>
-      </div>
-    </div>
-
-    <div class="bg-green-50 border border-green-300 rounded-2xl shadow-sm p-4">
-      <div class="font-bold text-green-800 mb-3 flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4"></i>若手向けお役立ち情報・コミュニティ</div>
-      <div class="space-y-2">
-        <a href="https://line.me/ti/g2/8SrVIN2EP2o3ni82qO-XJXJ1UeSDiUmopg8HOA?utm_source=invitation&utm_medium=QR_code&utm_campaign=default" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
-          <i data-lucide="beer" class="w-4 h-4 text-orange-500"></i>Generalist Bar (PW: wakate) <i data-lucide="external-link" class="w-3 h-3"></i>
-        </a>
-        <a href="https://www.primarycare-japan.com/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
-          <i data-lucide="user-round" class="w-4 h-4 text-blue-600"></i>JPCA 若手医師支援部門
-        </a>
-        <a href="https://line.me/ti/g2/Gi7b9f0eMUTJYXXbkM9d_AXOYfr3gq1exl4AAA?utm_source=invitation&utm_medium=QR_code&utm_campaign=default" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
-          <i data-lucide="egg" class="w-4 h-4 text-amber-500"></i>じぇねたま（初期研修医対象サロン）<i data-lucide="external-link" class="w-3 h-3"></i>
-        </a>
-        <a href="https://line.me/ti/g2/iqgof_4CgtZBdqDcPJwTM4ZcgNX9YvLqIVrBCw?utm_source=invitation&utm_medium=QR_code&utm_campaign=default" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 bg-white border border-slate-200 rounded-xl py-2.5 text-sm font-bold text-slate-700">
-          <i data-lucide="link" class="w-4 h-4 text-purple-600"></i>Genelink（イベント情報）<i data-lucide="external-link" class="w-3 h-3"></i>
-        </a>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-sm p-4">
-      <div class="font-bold text-blue-700 mb-3">対象者別の学会攻略法</div>
-      <div class="space-y-2">
-        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>学生等(卒前) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
-          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
-            <p><b>初めての学会でも大丈夫！</b></p>
-            <p>まずは同世代が集まる「学生・研修医セッション」や「PickUp企画」に参加してみましょう。懇親会やポスター会場では、勇気を出して「学生です！」と名乗れば、先輩医師たちが優しく丁寧に教えてくれます。</p>
-            <p>また、多くのブースを回って、色々な地域の医療や働き方を知るのがおすすめです。</p>
-          </div>
-        </details>
-        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="user" class="w-4 h-4 text-red-500"></i>初期など(卒後1-2年) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
-          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
-            <p><b>臨床のリアルな悩みを解決するチャンス！</b></p>
-            <p>「ハンズオンセミナー」で明日から使える手技を学んだり、「キャリアカフェ」で少し上の先輩医師に進路相談をしてみましょう。</p>
-            <p>また、他施設の同期と交流し、モチベーションを高め合うのも学会の醍醐味です。</p>
-          </div>
-        </details>
-        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="stethoscope" class="w-4 h-4 text-cyan-600"></i>専門医など(卒後3-6年) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
-          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
-            <p><b>現場のリーダーとしてのステップアップ！</b></p>
-            <p>「インタラクティブセッション」で他施設の工夫を学んだり、自身のキャリアパスを広げるための人脈作りを意識してみましょう。</p>
-            <p>興味のある分野の「インタレストグループ（IG）」に参加して、深く議論を交わし、実践のヒントを持ち帰るのがおすすめです。</p>
-          </div>
-        </details>
-        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="user-check" class="w-4 h-4 text-violet-600"></i>専門医 の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
-          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
-            <p><b>最新知見の獲得とネットワーク構築</b></p>
-            <p>各領域のシンポジウムや教育講演を通じて、専門性をさらに高めることができます。</p>
-            <p>また、同じ専門分野の医師と交流することで、新たな共同研究やプロジェクトの立ち上げのきっかけになることもあります。</p>
-          </div>
-        </details>
-        <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-semibold flex items-center justify-between"><span class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-pink-600"></i>指導医(リカレント) の方</span><i data-lucide="chevron-down" class="w-4 h-4"></i></summary>
-          <div class="text-sm mt-2 text-slate-700 space-y-1.5">
-            <p><b>知識のアップデートと後進の育成！</b></p>
-            <p>最新のガイドラインや知見のアップデートはもちろんのこと、指導医向けのリカレント教育プログラム（WPBAなど）を活用し、教育スキルを深めてください。</p>
-            <p>また、若い世代の発表に耳を傾け、温かいフィードバックをお願いいたします。</p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================ FAQ ================ -->
-  <section id="view-faq" class="view space-y-3">
-    <div class="accent-bar flex items-center gap-2">
-      <i data-lucide="help-circle" class="w-5 h-5 text-orange-500"></i>
-      <h2 class="font-bold text-lg">よくある質問</h2>
-    </div>
-    <div class="bg-white rounded-2xl shadow-sm p-2 space-y-2">
-      <details class="rounded-xl bg-slate-50 p-3" open><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i>企画で得た学びはどう整理するといい?</summary>
-        <div class="text-sm mt-2 rounded-xl bg-emerald-50 p-3 text-slate-700"><b>A.</b> ポイントをあえて3つに整理してみたり、自分が今後どう活かすか?という言葉や目標に置き換えてみましょう。</div>
-      </details>
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i>交換した名刺はどうする?</summary>
-        <div class="text-sm mt-2 rounded-xl bg-emerald-50 p-3 text-slate-700"><b>A.</b> 「今後もつながりたい」と思った方には 早めに挨拶メールをしてみましょう!</div>
-      </details>
-      <details class="rounded-xl bg-slate-50 p-3"><summary class="cursor-pointer font-bold text-blue-700 flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i>他にも何かできることはありますか?</summary>
-        <div class="text-sm mt-2 rounded-xl bg-emerald-50 p-3 text-slate-700"><b>A.</b> 出会いを楽しめば結構です! 完璧を求めず、年に1回のお祭り的にその場を楽しみましょう!<br>年に1回の学会をお楽しみ下さい!</div>
-      </details>
-    </div>
-    <p class="text-[11px] text-slate-500 leading-relaxed mt-2">
-      ※本しおりの一部コンテンツはJPCA学生・若手医療者支援委員会 BRIDGE-R 作成「はじめてのJPCA学会参加ガイド」より引用しています。<br>
-      監修：日本プライマリ・ケア連合学会 学生・若手医療者支援委員会<br>
-      作成：杉原伸明（JPCA学生・若手医療者支援委員会 BRIDGE-R 北海道家庭医療学センター 帯広協会病院 総合診療科）
-    </p>
+    <div id="diagBox" class="bg-white rounded-2xl shadow-sm p-5"></div>
   </section>
 
   <!-- ================ プログラム詳細 (Modal) ================ -->
@@ -586,36 +167,15 @@
     </div>
   </div>
 
-  <!-- ================ AIコンシェルジュ (Modal) ================ -->
-  <div id="aiModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-5 relative flex flex-col" style="max-height:85vh">
-      <button id="aiClose" class="absolute top-3 right-3 w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center"><i data-lucide="x" class="w-4 h-4"></i></button>
-      <div class="flex items-center gap-2 mb-2 text-pink-600 font-bold"><i data-lucide="bot" class="w-5 h-5"></i>AIコンシェルジュ</div>
-      <p class="text-xs text-slate-600 mb-3">学会に関する疑問や、京都のおすすめなど何でも質問してください！<br>(Powered by Gemini)</p>
-      <div id="aiChatLog" class="flex-1 overflow-y-auto bg-slate-50 rounded-xl p-3 text-sm space-y-2 mb-3">
-        <div class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700">こんにちは！第17回日本プライマリ・ケア連合学会学術大会のAIコンシェルジュです。会場の場所、プログラムの探し方など、何かお手伝いできることはありますか？ ✨</div>
-      </div>
-      <div class="flex gap-2">
-        <input id="aiInput" type="text" placeholder="メッセージを入力..." class="flex-1 border border-slate-200 rounded-full px-3 py-2 text-sm">
-        <button id="aiSend" class="w-9 h-9 rounded-full bg-pink-500 text-white flex items-center justify-center"><i data-lucide="send" class="w-4 h-4"></i></button>
-      </div>
-    </div>
-  </div>
 
 </main>
 
-<!-- =========== ボトムナビ (横スクロール) =========== -->
+<!-- =========== ボトムナビ (3項目・大きめ) =========== -->
 <nav class="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 z-40">
-  <div class="botnav max-w-3xl mx-auto flex">
-    <button data-go="view-home"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="home"           class="w-5 h-5"></i><span>トップ</span></button>
-    <button data-go="view-prep"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="briefcase"      class="w-5 h-5"></i><span>準備</span></button>
-    <button data-go="view-schedule"   class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="calendar-days"  class="w-5 h-5"></i><span>日程表</span></button>
-    <button data-go="view-diag"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="stethoscope"    class="w-5 h-5"></i><span>診断</span></button>
-    <button data-go="view-myschedule" class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="calendar-check" class="w-5 h-5"></i><span>マイ予定</span></button>
-    <button data-go="view-strategy"   class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="book-open"      class="w-5 h-5"></i><span>攻略法</span></button>
-    <button data-go="view-map"        class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="map"            class="w-5 h-5"></i><span>Map/天気</span></button>
-    <button data-go="view-info"       class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="info"           class="w-5 h-5"></i><span>各種ご案内</span></button>
-    <button data-go="view-faq"        class="nav-btn min-w-[20%] py-2.5 flex flex-col items-center gap-0.5 text-[11px]"><i data-lucide="help-circle"    class="w-5 h-5"></i><span>FAQ</span></button>
+  <div class="max-w-3xl mx-auto grid grid-cols-3">
+    <button data-go="view-home" class="nav-btn py-3 flex flex-col items-center gap-1 text-xs"><i data-lucide="home"        class="w-6 h-6"></i><span>ホーム</span></button>
+    <button data-go="view-ai"   class="nav-btn py-3 flex flex-col items-center gap-1 text-xs"><i data-lucide="sparkles"    class="w-6 h-6"></i><span>AIコンシェルジュ</span></button>
+    <button data-go="view-diag" class="nav-btn py-3 flex flex-col items-center gap-1 text-xs"><i data-lucide="stethoscope" class="w-6 h-6"></i><span>診断</span></button>
   </div>
 </nav>
 
@@ -820,21 +380,12 @@ function badge(aud){ return `<span class="b-${aud} text-[10px] px-1.5 py-0.5 rou
 function tagBadges(tags){ return (tags||[]).map((t,i)=>`<span class="${i%2?'b-tag2':'b-tag'} text-[10px] px-1.5 py-0.5 rounded-full font-semibold">${t}</span>`).join(""); }
 
 function progCard(p){
-  const favs = getFavs();
-  const on = favs.has(p.id);
   return `<div class="bg-white rounded-2xl shadow-sm p-3 cursor-pointer hover:shadow-md transition" data-detail="${p.id}">
-    <div class="flex justify-between items-start gap-2">
-      <div class="flex-1 min-w-0">
-        <div class="flex flex-wrap gap-1 mb-1">${badge(p.aud)}${tagBadges(p.tags)}</div>
-        <div class="font-semibold text-sm leading-snug">${p.title}</div>
-        ${p.speakers ? `<div class="text-[11px] text-slate-600 mt-1 leading-tight"><i data-lucide="users" class="inline w-3 h-3 -mt-0.5 mr-0.5"></i>${p.speakers}</div>` : ""}
-        <div class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3"></i>Day ${p.day==="5/29"?1:p.day==="5/30"?2:3} (${p.day}) ${p.time}</div>
-        <div class="text-[11px] text-slate-500 flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3"></i>${p.room}</div>
-      </div>
-      <button data-fav="${p.id}" class="shrink-0 p-1.5 rounded-full ${on?'fav-on':''}" aria-label="お気に入り">
-        <i data-lucide="star" class="w-5 h-5 text-slate-300"></i>
-      </button>
-    </div>
+    <div class="flex flex-wrap gap-1 mb-1">${badge(p.aud)}${tagBadges(p.tags)}</div>
+    <div class="font-semibold text-sm leading-snug">${p.title}</div>
+    ${p.speakers ? `<div class="text-[11px] text-slate-600 mt-1 leading-tight"><i data-lucide="users" class="inline w-3 h-3 -mt-0.5 mr-0.5"></i>${p.speakers}</div>` : ""}
+    <div class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3"></i>Day ${p.day==="5/29"?1:p.day==="5/30"?2:3} (${p.day}) ${p.time}</div>
+    <div class="text-[11px] text-slate-500 flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3"></i>${p.room}</div>
   </div>`;
 }
 
@@ -1076,10 +627,14 @@ function renderDiag(){
       ${recs.length===0
         ? `<p class="text-sm text-slate-500 text-center py-6">条件に合うプログラムが見つかりませんでした。</p>`
         : `<div class="space-y-2 mb-3">${recs.map(p=>progCard(p)).join("")}</div>`}
-      ${recs.length>0 ? `<button id="diagAddAll" class="w-full bg-green-500 text-white font-bold py-2.5 rounded-xl mb-2">全てマイスケジュールに登録する</button>` : ""}
+      ${recs.length>0 ? `<button id="diagAskAI" class="w-full bg-grad text-white font-bold py-3 rounded-xl mb-2 flex items-center justify-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i>この結果をもとにAIに相談する</button>` : ""}
       <button id="diagReset" class="w-full bg-slate-100 text-slate-700 font-bold py-2.5 rounded-xl">もう一度やり直す</button>`;
-    if(recs.length>0) document.getElementById("diagAddAll").onclick = () => {
-      const s = getFavs(); recs.forEach(p=>s.add(p.id)); saveFavs(s); alert(`${recs.length}件登録しました`); show("view-myschedule");
+    if(recs.length>0) document.getElementById("diagAskAI").onclick = () => {
+      const titles = recs.slice(0,8).map(p=>p.title).join(" / ");
+      show("view-ai");
+      const i=document.getElementById("aiInput");
+      i.value = `診断で次のセッションがおすすめされました: ${titles}。この中から特に外せないものと、効率的な回り方を教えて。`;
+      sendChat();
     };
     document.getElementById("diagReset").onclick = () => { diagState = { idx:0, ans: Array(DIAG_Q.length).fill(null).map(()=>[]), started:false }; renderDiag(); };
     lucide.createIcons();
@@ -1116,14 +671,7 @@ function show(viewId){
     b.classList.toggle("text-slate-500", !active);
   });
   window.scrollTo({top:0,behavior:"instant"});
-  if(viewId==="view-schedule")   { renderDayPicker(); renderScheduleGrid(); }
-  if(viewId==="view-program")    renderProgramGroups();
-  if(viewId==="view-pickup")     renderPickup();
-  if(viewId==="view-mylist")     renderMyList();
-  if(viewId==="view-myschedule") renderMySchedule();
-  if(viewId==="view-prep")       renderPrep();
   if(viewId==="view-diag")       renderDiag();
-  if(viewId==="view-search")     renderSearch();
   setTimeout(()=>lucide.createIcons(),0);
 }
 function refresh(){ const v=document.querySelector(".view.active"); if(v) show(v.id); }
@@ -1131,27 +679,20 @@ function refresh(){ const v=document.querySelector(".view.active"); if(v) show(v
 function openDetail(id){
   const p = PROGRAMS.find(x=>x.id===id);
   if(!p) return;
-  const favs = getFavs();
-  const on = favs.has(id);
   const body = document.getElementById("detailBody");
   body.innerHTML = `
     <div class="text-xs text-slate-500 mb-1">${p.type} ・ Day ${p.day==="5/29"?1:p.day==="5/30"?2:3} (${p.day})</div>
     <h3 class="font-bold text-base leading-snug mb-2">${p.title}</h3>
     <div class="flex flex-wrap gap-1 mb-3">${badge(p.aud)}${tagBadges(p.tags)}</div>
-    <div class="space-y-1 text-sm text-slate-700 mb-4">
+    <div class="space-y-1 text-sm text-slate-700">
       <div class="flex gap-2 items-start"><i data-lucide="clock" class="w-4 h-4 mt-0.5 text-slate-400"></i><div>${p.time}</div></div>
       <div class="flex gap-2 items-start"><i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-slate-400"></i><div>${p.room}</div></div>
       ${p.speakers ? `<div class="flex gap-2 items-start"><i data-lucide="users" class="w-4 h-4 mt-0.5 text-slate-400"></i><div>${p.speakers}</div></div>` : ""}
     </div>
-    <button id="detailFav" class="w-full ${on?'bg-amber-500':'bg-grad'} text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5">
-      <i data-lucide="${on?'star-off':'star'}" class="w-4 h-4"></i>
-      ${on?'マイ予定から外す':'マイ予定に追加する'}
-    </button>
   `;
   document.getElementById("detailModal").classList.remove("hidden");
   document.getElementById("detailModal").classList.add("flex");
   lucide.createIcons();
-  document.getElementById("detailFav").onclick = () => { toggleFav(id); openDetail(id); };
 }
 function closeDetail(){
   const m = document.getElementById("detailModal");
@@ -1161,25 +702,14 @@ function closeDetail(){
 document.addEventListener("click", (e)=>{
   const go = e.target.closest("[data-go]");
   if(go){ show(go.dataset.go); return; }
-  const fav = e.target.closest("[data-fav]");
-  if(fav){ toggleFav(fav.dataset.fav); return; }
   const det = e.target.closest("[data-detail]");
   if(det){ openDetail(det.dataset.detail); return; }
   if(e.target.id==="detailModal") closeDetail();
-  if(e.target.id==="aiModal"){
-    const m = document.getElementById("aiModal");
-    m.classList.add("hidden"); m.classList.remove("flex");
-  }
+  const chip = e.target.closest(".ai-chip");
+  if(chip){ const i=document.getElementById("aiInput"); i.value=chip.textContent; sendChat(); return; }
 });
 document.getElementById("detailClose").onclick = closeDetail;
-document.getElementById("btnAI").onclick = () => {
-  const m = document.getElementById("aiModal");
-  m.classList.remove("hidden"); m.classList.add("flex");
-};
-document.getElementById("aiClose").onclick = () => {
-  const m = document.getElementById("aiModal");
-  m.classList.add("hidden"); m.classList.remove("flex");
-};
+document.getElementById("btnAI").onclick = () => show("view-ai");
 
 /* ===== AI 呼び出し =====
    Cloudflare Worker プロキシ経由で Gemini API を呼び出します。
@@ -1379,23 +909,6 @@ ${buildProgramContext()}
 }
 document.getElementById("aiSend").onclick = sendChat;
 document.getElementById("aiInput").addEventListener("keypress", e=>{ if(e.key==="Enter") sendChat(); });
-
-async function analyzeSchedule(){
-  const favs = [...getFavs()].map(id=>PROGRAMS.find(p=>p.id===id)).filter(Boolean);
-  if(favs.length===0){ alert("まず日程表でセッションを★登録してください。"); return; }
-  const box = document.getElementById("aiAnalyzeResult");
-  const txt = document.getElementById("aiAnalyzeText");
-  box.classList.remove("hidden"); txt.innerText = "AIがあなたのスケジュールを分析しています…";
-  const list = favs.map(p=>`- Day${p.day==="5/29"?1:p.day==="5/30"?2:3} ${p.time} [${p.title}] (タグ: ${(p.tags||[]).join(", ")})`).join("\n");
-  const prompt = `私はJPCA2026参加者です。以下が登録したスケジュールです。\n\n${list}\n\n以下3点を150〜200字程度のフレンドリーな日本語で:\n1. 私の学びの傾向や関心\n2. 当日のネットワーキングのワンポイント\n3. 励ましのメッセージ`;
-  const sys = "あなたは学会参加者を応援し有益なインサイトを提供するAIメンターです。";
-  const r = await callGemini(prompt, sys);
-  txt.innerHTML = r.replace(/\n/g,"<br>");
-}
-document.getElementById("aiAnalyzeBtn").onclick = analyzeSchedule;
-document.getElementById("searchInput").oninput = renderSearch;
-document.getElementById("searchBtn").onclick = renderSearch;
-document.addEventListener("change", e=>{ if(e.target.id==="dayPicker") renderScheduleGrid(); });
 
 /* init */
 lucide.createIcons();

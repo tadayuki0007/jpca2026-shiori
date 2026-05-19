@@ -409,17 +409,7 @@ const TYPE_LABEL = {
   IG:"インタレストグループ", IS:"インタラクティブセッション", IA:"インタラクティブセッション",
   MS:"ミニステージ", O:"一般演題 / 学生口演", E:"懇親会・飲食・その他"
 };
-const TYPE_ORDER = ["I","S","EL","J","IG","IS","IA","MS","O","E"];
 
-/* ===================== State (localStorage) ===================== */
-const FAV_KEY = "jpca2026_favs_v2";
-const getFavs = () => new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]"));
-const saveFavs = (s) => localStorage.setItem(FAV_KEY, JSON.stringify([...s]));
-const toggleFav = (id) => { const s=getFavs(); s.has(id)?s.delete(id):s.add(id); saveFavs(s); refresh(); };
-
-const PREP_KEY = "jpca2026_prep_v2";
-const getPrep = () => JSON.parse(localStorage.getItem(PREP_KEY) || "{}");
-const savePrep = (o) => localStorage.setItem(PREP_KEY, JSON.stringify(o));
 
 /* ===================== Render helpers ===================== */
 function badge(aud){ return `<span class="b-${aud} text-[10px] px-1.5 py-0.5 rounded-full font-semibold">${AUDIENCE_LABEL[aud]||aud}</span>`; }
@@ -435,157 +425,6 @@ function progCard(p){
   </div>`;
 }
 
-function renderProgramGroups(){
-  const el = document.getElementById("progGroups");
-  const groups = {};
-  PROGRAMS.forEach(p => { (groups[p.type] = groups[p.type] || []).push(p); });
-  const keys = TYPE_ORDER.filter(k=>groups[k]).concat(Object.keys(groups).filter(k=>!TYPE_ORDER.includes(k)));
-  el.innerHTML = keys.map(t => `
-    <div>
-      <div class="bg-indigo-100 text-indigo-900 font-bold rounded-xl px-3 py-2 mb-2 text-sm">${t} ・ ${TYPE_LABEL[t]||""} <span class="text-xs text-indigo-500 ml-1">${groups[t].length}件</span></div>
-      <div class="space-y-2">${groups[t].sort((a,b)=>(a.day+a.time).localeCompare(b.day+b.time)).map(p=>progCard(p)).join("")}</div>
-    </div>
-  `).join("");
-}
-
-// BRIDGE-R 手選定の学生・研修医向けPickup 6企画
-const PICKUP_IDS = ["MS1","MS5","MS3","J6","S19","MS6"];
-function renderPickup(){
-  const items = PICKUP_IDS.map(id=>PROGRAMS.find(p=>p.id===id)).filter(Boolean);
-  document.getElementById("pickupList").innerHTML = items.map(p=>progCard(p)).join("");
-}
-
-/* === Schedule grid === */
-const DAYS = [
-  {key:"5/29", label:"Day 1 (5/29 金) 13:30〜16:45",            slots:["13:30","15:15"]},
-  {key:"5/30", label:"Day 2 (5/30 土) 08:30〜20:00 (含懇親会)", slots:["08:30","10:15","12:10","13:30","15:15","18:00"]},
-  {key:"5/31", label:"Day 3 (5/31 日) 08:30〜15:45",            slots:["08:30","10:15","12:30","14:15"]},
-];
-function renderDayPicker(){
-  document.getElementById("dayPicker").innerHTML = DAYS.map(d=>`<option value="${d.key}">${d.label}</option>`).join("");
-}
-function renderScheduleGrid(){
-  const dayKey = document.getElementById("dayPicker").value || DAYS[0].key;
-  const day = DAYS.find(d=>d.key===dayKey);
-  const items = PROGRAMS.filter(p=>p.day===dayKey);
-  const rooms = [...new Set(items.map(p=>p.room))];
-  const grid = document.getElementById("scheduleGrid");
-  const colHead = `<div class="grid" style="grid-template-columns: 90px repeat(${day.slots.length}, minmax(150px, 1fr));">
-    <div class="bg-slate-50 font-bold text-xs p-2 text-center">会場\\時間</div>
-    ${day.slots.map(s=>`<div class="bg-slate-50 font-bold text-xs p-2 text-center">${s}</div>`).join("")}
-  </div>`;
-  const favs = getFavs();
-  const tMin = t => { const [h,m]=t.split(":").map(Number); return h*60+m; };
-  const body = rooms.map(room => {
-    const cells = day.slots.map((slot, idx) => {
-      const slotStart = tMin(slot);
-      const slotEnd = idx+1 < day.slots.length ? tMin(day.slots[idx+1]) : 24*60;
-      const inSlot = items.filter(p => {
-        if(p.room!==room) return false;
-        const startMin = tMin(p.time.split("-")[0]);
-        if(idx===0 && startMin < slotStart) return true; // earlier-than-first-slot items go in first slot
-        return startMin >= slotStart && startMin < slotEnd;
-      });
-      return `<div class="border-b border-r border-slate-100 p-1 min-h-[80px]">
-        ${inSlot.map(p=>{
-          const on = favs.has(p.id);
-          return `<div class="schedcell rounded-md p-1.5 mb-1 relative cursor-pointer" data-detail="${p.id}">
-            <button data-fav="${p.id}" class="absolute top-0.5 right-0.5 p-0.5 rounded-full ${on?'fav-on':''}" aria-label="マイ予定に追加">
-              <i data-lucide="star" class="w-3.5 h-3.5 text-slate-300"></i>
-            </button>
-            <div class="flex flex-wrap gap-0.5 mb-0.5 pr-5">${badge(p.aud)}${tagBadges(p.tags).slice(0,300)}</div>
-            <div class="text-[10px] leading-tight pr-1">${p.title}</div>
-            <div class="text-[9px] text-slate-500 mt-0.5">${p.time}</div>
-          </div>`;
-        }).join("")}
-      </div>`;
-    }).join("");
-    return `<div class="grid border-t border-slate-100" style="grid-template-columns: 90px repeat(${day.slots.length}, minmax(150px, 1fr));">
-      <div class="text-xs font-bold p-2 flex items-center justify-center bg-slate-50">${room}</div>
-      ${cells}
-    </div>`;
-  }).join("");
-  grid.innerHTML = colHead + body;
-}
-
-/* === My schedule / list === */
-function renderMyList(){
-  const favs = getFavs();
-  const items = PROGRAMS.filter(p=>favs.has(p.id));
-  document.getElementById("myList").innerHTML = items.length===0
-    ? `<p class="text-sm text-slate-500 text-center py-8">まだ何もありません。プログラムから★を付けてください。</p>`
-    : items.map(p=>progCard(p)).join("");
-}
-function renderMySchedule(){
-  const favs = getFavs();
-  const items = PROGRAMS.filter(p=>favs.has(p.id));
-  const el = document.getElementById("mySchedList");
-  const aiBox = document.getElementById("aiAnalyzeBox");
-  if(items.length===0){
-    el.innerHTML = `<p class="text-sm text-slate-500 text-center py-8">★を付けたセッションはまだありません。</p>`;
-    if(aiBox) aiBox.classList.add("hidden");
-    return;
-  }
-  if(aiBox) aiBox.classList.remove("hidden");
-  el.innerHTML = DAYS.map(d => {
-    const dayItems = items.filter(p=>p.day===d.key).sort((a,b)=>a.time.localeCompare(b.time));
-    if(dayItems.length===0) return "";
-    return `<div class="bg-white rounded-2xl shadow-sm p-3">
-      <div class="font-bold text-grad mb-2">${d.label}</div>
-      ${dayItems.map(p=>`<div class="border-l-2 border-pink-400 pl-2 mb-2 cursor-pointer" data-detail="${p.id}">
-        <div class="text-[11px] text-slate-500">${p.time} ・ ${p.room}</div>
-        <div class="text-sm font-semibold">${p.title}</div>
-      </div>`).join("")}
-    </div>`;
-  }).join("");
-}
-
-/* === Search === */
-function renderSearch(){
-  const q = (document.getElementById("searchInput").value||"").trim().toLowerCase();
-  const el = document.getElementById("searchResult");
-  if(!q){ el.innerHTML = `<div class="text-center py-12 text-slate-400 text-sm"><i data-lucide="keyboard" class="w-8 h-8 mx-auto mb-2"></i>検索キーワードを入力してください。<br><span class="text-[10px]">例: 鈴木富雄 / 在宅 / IG1 / 第5会場 / 5/30 / 学生</span></div>`; lucide.createIcons(); return; }
-  const dayLabel = d => d==="5/29"?"5/29 day1 金 きん":d==="5/30"?"5/30 day2 土 ど":"5/31 day3 日 にち";
-  const hit = PROGRAMS.filter(p => {
-    const blob = [
-      p.title, p.id, p.room, p.time, dayLabel(p.day),
-      (p.tags||[]).join(" "),
-      p.speakers||"",
-      AUDIENCE_LABEL[p.aud]||"",
-      TYPE_LABEL[p.type]||"",
-    ].join(" ").toLowerCase();
-    return blob.includes(q);
-  });
-  el.innerHTML = hit.length===0
-    ? `<p class="text-slate-500 text-center py-8 text-sm">「${q}」に該当するセッションは見つかりませんでした。</p>`
-    : `<p class="text-xs text-slate-500 mb-2">${hit.length}件ヒット</p>` + hit.map(p=>progCard(p)).join("");
-  setTimeout(()=>lucide.createIcons(),0);
-}
-
-/* === Prep checklist === */
-const PREP_ITEMS = [
-  {key:"badge",   title:"参加登録証",          desc:"スマホ保存 または 印刷"},
-  {key:"id",      title:"身分証明書 / 学生証",  desc:"受付で必要な場合があります。"},
-  {key:"card",    title:"名刺",                 desc:"交流用です。多めにご持参ください！"},
-  {key:"bottle",  title:"Myボトル / マイカップ", desc:"※環境配慮のため、飲料ゴミ削減を目指しウォーターサーバーを設置します。紙コップの用意はございませんので、必ずご持参ください。", red:true},
-  {key:"battery", title:"モバイルバッテリー",   desc:""},
-  {key:"pc",      title:"PC / タブレット / 筆記用具", desc:""},
-  {key:"folder",  title:"クリアファイル",       desc:""},
-  {key:"heat",    title:"熱中症対策",           desc:""},
-];
-function renderPrep(){
-  const state = getPrep();
-  document.getElementById("prepList").innerHTML = PREP_ITEMS.map(it=>`
-    <label class="flex gap-2 items-start cursor-pointer">
-      <input type="checkbox" class="prep-cb mt-1" data-key="${it.key}" ${state[it.key]?"checked":""}>
-      <div class="flex-1">
-        <div class="font-bold">${it.title}</div>
-        <div class="text-xs ${it.red?'text-rose-600':'text-slate-600'}">${it.desc}</div>
-      </div>
-    </label>
-  `).join("");
-  document.querySelectorAll(".prep-cb").forEach(cb=>cb.onchange=()=>{ const s=getPrep(); s[cb.dataset.key]=cb.checked; savePrep(s); });
-}
 
 /* ===================== Diagnostic (10 questions) ===================== */
 const DIAG_Q = [
@@ -720,7 +559,6 @@ function show(viewId){
   if(viewId==="view-diag")       renderDiag();
   setTimeout(()=>lucide.createIcons(),0);
 }
-function refresh(){ const v=document.querySelector(".view.active"); if(v) show(v.id); }
 
 function openDetail(id){
   const p = PROGRAMS.find(x=>x.id===id);

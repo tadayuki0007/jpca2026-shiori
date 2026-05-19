@@ -2,6 +2,7 @@
 // 秘密の GEMINI_KEY は Workers Secrets に保存。フロントには出さない。
 
 const ALLOW_ORIGINS = new Set([
+  "https://jpca2026-shiori.pages.dev",
   "https://tadayuki0007.github.io",
   "http://localhost:8000",
   "null", // file:// で開いたとき
@@ -13,7 +14,7 @@ const RATE_MAX = 12;            // 1IPあたり 60秒で最大12リクエスト
 const CACHE_TTL_SEC = 3600;     // 同一質問キャッシュ 1時間
 
 const corsHeaders = (origin) => ({
-  "Access-Control-Allow-Origin": ALLOW_ORIGINS.has(origin) ? origin : "https://tadayuki0007.github.io",
+  "Access-Control-Allow-Origin": ALLOW_ORIGINS.has(origin) ? origin : "https://jpca2026-shiori.pages.dev",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Max-Age": "86400",

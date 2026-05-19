@@ -3,3 +3,4 @@ worker/.wrangler/
 worker/node_modules/
 program-schedule.pdf
 schedule.txt
+.pages-dist/

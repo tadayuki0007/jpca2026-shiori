@@ -53,27 +53,50 @@
   <!-- ================ HOME ================ -->
   <section id="view-home" class="view active space-y-5">
 
-    <!-- はじめに -->
-    <div class="bg-white rounded-2xl shadow-sm p-5">
-      <div class="accent-bar mb-3 flex items-center gap-2">
-        <i data-lucide="info" class="w-4 h-4 text-blue-500"></i>
-        <h2 class="font-bold">はじめに — このアプリについて</h2>
-      </div>
-      <p class="text-sm text-slate-700 leading-relaxed">
-        これは第17回JPCA学術大会を<b>もっと楽しむための非公式コンパニオン</b>です。<br>
-        できることは<b>2つです</b>。
+    <!-- はじめに (元プログラマー版を踏襲) -->
+    <div style="background:#fdfdff; border: 2px solid #7e57c2; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+      <h3 style="color: #ec407a; margin: 0 0 10px 0; font-size: 1.1rem; font-weight:700;">
+        <i class="fas fa-info-circle"></i> はじめに — このツールについて
+      </h3>
+      <p style="font-size:0.85rem; color:#444; margin: 0 0 15px 0; line-height:1.65;">
+        これは第17回JPCA学術大会をもっと楽しむための<b>非公式コンパニオン</b>です。<br>
+        できることは主に以下の2つです。
       </p>
-      <ul class="text-sm text-slate-700 mt-2 space-y-1">
-        <li class="flex gap-2"><span class="text-pink-500 font-bold">①</span><span><b>AIコンシェルジュ</b> — 「土曜午前のおすすめは？」「お弁当は当日買える？」など、話し言葉で聞くと全プログラム＆会場情報から答えます。</span></li>
-        <li class="flex gap-2"><span class="text-pink-500 font-bold">②</span><span><b>おすすめ企画診断</b> — 10問であなた向けのセッションを提案します。</span></li>
-      </ul>
-      <div class="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-3">
-        <div class="text-xs font-bold text-slate-600 mb-1">公式アプリ「Confit」との違い</div>
-        <table class="text-xs text-slate-600 w-full">
-          <tr class="align-top"><td class="py-1 pr-2 font-bold whitespace-nowrap">Confit<br>(公式)</td><td class="py-1">参加登録 / 抄録閲覧 / 公式タイムテーブル / 単位申請QR / 配信視聴 など<b>正式な手続き</b>はすべてこちら。</td></tr>
-          <tr class="align-top border-t border-slate-200"><td class="py-1 pr-2 font-bold whitespace-nowrap">本アプリ<br>(非公式)</td><td class="py-1">登録不要・ログイン不要。<b>AIに気軽に相談</b>して回り方を決めるための道具。手続きや単位付与の機能はありません。</td></tr>
-        </table>
-        <p class="text-[11px] text-slate-500 mt-2">※ 登録・単位・抄録は必ず公式 <a href="https://jpca2026.jp/" target="_blank" rel="noopener" class="text-blue-600 underline">jpca2026.jp</a> / Confit をご利用ください。本アプリの情報は参考用です。</p>
+      <div style="background:#fff; border-left:4px solid #ec407a; padding:10px; margin-bottom:10px; border-radius:0 8px 8px 0; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <b style="color:#ec407a; font-size:0.9rem;">① AIコンシェルジュ</b>
+        <p style="font-size:0.8rem; margin:3px 0 0 0; color:#555; line-height:1.6;">
+          「土曜午前のおすすめは？」「お弁当は当日買える？」など、話し言葉で聞くと全プログラム＆会場情報から答えます。
+        </p>
+      </div>
+      <div style="background:#fff; border-left:4px solid #5c6bc0; padding:10px; margin-bottom:20px; border-radius:0 8px 8px 0; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <b style="color:#5c6bc0; font-size:0.9rem;">② おすすめ企画診断</b>
+        <p style="font-size:0.8rem; margin:3px 0 0 0; color:#555; line-height:1.6;">
+          約10問の質問に答えるだけで、あなた向けのプログラムを提案します。
+        </p>
+      </div>
+
+      <div style="font-weight:bold; font-size:0.9rem; color:#5c6bc0; margin-bottom:8px; border-bottom:1px dashed #ccc; padding-bottom:4px;">
+        公式アプリ「Confit」との違い
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; font-size:0.8rem; margin-bottom:15px;">
+        <div style="background:#e8eaf6; padding:10px; border-radius:8px;">
+          <b style="color:#3f51b5;">■ Confit (公式)</b><br>
+          <span style="color:#444;">参加登録 / 抄録閲覧 / 公式タイムテーブル / 単位申請QR / 配信視聴 など<b>正式な手続きはすべてこちら</b>で行います。</span>
+        </div>
+        <div style="background:#f5f5f5; padding:10px; border-radius:8px;">
+          <b style="color:#666;">■ 本ツール (非公式)</b><br>
+          <span style="color:#444;">登録不要・ログイン不要。AIに気軽に相談して回り方を決めるための<b>お助けツール</b>です。手続きや単位付与の機能はありません。</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.8rem; color:#d32f2f; font-weight:bold; margin: 0 0 10px 0;">
+        ※ 登録・単位・抄録は必ず公式ページ
+        <a href="https://jpca2026.jp/" target="_blank" rel="noopener" style="color:#d32f2f; text-decoration:underline;">(jpca2026.jp)</a>
+        / Confit をご利用ください。本アプリの情報は参考用です。
+      </p>
+      <div style="background:#e1f5fe; padding:10px; border-radius:8px; font-size:0.75rem; color:#0277bd; line-height:1.6;">
+        <i class="fas fa-lightbulb"></i> <b>ログインについて</b><br>
+        本ツールは<b>ログイン不要</b>でそのままお使いいただけます。データはお使いの端末・ブラウザに保存されるため、他の参加者と混ざることはありません。
       </div>
     </div>
 

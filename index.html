@@ -894,6 +894,8 @@ function mdToHtml(s){
   t = t.replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/__([^_]+)__/g,'<b>$1</b>');
   t = t.replace(/(^|[\s(])\*([^*\n]+)\*/g,'$1<i>$2</i>');
   t = t.replace(/^\s*###?\s*(.+)$/gm,'<div class="font-bold mt-2">$1</div>');
+  // 水平線
+  t = t.replace(/^---+$/gm,'<hr style="border:none;border-top:1px dashed #cbd5e1;margin:8px 0;">');
   // 箇条書き
   const lines = t.split("\n"); let out=[], inUl=false;
   for(const ln of lines){

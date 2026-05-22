@@ -4,3 +4,6 @@ worker/node_modules/
 program-schedule.pdf
 schedule.txt
 .pages-dist/
+
+# 予稿集由来のセッション書誌データ (Worker内部のみで使用、公開リポジトリには含めない)
+worker/src/kb_private.js

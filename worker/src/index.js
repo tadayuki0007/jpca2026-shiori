@@ -1,5 +1,8 @@
 // Gemini API プロキシ (キャッシュ + ソフトレート制限つき)
 // 秘密の GEMINI_KEY は Workers Secrets に保存。フロントには出さない。
+// 予稿集由来のセッション書誌データは PRIVATE_KB として Worker 側に保持し、
+// クライアントの公開ソースには含めない。Gemini 呼び出し時に systemText 末尾へ注入。
+import { PRIVATE_KB } from "./kb_private.js";
 
 const ALLOW_ORIGINS = new Set([
   "https://jpca2026-shiori.pages.dev",
@@ -74,9 +77,14 @@ export default {
     }
 
     // ---- 3) Gemini 呼び出し (429/5xx は指数バックオフでリトライ) ----
-    // 知識ベース大型化に対応: 上限 200KB (約 50K トークン相当)
+    // クライアント側 systemText 上限を 200KB に拡張
     if (typeof systemText === "string" && systemText.length > 200000) {
       systemText = systemText.slice(0, 200000);
+    }
+    // 予稿集ベースの私的知識ベースを末尾に結合 (公開ソースには含めない)
+    if (PRIVATE_KB) {
+      const sep = "\n\n========【予稿集ベース・全セッション詳細 (内部リファレンス)】========\n";
+      systemText = (systemText || "") + sep + PRIVATE_KB;
     }
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${apiKey}`;
     const payload = { contents: [{ parts: [{ text: userText }] }] };

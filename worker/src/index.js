@@ -74,8 +74,9 @@ export default {
     }
 
     // ---- 3) Gemini 呼び出し (429/5xx は指数バックオフでリトライ) ----
-    if (typeof systemText === "string" && systemText.length > 60000) {
-      systemText = systemText.slice(0, 60000);
+    // 知識ベース大型化に対応: 上限 200KB (約 50K トークン相当)
+    if (typeof systemText === "string" && systemText.length > 200000) {
+      systemText = systemText.slice(0, 200000);
     }
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${apiKey}`;
     const payload = { contents: [{ parts: [{ text: userText }] }] };

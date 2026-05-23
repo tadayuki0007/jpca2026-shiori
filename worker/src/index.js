@@ -87,7 +87,19 @@ export default {
       systemText = (systemText || "") + sep + PRIVATE_KB;
     }
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${apiKey}`;
-    const payload = { contents: [{ parts: [{ text: userText }] }] };
+    const payload = {
+      contents: [{ parts: [{ text: userText }] }],
+      // 高速化設定
+      generationConfig: {
+        // Gemini 2.5 の思考モードを無効化 (シンプルな質問応答用途、思考の隠れトークンによる遅延を排除)
+        thinkingConfig: { thinkingBudget: 0 },
+        // 出力トークン上限 (長文応答による待ち時間を抑制)
+        maxOutputTokens: 1024,
+        // 適度な創造性
+        temperature: 0.7,
+        topP: 0.95,
+      },
+    };
     if (systemText) payload.systemInstruction = { parts: [{ text: systemText }] };
     const bodyStr = JSON.stringify(payload);
 

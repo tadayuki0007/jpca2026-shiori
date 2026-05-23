@@ -209,23 +209,23 @@
 
   <!-- ================ AIコンシェルジュ (フル画面) ================ -->
   <section id="view-ai" class="view">
-    <div class="accent-bar mb-3 flex items-center gap-2">
+    <div class="accent-bar mb-2 flex items-center gap-2">
       <i data-lucide="sparkles" class="w-5 h-5 text-pink-500"></i>
       <h2 class="font-bold text-lg">AIコンシェルジュ</h2>
     </div>
-    <p class="text-xs text-slate-600 mb-3">学会のプログラム・会場・飲食・京都のおすすめなど、何でも質問してください！(Powered by Gemini)</p>
-    <div id="aiChatLog" class="bg-slate-50 rounded-2xl p-3 text-sm space-y-3 overflow-y-auto" style="min-height:48vh;max-height:60vh">
+    <p class="text-xs text-slate-600 mb-2">プログラム・会場・京都のおすすめなど、何でも質問どうぞ (Powered by Gemini)</p>
+    <div id="aiChatLog" class="bg-slate-50 rounded-2xl p-3 text-sm space-y-3 overflow-y-auto" style="min-height:14vh;max-height:55vh">
       <div class="bg-white border border-slate-200 rounded-2xl p-3 text-slate-700 leading-relaxed">こんにちは！第17回JPCA学術大会のAIコンシェルジュです。<br>例えば「土曜午前のおすすめは？」「お弁当は当日買える？」「学生向けの企画は？」など、お気軽にどうぞ &#10024;</div>
     </div>
-    <div class="flex flex-wrap gap-2 my-3" id="aiSuggest">
+    <div class="flex flex-wrap gap-2 mt-2 mb-2" id="aiSuggest">
       <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">土曜午前のおすすめは？</button>
       <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">学生向けの企画を教えて</button>
       <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">お弁当は当日買える？</button>
       <button class="ai-chip text-xs bg-white border border-slate-300 rounded-full px-3 py-1.5">会場へのアクセスは？</button>
     </div>
     <div class="flex gap-2">
-      <input id="aiInput" type="text" placeholder="メッセージを入力..." class="flex-1 border border-slate-300 rounded-full px-4 py-3 text-sm">
-      <button id="aiSend" class="w-12 h-12 rounded-full bg-grad text-white flex items-center justify-center shrink-0"><i data-lucide="send" class="w-5 h-5"></i></button>
+      <input id="aiInput" type="text" placeholder="メッセージを入力..." class="flex-1 border border-slate-300 rounded-full px-4 py-2.5 text-sm">
+      <button id="aiSend" class="w-11 h-11 rounded-full bg-grad text-white flex items-center justify-center shrink-0"><i data-lucide="send" class="w-5 h-5"></i></button>
     </div>
   </section>
 

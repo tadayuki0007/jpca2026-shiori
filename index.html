@@ -1005,8 +1005,16 @@ ${buildProgramContext()}
 - 「対象外でも参加歓迎」が学会方針なので、希望者には「公式は◯◯向けですが、興味あれば歓迎ですよ」と一言添える
 - 産業医単位を聞かれたら 5/31 IG13 (8:30 第14会場) と IA22 (14:15 第14会場) を案内(現地参加のみ・専門1.5単位)`;
   const r = await callGemini(txt, sys);
-  document.getElementById(id).outerHTML = `<div class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700 max-w-[85%] leading-relaxed">${mdToHtml(r)}</div>`;
-  log.scrollTop = log.scrollHeight;
+  const respId = "resp-" + id;
+  document.getElementById(id).outerHTML = `<div id="${respId}" class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700 max-w-[85%] leading-relaxed">${mdToHtml(r)}</div>`;
+  // 回答の「先頭」がチャットログの一番上に来るようスクロール
+  const respEl = document.getElementById(respId);
+  if (respEl) {
+    const logRect = log.getBoundingClientRect();
+    const respRect = respEl.getBoundingClientRect();
+    // 回答の上端を log の上端 (+ わずかな余白) に合わせる
+    log.scrollTop += (respRect.top - logRect.top) - 8;
+  }
 }
 document.getElementById("aiSend").onclick = sendChat;
 document.getElementById("aiInput").addEventListener("keypress", e=>{ if(e.key==="Enter") sendChat(); });

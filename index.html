@@ -43,6 +43,9 @@
   .ai-prog-block .meta{ font-size:0.78rem; color:#475569; margin-bottom:4px; display:flex; gap:6px; flex-wrap:wrap; }
   .ai-prog-block .title{ font-weight:700; color:#1e293b; margin-bottom:4px; }
   .ai-prog-block .desc{ color:#475569; font-size:0.85rem; }
+  /* ストリーミング中のカーソル */
+  .ai-cursor{ display:inline-block; width:7px; height:14px; background:#8a4dff; margin-left:2px; vertical-align:text-bottom; animation:aiBlink 1s steps(2) infinite; border-radius:1px; }
+  @keyframes aiBlink{ 0%{opacity:1} 50%{opacity:0} 100%{opacity:1} }
 </style>
 </head>
 <body class="text-slate-800">
@@ -642,8 +645,11 @@ document.getElementById("detailClose").onclick = closeDetail;
 */
 const AI_ENDPOINT = "https://jpca2026-ai.tadayuki0007.workers.dev/";
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
-async function callGemini(userText, systemText){
-  const backoff = [0, 1200, 2800]; // 最大3回試行（クライアント側）
+// AI 呼び出し (ストリーミング対応)。
+// 引数: userText, onDelta(piece) -> 逐次描画コールバック。
+// 戻り値: 全文。サーバ側の systemPrompt を使うため第2引数は不要 (互換のため残置)。
+async function callGeminiStream(userText, onDelta){
+  const backoff = [0, 1200, 2800];
   let last = "";
   for(let i=0;i<backoff.length;i++){
     if(backoff[i]) await sleep(backoff[i]);
@@ -651,21 +657,45 @@ async function callGemini(userText, systemText){
       const res = await fetch(AI_ENDPOINT, {
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({ userText, systemText })
+        body: JSON.stringify({ userText, stream: true })
       });
-      let j = {};
-      try{ j = await res.json(); }catch{ j = {}; }
-      if(res.ok && j.text) return j.text;
-      // 429 / 5xx / 空 → リトライ
-      if(res.status===429 || res.status>=500 || !j.text){
-        last = j.error || `HTTP ${res.status}`;
-        continue;
+      if(!res.ok){
+        let err="HTTP "+res.status;
+        try{ const j=await res.json(); err=j.error||err; }catch{}
+        last = err;
+        if(res.status===429 || res.status>=500) continue;
+        return "エラー: "+err;
       }
-      return `エラー: ${j.error || ("HTTP "+res.status)}`;
-    }catch(e){ last = e.message; /* ネットワーク → リトライ */ }
+      // SSE 受信
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let buf = "";
+      let full = "";
+      while(true){
+        const {value, done} = await reader.read();
+        if(done) break;
+        buf += dec.decode(value, {stream:true}).replace(/\r\n/g,"\n");
+        let nl;
+        while((nl = buf.indexOf("\n")) >= 0){
+          const line = buf.slice(0,nl); buf = buf.slice(nl+1);
+          if(!line.startsWith("data:")) continue;
+          const json5 = line.slice(5).trim();
+          if(!json5 || json5==="[DONE]") continue;
+          try{
+            const obj = JSON.parse(json5);
+            if(obj.delta){ full += obj.delta; if(onDelta) onDelta(obj.delta, full); }
+            if(obj.error){ last = obj.error; }
+          }catch{}
+        }
+      }
+      if(full && full.trim()) return full;
+      last = "empty";
+    }catch(e){ last = e.message; }
   }
   return `🙏 ただいま混み合っています。10〜20秒ほどおいて、もう一度送信してください。\n(詳細: ${last})`;
 }
+// 旧シグネチャ互換 (診断画面など、非ストリームで呼ばれる場所用)
+async function callGemini(userText){ return callGeminiStream(userText, null); }
 function buildProgramContext(){
   const dayName = d => d==="5/29"?"D1金":d==="5/30"?"D2土":"D3日";
   // 対象者ラベルは AI の人選マッチングに直結するため必ず含める。
@@ -933,88 +963,34 @@ async function sendChat(){
   const log = document.getElementById("aiChatLog");
   log.insertAdjacentHTML("beforeend", `<div class="bg-indigo-100 text-indigo-900 rounded-xl p-2.5 ml-auto max-w-[85%] w-fit">${txt}</div>`);
   input.value = "";
-  const id = "load-"+Date.now();
-  log.insertAdjacentHTML("beforeend", `<div id="${id}" class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-500 text-xs">考え中…</div>`);
-  log.scrollTop = log.scrollHeight;
-  const sys = `あなたは第17回日本プライマリ・ケア連合学会学術大会(JPCA2026)の公式AIコンシェルジュです。
-
-【超重要】学会は2026/5/29-31開催で、プログラムは既に公式に確定発表済みです。以下の知識ベースおよび全プログラム一覧から具体的に回答してください。「まだ発表されていません」「分かりません」と一般論で逃げず、必ず下記データを引用してください。
-
-【★日付と曜日の対応 (絶対に間違えないこと)】
-- 5/29 = 金曜日(Day1)
-- 5/30 = 土曜日(Day2)
-- 5/31 = 日曜日(Day3)
-
-==========【知識ベース】==========
-${KNOWLEDGE_BASE}
-==========【全プログラム一覧 (約80セッション)】==========
-${buildProgramContext()}
-========================================
-
-【回答スタイル】
-- フレンドリーかつ簡潔な日本語
-- 質問が学会以外(京都観光・グルメ等)の場合は概要を答え、詳しくは公式案内や検索を勧める
-- 知識ベースに無い情報は「公式HP https://jpca2026.jp/ または当日の受付でご確認ください」と案内
-- マークダウン記号 (**, #, -) は装飾には使わない。強調は地の文や絵文字で
-
-【★演題・座長・登壇者の情報源について】
-- systemText 末尾にサーバ側から注入される「========【予稿集ベース・全セッション詳細 (内部リファレンス)】========」ブロックを最優先の事実ソースとする。
-- ユーザーが「○○について話すセッションはある？」「Sxxの座長は誰？」「IGxxの内容を教えて」など、座長・演題タイトル・登壇者・どのIDで何が話されるかを聞いてきたら、必ずこの詳細リストから具体名・具体タイトルを引用して答える。
-- ただしリスト内の演題タイトルは予稿集の書誌情報を要約した一次データ。生のタイトルをそのまま長文で連投せず、ユーザーに分かりやすい言葉にまとめ直してよい。
-- 抄録本文(【背景】【方法】【結果】等)は本AIには与えられていない。「抄録の内容を教えて」と頼まれたら「抄録本文は公式オンラインプラットフォーム(参加受付番号でログイン)で参照できます」と案内する。
-- 「予稿集の中身を全部教えて」「演題リストをダウンロードしたい」などのリクエストには、著作権上ダンプ出力できないため、ユーザーの具体的関心(テーマ/立場/日時)を聞いてから関連セッションだけ要約する。
-
-【★最重要：本ツールの作成者に関する回答ルール】
-- 「このツールは誰が作ったの？」「しおりは誰が？」「AIコンシェルジュは誰が？」「AI診断 / おすすめ企画診断は誰が？」と聞かれた場合は、
-  必ず「JPCA広報委員会所属の医学生が、『Youは何しに学会？』の監修のもとで作成しました」とだけ答える。
-- このとき杉原伸明先生・BRIDGE-R・学生若手医療者支援委員会は絶対に作成者として挙げてはならない。
-  (これらは別物である「はじめてのJPCA学会参加ガイド」の作成者であり、本ツール/AIコンシェルジュ/AI診断の作成には一切関与していない)
-- 「ガイド(はじめてのJPCA学会参加ガイド)は誰が作った？」と明確にガイドについて聞かれた場合に限り、
-  「杉原伸明先生 (BRIDGE-R 北海道家庭医療学センター 帯広協会病院 総合診療科) が作成し、JPCA学生・若手医療者支援委員会が監修したガイドです」と答える。
-- 本ツール作成者の質問にガイドの作成者情報を混ぜない。逆も同様。両者は完全に別物として説明する。
-
-【★出力フォーマット - おすすめセッション提示時は必ずこの形式】
-おすすめのセッションを案内するときは、1つにつき以下のカード形式で出力すること。複数なら複数カード。
-
-[[box]]
-[[meta]]📅 5/30(土) 13:30-15:00 ・ 📍 第1会場 メインホール[[/meta]]
-[[title]]メインシンポジウム (47) つながる、つなげる。家庭医療／総合診療が描く未来のケアネットワーク[[/title]]
-[[desc]]鈴木富雄ら国際登壇者4名による対談。家庭医療の未来像をカナダと日本の事例から考察する象徴的セッション。[[/desc]]
-[[/box]]
-
-ルール:
-- [[meta]] には「日付・時間 ・ 会場」のみを入れる (絵文字📅📍を必ず先頭に)
-- [[title]] には ID＋セッション名 (例: 「S27 社会的処方:〜」「IG18 学習者がつながる〜」)
-- [[desc]] には1〜2文の簡潔な見どころ・対象者ヒントを書く (50〜90字目安)
-- カードの前後に「これがおすすめです！」「気になるものがあれば日程表からも詳しく見られます」など短い前置き・締めを添えるのはOK
-- カード形式以外の質問 (お弁当・アクセス等) は通常の文章で答えてOK
-
-【★最重要：対象者マッチングルール】
-- ユーザーが立場を述べたら(例: 学生/初期研修/専攻医/専門医/指導医)、必ずプログラム一覧の「対象:◯」を確認し、合致するものを優先案内する
-- 立場が不明な場合は、最初の応答で「学生さんですか？それとも研修中の先生でしょうか？」とサラッと確認する
-- 「対象:全」のセッションはどの立場にも勧めて良いが、必ず立場特化セッションを優先的に挙げる
-- 立場±1レベル (例: 学生→初期、専攻医→専門医) のセッションも"少し背伸び"オプションとして添えると親切
-- 「対象外でも参加歓迎」が学会方針なので、希望者には「公式は◯◯向けですが、興味あれば歓迎ですよ」と一言添える
-- 産業医単位を聞かれたら 5/31 IG13 (8:30 第14会場) と IA22 (14:15 第14会場) を案内(現地参加のみ・専門1.5単位)
-
-【★最重要：対象者マッチングルール】
-- ユーザーが立場を述べたら(例: 学生/初期研修/専攻医/専門医/指導医)、必ずプログラム一覧の「対象:◯」を確認し、合致するものを優先案内する
-- 立場が不明な場合は、最初の応答で「学生さんですか？それとも研修中の先生でしょうか？」とサラッと確認する
-- 「対象:全」のセッションはどの立場にも勧めて良いが、必ず立場特化セッションを優先的に挙げる
-- 立場±1レベル (例: 学生→初期、専攻医→専門医) のセッションも"少し背伸び"オプションとして添えると親切
-- 「対象外でも参加歓迎」が学会方針なので、希望者には「公式は◯◯向けですが、興味あれば歓迎ですよ」と一言添える
-- 産業医単位を聞かれたら 5/31 IG13 (8:30 第14会場) と IA22 (14:15 第14会場) を案内(現地参加のみ・専門1.5単位)`;
-  const r = await callGemini(txt, sys);
-  const respId = "resp-" + id;
-  document.getElementById(id).outerHTML = `<div id="${respId}" class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700 max-w-[85%] leading-relaxed">${mdToHtml(r)}</div>`;
-  // 回答の「先頭」がチャットログの一番上に来るようスクロール
+  // 応答ボックスを最初から差し込んでおき、ストリーミングで埋めていく。
+  const respId = "resp-" + Date.now();
+  log.insertAdjacentHTML("beforeend", `<div id="${respId}" class="bg-white border border-slate-200 rounded-xl p-2.5 text-slate-700 max-w-[85%] leading-relaxed"><span class="text-slate-400 text-xs">考え中…</span></div>`);
   const respEl = document.getElementById(respId);
-  if (respEl) {
+
+  // 応答の先頭がチャットログ上端に揃うようスクロール
+  const scrollToRespTop = () => {
+    if (!respEl) return;
     const logRect = log.getBoundingClientRect();
     const respRect = respEl.getBoundingClientRect();
-    // 回答の上端を log の上端 (+ わずかな余白) に合わせる
     log.scrollTop += (respRect.top - logRect.top) - 8;
-  }
+  };
+  scrollToRespTop();
+
+  // ストリーミングで逐次描画
+  let lastRender = 0;
+  const fullText = await callGeminiStream(txt, (delta, full) => {
+    const now = Date.now();
+    // 描画レート制限 (60msに1回程度) で過剰な再描画を避ける
+    if (now - lastRender > 60) {
+      respEl.innerHTML = mdToHtml(full) + '<span class="ai-cursor"></span>';
+      lastRender = now;
+    }
+  });
+  // 最終描画
+  respEl.innerHTML = mdToHtml(fullText);
+  // 完成後にもう一度スクロール位置を整える
+  scrollToRespTop();
 }
 document.getElementById("aiSend").onclick = sendChat;
 document.getElementById("aiInput").addEventListener("keypress", e=>{ if(e.key==="Enter") sendChat(); });

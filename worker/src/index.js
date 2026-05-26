@@ -38,7 +38,8 @@ async function sha256(str) {
 
 // ---- Gemini Context Cache 管理 ----
 // caches.default に { name, expiresAtMs } を JSON で保存。
-const CTX_CACHE_KEY = "https://ctxcache.local/v1";
+// プロンプト改訂時はバージョンを上げる (=既存 caches.default エントリを破棄して再生成)
+const CTX_CACHE_KEY = "https://ctxcache.local/v3-name-strict";
 
 async function getOrCreateContextCache(apiKey, ctx) {
   const cache = caches.default;
